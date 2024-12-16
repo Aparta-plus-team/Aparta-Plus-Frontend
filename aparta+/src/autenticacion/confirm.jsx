@@ -14,7 +14,7 @@ const LogIn = () => {
           <label htmlFor="email"  >Contraseña</label>
           <input type="email" id="email"  placeholder="Introduce tu contraseña" />
 
-          <label htmlFor="password" className="input-password" ><i className="baseline-confirmation_number"></i> Contraseña</label>
+          <label htmlFor="password" className="input-password" ><i className="baseline-confirmation_number"></i>Confirma Contraseña</label>
           <input
             type="password"
             id="password"
