@@ -3,6 +3,7 @@ import Login from './autenticacion/login';
 import SignUp from './autenticacion/signUp';
 import Reset from './autenticacion/reset';
 import Code from './autenticacion/code';
+import Confirm from './autenticacion/confirm';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} /> 
         <Route path="/reset" element={<Reset />} /> 
         <Route path="/code" element={<Code />} /> 
+        <Route path="/confirm" element={<Confirm />} /> 
       </Routes>
     </BrowserRouter>
   );
