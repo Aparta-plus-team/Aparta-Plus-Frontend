@@ -1,0 +1,175 @@
+/* Contenedor principal */
+.about-container {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding-left: 70px;
+}
+
+/* Encabezado */
+.about-header {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.about-logo {
+  width: 120px;
+}
+
+/* Contenido */
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 20px 40px;
+}
+
+/* Texto */
+.about-text {
+  width: 40%;
+}
+
+.about-text h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.about-text p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #4a4e54;
+}
+
+/* Botones */
+.about-buttons {
+  margin-top: 50px;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-green {
+  background-color: #95c11f;
+  color: white;
+}
+
+.btn-blue {
+  background-color: #0a5c75;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+/* Imágenes */
+.about-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  grid-template-rows: auto auto 1fr; /* Tres filas */
+  gap: 20px; /* Espacio entre imágenes */
+  width: 50%;
+  height: auto;
+}
+
+/* Contenedor de imágenes con grid */
+.about-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+  gap: 20px; /* Espacio entre imágenes */
+  height: auto;
+}
+
+.about-images img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover; /* Ajuste para evitar distorsión */
+}
+
+/* Posicionamiento de imágenes */
+.image-top {
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+  height: 200px;
+}
+
+.image-right {
+  grid-row: 2 / 3;
+  grid-column: 2 / 2;
+}
+
+.image-left {
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+  height: 350px;
+}
+
+.image-bottom {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  height: 200px;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 1024px) {
+  .about-content {
+    flex-direction: column; /* Apila el texto e imágenes verticalmente */
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .about-text {
+    width: 100%; /* Texto ocupa todo el ancho */
+    padding: 0 20px; /* Espaciado horizontal */
+  }
+
+  .about-images {
+    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-rows: repeat(4, auto); /* Cuatro filas automáticas */
+    width: 100%; /* Imágenes ocupan todo el ancho */
+    gap: 15px;
+  }
+
+  .image-top,
+  .image-right,
+  .image-left,
+  .image-bottom {
+    grid-column: auto; /* Reinicia las posiciones */
+    grid-row: auto;
+    height: 200px; /* Altura fija para todas las imágenes */
+  }
+}
+
+@media (max-width: 768px) {
+  .about-images img {
+    height: 150px; /* Reducir altura de imágenes */
+  }
+
+  .btn {
+    font-size: 14px; /* Botones más pequeños */
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-text h2 {
+    font-size: 24px; /* Título más pequeño */
+  }
+
+  .about-images img {
+    height: 120px; /* Imágenes más compactas */
+  }
+}
