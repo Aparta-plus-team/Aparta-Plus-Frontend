@@ -6,7 +6,8 @@
   height: 100vh; 
 }
 
-* {
+* { 
+  font-family: Arial;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -139,6 +140,7 @@
 .profile-email {
   font-size: 20px; 
   margin: 0; 
+  font-style: italic;
 }
 
 
