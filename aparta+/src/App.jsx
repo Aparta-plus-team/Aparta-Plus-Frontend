@@ -5,12 +5,14 @@ import Reset from './autenticacion/reset';
 import Code from './autenticacion/code';
 import Confirm from './autenticacion/confirm';
 import Account from './user/useraccount';
+import Screen from './home/screen';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         {/* Autenticacion */}
+        <Route path="/screen" element={<Screen />} />
         <Route path="/Login" element={<Login />} />        
         <Route path="/signup" element={<SignUp />} /> 
         <Route path="/reset" element={<Reset />} /> 
