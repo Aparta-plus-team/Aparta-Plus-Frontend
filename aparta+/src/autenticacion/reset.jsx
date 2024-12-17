@@ -1,7 +1,8 @@
 
 import logo from "../assets/logo.jpg";
 import fotoAutenticacion from "../assets/foto_autenticacion.jpg";
-import "../App.css";
+import "./autenticacion.css";
+
 
 const Reset = () => {
     
