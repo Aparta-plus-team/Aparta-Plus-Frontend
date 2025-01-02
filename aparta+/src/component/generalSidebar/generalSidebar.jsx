@@ -1,7 +1,7 @@
-import "./sidebar.css";
-function Sidebar() {
+import "./generalSidebar.css";
+function GeneralSidebar() {
   return (
-    <div className="sidebar">
+    <div className="generalSidebar">
       <button onClick={() => window.history.back()} className="back-btn">
         ←
       </button>
@@ -9,5 +9,5 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default GeneralSidebar;
 

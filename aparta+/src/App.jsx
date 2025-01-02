@@ -7,7 +7,8 @@ import Confirm from './autenticacion/confirm';
 import Account from './user/useraccount';
 import Screen from './home/screen';
 import Header from './component/header';
-import Sidebar from './component/accountSidebar/sidebar';
+import AccountSidebar from './component/accountSidebar/accountSidebar';
+import GeneralSidebar from './component/generalSidebar/generalsidebar';
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
 
         {/* testing header */}
         <Route path="/header" element={<Header />} /> 
-        <Route path="/sidebar" element={<Sidebar />} /> 
+        <Route path="/accountsidebar" element={<AccountSidebar />} /> 
+        <Route path="/generalsidebar" element={<GeneralSidebar />} /> 
 
 
       </Routes>
