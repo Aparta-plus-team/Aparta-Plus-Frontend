@@ -1,23 +1,17 @@
 
-import logo from "../assets/logo.jpg";
 import "./useraccount.css";
+import Header from "../component/header";
+import Sidebar from "../component/accountSidebar/accountSidebar";
 
 function AccountPage() {
   return (
     <div className="account-page-container">
       
-      <div className="sidebar">
-          <button onClick={() => window.history.back()} className="back-btn">
-            ←
-          </button>
-      </div>
+      {/* Sidebar */}
+      <Sidebar />
 
-      <div className="header">
-        <img src={logo} alt="Logo Aparta+" className="account-logo" />
-        <div className="avatar-circle">
-          K
-        </div>
-      </div>
+      {/* Header */}
+      <Header />
 
       <div className="main-content">
 
