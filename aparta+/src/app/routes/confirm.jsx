@@ -1,7 +1,7 @@
 
-import logo from "../assets/logo.jpg";
-import fotoAutenticacion from "../assets/foto_autenticacion.jpg";
-import "./autenticacion.css";
+import logo from "&/logo.jpg";
+import fotoAutenticacion from "&/foto_autenticacion.jpg";
+import "+/autenticacion.scss";
 
 
 const LogIn = () => {

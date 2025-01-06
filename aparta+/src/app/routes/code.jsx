@@ -1,24 +1,24 @@
-
-import logo from "../assets/logo.jpg";
-import fotoAutenticacion from "../assets/foto_autenticacion.jpg";
-import "./autenticacion.css";
-
+import logo from "&/logo.jpg";
+import fotoAutenticacion from "&/foto_autenticacion.jpg";
+import "+/autenticacion.scss";
 
 const Reset = () => {
-    
   return (
     <div className="register-container">
       <div className="form-container">
         <img src={logo} alt="Logo Aparta+" className="image" />
         <h2 className="reset-h2">Restablecer Contraseña</h2>
         <form className="register-form">
-          <label htmlFor="email"  >Correo</label>
-          <input type="email" id="email"  placeholder="Introduce tu correo" />
-
+          <p className="texto-p">
+            Te hemos enviado un correo con el codigo para cambiar tu contraseña.
+          </p>
+          <input type="email" id="email" placeholder="Introduce el codigo" />
 
           <div className="form-links">
+            <a className="comentario">¿No recibió el correo?</a>
+
             <a href="/login" className="form-link">
-            ¿Recuerdas la contraseña? Iniciar sesión
+              Reenviar código
             </a>
           </div>
 
@@ -33,7 +33,7 @@ const Reset = () => {
           alt="Building"
           className="background-image"
         />
-        <div className="image-overlay"></div> 
+        <div className="image-overlay"></div>
       </div>
       <link rel="stylesheet" href="/src/style/iniciar-sesion.css" />
     </div>

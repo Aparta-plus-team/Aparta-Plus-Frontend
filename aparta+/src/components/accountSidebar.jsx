@@ -1,4 +1,4 @@
-import "./accountSidebar.css";
+import "+/accountSidebar.component.scss";
 function AccountSidebar() {
   return (
     <div className="accountSidebar">

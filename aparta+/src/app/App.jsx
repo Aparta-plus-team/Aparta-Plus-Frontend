@@ -1,22 +1,22 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './autenticacion/login';
-import SignUp from './autenticacion/signUp';
-import Reset from './autenticacion/reset';
-import Code from './autenticacion/code';
-import Confirm from './autenticacion/confirm';
-import Account from './user/useraccount';
-import Screen from './home/screen';
-import Header from './component/header';
-import AccountSidebar from './component/accountSidebar/accountSidebar';
-import GeneralSidebar from './component/generalSidebar/generalsidebar';
+import Login from '~/login';
+import SignUp from '~/signUp';
+import Reset from '~/reset';
+import Code from '~/code';
+import Confirm from '~/confirm';
+import Account from '~/useraccount';
+import Homepage from '~/homepage';
+import Header from '*/header';
+import AccountSidebar from '*/accountSidebar';
+import GeneralSidebar from '*/generalsidebar';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         {/* Autenticacion */}
-        <Route path="/screen" element={<Screen />} />
-        <Route path="/Login" element={<Login />} />        
+        <Route index element={<Homepage />} />
+        <Route path="/login" element={<Login />} />        
         <Route path="/signup" element={<SignUp />} /> 
         <Route path="/reset" element={<Reset />} /> 
         <Route path="/code" element={<Code />} /> 

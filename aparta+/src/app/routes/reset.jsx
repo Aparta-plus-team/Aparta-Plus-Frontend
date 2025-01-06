@@ -1,37 +1,29 @@
 
-import logo from "../assets/logo.jpg";
-import fotoAutenticacion from "../assets/foto_autenticacion.jpg";
-import "./autenticacion.css";
+import logo from "&/logo.jpg";
+import fotoAutenticacion from "&/foto_autenticacion.jpg";
+import "+/autenticacion.scss";
 
-const LogIn = () => {
+
+const Reset = () => {
     
   return (
     <div className="register-container">
       <div className="form-container">
         <img src={logo} alt="Logo Aparta+" className="image" />
-        <h2 className="iniciar-h2">Iniciar Sesión</h2>
+        <h2 className="reset-h2">Restablecer Contraseña</h2>
         <form className="register-form">
           <label htmlFor="email"  >Correo</label>
           <input type="email" id="email"  placeholder="Introduce tu correo" />
 
-          <label htmlFor="password" className="input-password" >Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Introduce tu contraseña"
-          />
 
           <div className="form-links">
-            <a href="/reset" className="form-link">
-              ¿Olvidaste tu contraseña?
-            </a>
-            <a href="/signUp" className="form-link">
-              ¿No tienes una cuenta?
+            <a href="/login" className="form-link">
+            ¿Recuerdas la contraseña? Iniciar sesión
             </a>
           </div>
 
           <button type="submit" className="register-button">
-            Iniciar Sesión
+            Enviar
           </button>
         </form>
       </div>
@@ -48,4 +40,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default Reset;

@@ -1,7 +1,7 @@
 
-import "./useraccount.css";
-import Header from "../component/header";
-import Sidebar from "../component/accountSidebar/accountSidebar";
+import "+/useraccount.scss";
+import Header from "*/header";
+import Sidebar from "*/accountSidebar";
 
 function AccountPage() {
   return (

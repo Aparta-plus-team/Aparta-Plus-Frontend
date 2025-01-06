@@ -1,9 +1,9 @@
-import "./sytle.css";
-import logo from "../assets/logo.jpg"; // Importa el logo
-import sala from "../assets/sala.jpg"; // Importa la imagen de la sala
-import aptBlanco from "../assets/apt-blanca.jpg";
-import aptAzul from "../assets/apt-azul.jpg";
-import cocina from "../assets/cocina.jpg";
+import "+/homepage.scss";
+import logo from "&/logo.jpg"; // Importa el logo
+import sala from "&/sala.jpg"; // Importa la imagen de la sala
+import aptBlanco from "&/apt-blanca.jpg";
+import aptAzul from "&/apt-azul.jpg";
+import cocina from "&/cocina.jpg";
 
 const Screen = () => {
   return (

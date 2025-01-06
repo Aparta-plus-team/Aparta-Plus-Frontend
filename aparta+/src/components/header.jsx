@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";  // Importar useNavigate
-import logo from "../assets/logo.jpg";
-import "./header.css";
+import logo from "&/logo.jpg";
+import "+/header.component.scss";
 
 function Header() {
   const [showDropdown, setShowDropdown] = useState(false);

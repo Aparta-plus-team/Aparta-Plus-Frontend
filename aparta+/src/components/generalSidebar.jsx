@@ -1,4 +1,4 @@
-import "./generalSidebar.css";
+import "+/generalSidebar.component.scss";
 function GeneralSidebar() {
   return (
     <div className="generalSidebar">
