@@ -9,6 +9,7 @@ import Homepage from '~/homepage';
 import Header from '*/header';
 import AccountSidebar from '*/accountSidebar';
 import GeneralSidebar from '*/generalsidebar';
+import Searchbar from '../components/searchbar';
 
 function App() {
   return (
@@ -25,10 +26,11 @@ function App() {
         {/* Account */}
         <Route path="/account" element={<Account />} /> 
 
-        {/* testing header */}
+        {/* testing components */}
         <Route path="/header" element={<Header />} /> 
         <Route path="/accountsidebar" element={<AccountSidebar />} /> 
         <Route path="/generalsidebar" element={<GeneralSidebar />} /> 
+        <Route path="/searchbar" element={<Searchbar />} /> 
 
 
       </Routes>
