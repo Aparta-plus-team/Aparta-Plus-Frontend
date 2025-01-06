@@ -12,7 +12,7 @@ const Screen = () => {
         <img src={logo} alt="Aparta+" className="about-logo" />
       </header>
       <div className="about-content">
-        <div className="about-text">
+        <div className="about-text ">
           <h2>¿Quiénes Somos?</h2>
           <p>
           Aparta+ se concibe como una herramienta práctica para administradores de bienes raíces,
@@ -33,7 +33,7 @@ const Screen = () => {
             </a>
           </div>
         </div>
-        <div className="about-images">
+        <div className="about-images ">
           <img src={sala} alt="sala" className="image-top" />
           <img src={aptBlanco} alt="apt-blanco" className="image-right" />
           <img src={aptAzul} alt="apt-Azul" className="image-left" />
