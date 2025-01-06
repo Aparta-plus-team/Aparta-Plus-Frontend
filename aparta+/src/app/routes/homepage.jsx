@@ -5,6 +5,7 @@ import aptBlanco from "&/apt-blanca.jpg";
 import aptAzul from "&/apt-azul.jpg";
 import cocina from "&/cocina.jpg";
 
+
 const Screen = () => {
   return (
     <div className="about-container">
@@ -13,7 +14,8 @@ const Screen = () => {
       </header>
       <div className="about-content">
         <div className="about-text ">
-          <h2>¿Quiénes Somos?</h2>
+          <h2>
+            ¿Quiénes Somos?</h2>
           <p>
           Aparta+ se concibe como una herramienta práctica para administradores de bienes raíces,
           permitiéndoles gestionar propiedades, contratos y pagos con mayor agilidad, 
