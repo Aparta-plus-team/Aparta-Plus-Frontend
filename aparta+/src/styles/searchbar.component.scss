@@ -1,0 +1,32 @@
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  height: auto;
+  max-width: 350px; /* Ajusta el ancho según sea necesario */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: white; /* Asegura un fondo blanco */
+  overflow: hidden;
+
+  &__icon {
+    width: 30px; /* Ajusta el ancho de la imagen */
+    height: 30px; /* Ajusta el alto de la imagen */
+    margin-right: 0.5rem;
+    object-fit: contain;
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 200; 
+    flex: 1; 
+
+    &::placeholder {
+      color: black;
+    }
+  }
+
+}
