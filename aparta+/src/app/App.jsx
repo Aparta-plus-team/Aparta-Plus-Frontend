@@ -10,6 +10,7 @@ import Header from '*/header';
 import AccountSidebar from '*/accountSidebar';
 import GeneralSidebar from '*/generalsidebar';
 import Searchbar from '../components/searchbar';
+import Factura from '~/factura';
 
 function App() {
   return (
@@ -31,7 +32,9 @@ function App() {
         <Route path="/accountsidebar" element={<AccountSidebar />} /> 
         <Route path="/generalsidebar" element={<GeneralSidebar />} /> 
         <Route path="/searchbar" element={<Searchbar />} /> 
-
+        
+        {/* Factura */}
+        <Route path="/factura" element={<Factura />} />
 
       </Routes>
     </BrowserRouter>
