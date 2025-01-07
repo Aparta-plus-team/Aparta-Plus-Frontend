@@ -11,10 +11,9 @@ import AccountSidebar from '*/accountSidebar';
 import GeneralSidebar from '*/generalsidebar';
 import Searchbar from '../components/searchbar';
 import Factura from '~/factura';
-
 import PropertyCard from '*/propertyCard';
-
 import UploadDocuments from '*/uploadDocs';
+import Property from '~/properties';
 
 
 function App() {
@@ -28,6 +27,7 @@ function App() {
         <Route path="/reset" element={<Reset />} /> 
         <Route path="/code" element={<Code />} /> 
         <Route path="/confirm" element={<Confirm />} /> 
+        <Route path="/property" element={<Property />} />
 
         {/* Account */}
         <Route path="/account" element={<Account />} /> 
