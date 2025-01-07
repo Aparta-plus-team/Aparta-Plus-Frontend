@@ -15,7 +15,7 @@ import Factura from '~/factura';
 import PropertyCard from '*/propertyCard';
 
 import UploadDocuments from '*/uploadDocs';
-
+import UploadImg from '*/uploadImg';
 
 function App() {
   return (
@@ -44,6 +44,9 @@ function App() {
 
         {/* UploadDocs */}
         <Route path="/uploaddocs" element={<UploadDocuments />} />
+
+        {/* UploadImg */}
+        <Route path="/uploadimg" element={<UploadImg />} />
 
       </Routes>
     </BrowserRouter>
