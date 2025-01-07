@@ -5,7 +5,6 @@ import aptBlanco from "&/apt-blanca.jpg";
 import aptAzul from "&/apt-azul.jpg";
 import cocina from "&/cocina.jpg";
 
-
 const Screen = () => {
   return (
     <div className="about-container">
@@ -14,17 +13,19 @@ const Screen = () => {
       </header>
       <div className="about-content">
         <div className="about-text ">
-          <h2>
-            ¿Quiénes Somos?</h2>
+          <h2>¿Quiénes Somos?</h2>
           <p>
-          Aparta+ se concibe como una herramienta práctica para administradores de bienes raíces,
-          permitiéndoles gestionar propiedades, contratos y pagos con mayor agilidad, 
-          al mismo tiempo que ofrecen una experiencia más
-          conveniente y profesional a sus inquilinos. 
+            Aparta+ se concibe como una herramienta práctica para
+            administradores de bienes raíces, permitiéndoles gestionar
+            propiedades, contratos y pagos con mayor agilidad, al mismo tiempo
+            que ofrecen una experiencia más conveniente y profesional a sus
+            inquilinos.
           </p>
           <p>
-          Una solución de bienes raíces enfocada en automatizar procesos administrativos clave como la generación de facturas, 
-          la recolección de pagos y el manejo de estadísticas relacionadas con propiedades e inquilinos.
+            Una solución de bienes raíces enfocada en automatizar procesos
+            administrativos clave como la generación de facturas, la recolección
+            de pagos y el manejo de estadísticas relacionadas con propiedades e
+            inquilinos.
           </p>
           <div className="about-buttons">
             <a href="/signUp" className="btn btn-green">
