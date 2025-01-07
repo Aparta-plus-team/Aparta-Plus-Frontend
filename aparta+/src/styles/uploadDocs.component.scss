@@ -25,12 +25,12 @@ $font-family: 'Poppins', sans-serif;
 }
 
 // Global Styles
-body {
-  font-family: $font-family;
-  background-color: #f9f9f9;
-  @include center-flex;
-  min-height: 100vh; // Asegura que ocupe toda la pantalla
-}
+// body {
+//   font-family: $font-family;
+//   background-color: #f9f9f9;
+//   @include center-flex;
+//   min-height: 100vh; // Asegura que ocupe toda la pantalla
+// }
 
 // Component Styles
 .upload-container {

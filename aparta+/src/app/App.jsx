@@ -14,6 +14,7 @@ import Factura from '~/factura';
 import PropertyCard from '*/propertyCard';
 import UploadDocuments from '*/uploadDocs';
 import UploadImg from '*/uploadImg';
+import Property from '~/properties';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/reset" element={<Reset />} /> 
         <Route path="/code" element={<Code />} /> 
         <Route path="/confirm" element={<Confirm />} /> 
+        <Route path="/property" element={<Property />} />
 
         {/* Account */}
         <Route path="/account" element={<Account />} /> 
