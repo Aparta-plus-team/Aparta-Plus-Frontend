@@ -1,0 +1,119 @@
+// Variables
+$primary-color: #094152;
+$secondary-color: #DAF3FB;
+$text-color: #4D4D4D;
+$font-family: 'Poppins', sans-serif;
+
+// Mixins
+@mixin center-flex {
+    justify-content: center;
+    align-items: center;
+  }
+
+@mixin button-style($bg-color, $text-color) {
+  @include center-flex;
+  width: 150px;
+  height: 40px;
+  background-color: $bg-color;
+  color: $text-color;
+  border-radius: 5px;
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 200;
+  border: none;
+}
+
+// Component Styles
+.upload-container {
+  @include center-flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1.5px dashed $primary-color;
+  border-radius: 10px;
+  width: 1050px;
+  background-color: $secondary-color;
+
+  .upload-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: $primary-color;
+    margin-bottom: 20px;
+  }
+
+  .upload-dropzone {
+    @include center-flex;
+    width: 100%;
+    height: 120px;
+    border: 2px dashed $primary-color;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: $text-color;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+
+  .upload-input {
+    display: none;
+  }
+
+  .upload-previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 29.6px;
+
+    .preview-container {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border: 1px solid $primary-color;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #fff;
+
+      .preview-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .preview-remove-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        opacity: 0.7;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+          fill: #000;
+        }
+      }
+    }
+  }
+
+  .file-names {
+    font-size: 14px;
+    color: $text-color;
+    padding-top: 20px;
+    list-style-type: none;
+    padding-left: 0;
+
+    .file-name-item {
+      margin-bottom: 5px;
+      font-weight: 400;
+    }
+  }
+}
