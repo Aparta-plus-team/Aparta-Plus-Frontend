@@ -1,0 +1,96 @@
+// Variables
+$primary-color: #094152;
+$secondary-color: #DAF3FB;
+$text-color: #4D4D4D;
+$font-family: 'Poppins', sans-serif;
+
+// Mixins
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-style($bg-color, $text-color) {
+  @include center-flex;
+  width: 150px;
+  height: 40px;
+  background-color: $bg-color;
+  color: $text-color;
+  border-radius: 5px;
+  font-family: $font-family;
+  font-size: 16px;
+  font-weight: 200;
+  border: none;
+}
+
+// Global Styles
+body {
+  font-family: $font-family;
+  background-color: #f9f9f9;
+  @include center-flex;
+  min-height: 100vh; // Asegura que ocupe toda la pantalla
+}
+
+// Component Styles
+.upload-container {
+  @include center-flex;
+  position: static;
+  flex-direction: column;
+  padding: auto;
+  margin: auto;
+  border: 1.5px dashed $primary-color;
+  border-radius: 5px;
+  width: 395px;
+  height: auto;
+  background-color: $secondary-color;
+
+  .upload-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .upload-box {
+    @include center-flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+  }
+
+  .upload-text {
+    color: $text-color;
+    padding: 15px;
+  }
+
+  .upload-button {
+    @include button-style($primary-color, white);
+    cursor: pointer;
+    font-weight: 300;
+  }
+}
+
+.file-list {
+    font-size: 14px;
+    color: #4d4d4d;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 20px;
+    display: space-between;
+    text-align: center;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.remove-file {
+    margin-left: 10px;
+    display: ruby;
+    justify-content: center;
+    align-items: last baseline;
+    cursor: pointer;
+
+}
