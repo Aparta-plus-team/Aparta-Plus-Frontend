@@ -10,7 +10,7 @@ export default function factura() {
 
     <header className="invoice-header">
         <h1 className='text-3xl font-bold' >Factura de Pago</h1>
-        <p>Gracias por su compra.</p>
+        <p>Gracias por su pago.</p>
     </header>
     <section className="invoice-info">
         <div>
@@ -28,24 +28,38 @@ export default function factura() {
         <thead>
             <tr>
                 <th>Apartamento</th>
-                <th>Cantidad</th>
+                <th>Periodo</th>
+                <th>Estado</th>
                 <th>Renta</th>
-                <th>Total</th>
+                <th>Subtotal</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>B4</td>
-                <td>2</td>
+                <td rowSpan="3" >B4</td>
+                <td>Enero</td>
+                <td>Atrasado</td>
+                <td>$30,000.00</td>
+                <td>30,000.00</td>
+            </tr>
+            <tr>
+                <td>Febrero</td>
+                <td>Actual</td>
                 <td>$30,000.00</td>
                 <td>$60,000.00</td>
+            </tr>
+            <tr>
+                <td>Marzo</td>
+                <td>Adelantado</td>
+                <td>$30,000.00</td>
+                <td>$90,000.00</td>
             </tr>
 
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3"><strong>Total:</strong></td>
-                <td><strong>$60,000.00</strong></td>
+                <td colspan="4"><strong>Total:</strong></td>
+                <td><strong>$90,000.00</strong></td>
             </tr>
         </tfoot>
     </table>

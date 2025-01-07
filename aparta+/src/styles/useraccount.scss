@@ -4,12 +4,7 @@
   height: 100vh; 
 }
 
-* { 
-  font-family: Arial;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 .account-logo {
   height: auto; 
@@ -79,16 +74,29 @@
   left: 0;
 }
 
+// .main-content {
+//   flex: 1;
+//   margin-left: 45px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: center;
+//   padding: 50px;
+//   background-color: #F6F2F8;
+//   box-sizing: border-box;
+// }
+
 .main-content {
   flex: 1;
   margin-left: 45px;
+  margin-top: 46px; // añadido para compensar el header fijo
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 50px;
-  background-color: #F6F2F8;
   box-sizing: border-box;
+  // removido el background-color de aquí ya que lo movimos al contenedor principal
 }
 
 .title {

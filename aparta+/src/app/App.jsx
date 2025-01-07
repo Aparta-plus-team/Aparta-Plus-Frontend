@@ -12,6 +12,10 @@ import GeneralSidebar from '*/generalsidebar';
 import Input from '*/input';
 import Searchbar from '../components/searchbar';
 import Factura from '~/factura';
+import PropertyCard from '*/propertyCard';
+import UploadDocuments from '*/uploadDocs';
+import UploadImg from '*/uploadImg';
+import Property from '~/properties';
 
 function App() {
   return (
@@ -24,6 +28,7 @@ function App() {
         <Route path="/reset" element={<Reset />} /> 
         <Route path="/code" element={<Code />} /> 
         <Route path="/confirm" element={<Confirm />} /> 
+        <Route path="/property" element={<Property />} />
 
         {/* Account */}
         <Route path="/account" element={<Account />} /> 
@@ -33,10 +38,20 @@ function App() {
         <Route path="/accountsidebar" element={<AccountSidebar />} /> 
         <Route path="/generalsidebar" element={<GeneralSidebar />} /> 
         <Route path="/searchbar" element={<Searchbar />} /> 
+
         <Route path="/input" element={<Input isPassword={true} content='email' width='800px' onChange={(e) => {console.log(e)}}/>} /> 
+
+        <Route path="/propertyCard" element={<PropertyCard />} />
+
         
         {/* Factura */}
         <Route path="/factura" element={<Factura />} />
+
+        {/* UploadDocs */}
+        <Route path="/uploaddocs" element={<UploadDocuments />} />
+
+        {/* UploadImg */}
+        <Route path="/uploadimg" element={<UploadImg />} />
 
       </Routes>
     </BrowserRouter>
