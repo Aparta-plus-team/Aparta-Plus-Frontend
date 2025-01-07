@@ -11,9 +11,7 @@ import AccountSidebar from '*/accountSidebar';
 import GeneralSidebar from '*/generalsidebar';
 import Searchbar from '../components/searchbar';
 import Factura from '~/factura';
-
 import PropertyCard from '*/propertyCard';
-
 import UploadDocuments from '*/uploadDocs';
 import UploadImg from '*/uploadImg';
 
