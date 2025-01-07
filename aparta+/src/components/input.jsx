@@ -2,13 +2,7 @@ import "+/input.component.scss";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export default function Input({
-  value,
-  content,
-  width,
-  onChange,
-  isPassword,
-}) {
+export default function Input({value, content, width, onChange, isPassword,}) {
   const [ShowPassword, setShowPassword] = useState(false);
   return (
     <div className="input-container" style={{ width: width }}>
