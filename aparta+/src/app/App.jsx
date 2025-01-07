@@ -11,6 +11,7 @@ import AccountSidebar from '*/accountSidebar';
 import GeneralSidebar from '*/generalsidebar';
 import Searchbar from '../components/searchbar';
 import Factura from '~/factura';
+import PropertyCard from '*/propertyCard';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/accountsidebar" element={<AccountSidebar />} /> 
         <Route path="/generalsidebar" element={<GeneralSidebar />} /> 
         <Route path="/searchbar" element={<Searchbar />} /> 
+        <Route path="/propertyCard" element={<PropertyCard />} />
         
         {/* Factura */}
         <Route path="/factura" element={<Factura />} />

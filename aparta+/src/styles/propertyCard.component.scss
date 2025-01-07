@@ -1,0 +1,45 @@
+.property-card {
+  width: 361px;
+  height: 361px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__image {
+    width: 330px;
+    height: 220px;
+    object-fit: cover;
+    margin-top: 15px;
+    border-radius: 8px;
+  }
+
+  &__content {
+    width: 330px;
+    padding: 12px 0;
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+  }
+
+  &__details {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+    color: #666;
+    font-size: 14px;
+  }
+
+  &__address {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
