@@ -9,6 +9,7 @@ import Homepage from '~/homepage';
 import Header from '*/header';
 import AccountSidebar from '*/accountSidebar';
 import GeneralSidebar from '*/generalsidebar';
+import Input from '*/input';
 import Searchbar from '../components/searchbar';
 import Factura from '~/factura';
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/accountsidebar" element={<AccountSidebar />} /> 
         <Route path="/generalsidebar" element={<GeneralSidebar />} /> 
         <Route path="/searchbar" element={<Searchbar />} /> 
+        <Route path="/input" element={<Input isPassword={true} content='nombre de usuario' width='400px' onChange={(e) => {console.log(e)}}/>} /> 
         
         {/* Factura */}
         <Route path="/factura" element={<Factura />} />
