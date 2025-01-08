@@ -1,9 +1,10 @@
-import "+/uploadDocs.component.scss";
+import React, { useState } from 'react';
+import '+/uploadDocs.component.scss';
 
 function UploadDocuments() {
   const [fileNames, setFileNames] = useState([]); // Estado para los nombres de los archivos
 
-  // Maneja el evento cuando se arrastra un archivo al áreals
+  // Maneja el evento cuando se arrastra un archivo al área
   const handleDrop = (event) => {
     event.preventDefault();
     const files = Array.from(event.dataTransfer.files); // Obtiene los archivos arrastrados
@@ -39,11 +40,7 @@ function UploadDocuments() {
   };
 
   return (
-    <div
-      className="upload-container"
-      onDrop={handleDrop} // Detecta el archivo cuando se suelta
-      onDragOver={handleDragOver} // Permite el evento de arrastrar
-    >
+    <div className="upload-container" onDrop={handleDrop} onDragOver={handleDragOver}>
       <div className="upload-box">
         <div className="upload-icon">
           <svg

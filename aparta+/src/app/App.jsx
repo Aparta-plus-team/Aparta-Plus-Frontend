@@ -19,6 +19,7 @@ import Property from '~/properties';
 import CardApart from '*/apartmentCard';
 import ContractContainer from '*/contractContainer';
 import ComboBox from '*/comboBox';
+
 function App() {
   return (
     <BrowserRouter>
