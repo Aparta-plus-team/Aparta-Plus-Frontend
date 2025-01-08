@@ -1,10 +1,9 @@
-import React, { useState } from "react";
 import "+/uploadDocs.component.scss";
 
 function UploadDocuments() {
   const [fileNames, setFileNames] = useState([]); // Estado para los nombres de los archivos
 
-  // Maneja el evento cuando se arrastra un archivo al área
+  // Maneja el evento cuando se arrastra un archivo al áreals
   const handleDrop = (event) => {
     event.preventDefault();
     const files = Array.from(event.dataTransfer.files); // Obtiene los archivos arrastrados
