@@ -18,6 +18,7 @@ import UploadImg from '*/uploadImg';
 import Property from '~/properties';
 import CardApart from '*/apartmentCard';
 import ContractContainer from '*/contractContainer';
+
 function App() {
   return (
     <BrowserRouter>
