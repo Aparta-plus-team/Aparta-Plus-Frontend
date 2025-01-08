@@ -30,9 +30,9 @@ const LogIn = () => {
             </a>
           </div>
 
-          <button type="submit" className="register-button">
+          <a type="submit" className="register-button text-center" href="/property">
             Iniciar Sesión
-          </button>
+          </a>
         </form>
       </div>
       <div className="image-container">
