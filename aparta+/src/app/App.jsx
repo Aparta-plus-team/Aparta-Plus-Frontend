@@ -17,7 +17,7 @@ import UploadDocuments from '*/uploadDocs';
 import UploadImg from '*/uploadImg';
 import Property from '~/properties';
 import CardApart from '*/apartmentCard';
-
+import ContractContainer from '*/contractContainer';
 function App() {
   return (
     <BrowserRouter>
@@ -56,6 +56,9 @@ function App() {
 
         {/* ApartmentCard */}
         <Route path="/apartmentcard" element={<CardApart />} />
+
+        {/* ContractContainer */}
+        <Route path="/contractcontainer" element={<ContractContainer />} />
 
       </Routes>
     </BrowserRouter>
