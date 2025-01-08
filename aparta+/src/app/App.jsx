@@ -18,6 +18,7 @@ import UploadImg from '*/uploadImg';
 import Property from '~/properties';
 import CardApart from '*/apartmentCard';
 import ContractContainer from '*/contractContainer';
+import ComboBox from '*/comboBox';
 function App() {
   return (
     <BrowserRouter>
@@ -42,8 +43,9 @@ function App() {
 
         <Route path="/input" element={<Input isPassword={true} content='email' width='800px' onChange={(e) => {console.log(e)}}/>} /> 
 
-        <Route path="/propertyCard" element={<PropertyCard />} />
+        <Route path="/combobox" element={<ComboBox options={['Uno', 'Dos', 'Tres']} onChange={(e) => console.log(e)} />} />
 
+        <Route path="/propertyCard" element={<PropertyCard />} />
         
         {/* Factura */}
         <Route path="/factura" element={<Factura />} />
