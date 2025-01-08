@@ -16,6 +16,7 @@ import PropertyCard from '*/propertyCard';
 import UploadDocuments from '*/uploadDocs';
 import UploadImg from '*/uploadImg';
 import Property from '~/properties';
+import CardApart from '*/apartmentCard';
 
 function App() {
   return (
@@ -52,6 +53,9 @@ function App() {
 
         {/* UploadImg */}
         <Route path="/uploadimg" element={<UploadImg />} />
+
+        {/* ApartmentCard */}
+        <Route path="/apartmentcard" element={<CardApart />} />
 
       </Routes>
     </BrowserRouter>

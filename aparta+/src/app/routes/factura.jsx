@@ -1,5 +1,4 @@
-import React from 'react'
-import '+/factura.scss'
+import '+/factura.scss';
 
 
 export default function factura() {
@@ -58,7 +57,7 @@ export default function factura() {
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="4"><strong>Total:</strong></td>
+                <td colSpan="4"><strong>Total:</strong></td>
                 <td><strong>$90,000.00</strong></td>
             </tr>
         </tfoot>
