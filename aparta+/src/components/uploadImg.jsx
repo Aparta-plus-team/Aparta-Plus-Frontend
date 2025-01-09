@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import '+/uploadImg.component.scss'; // Archivo SCSS para estilos
 
 function UploadImg() {

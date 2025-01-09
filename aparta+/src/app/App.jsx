@@ -20,6 +20,7 @@ import CardApart from "*/apartmentCard";
 import ContractContainer from "*/contractContainer";
 import ComboBox from "*/comboBox";
 import Button from "*/button";
+
 function App() {
   return (
     <BrowserRouter>
