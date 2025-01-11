@@ -1,0 +1,89 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: #F8FAFC;
+
+  &__content {
+    flex: 1;
+    margin-left: 250px; // Ancho del sidebar
+    padding: 0 2rem;
+    padding-top: 64px; // Altura del header
+  }
+
+  &__stats {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  &__charts {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__sales-report,
+  &__income {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  &__transactions,
+  &__issues {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.chart-header,
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1E293B;
+  }
+}
+
+.chart-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background: #F8FAFC;
+  }
+}
+
+.view-details,
+.view-all {
+  color: #64748B;
+  font-size: 0.875rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #1E293B;
+  }
+}

@@ -20,6 +20,8 @@ import CardApart from "*/apartmentCard";
 import ContractContainer from "*/contractContainer";
 import ComboBox from "*/comboBox";
 import Button from "*/button";
+import DashboardCard from "*/dashboardCard";
+import Dashboard from "~/dashboard";
 
 function App() {
   return (
@@ -42,6 +44,30 @@ function App() {
         <Route path="/accountsidebar" element={<AccountSidebar />} />
         <Route path="/generalsidebar" element={<GeneralSidebar />} />
         <Route path="/searchbar" element={<Searchbar />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route
+          path="/dashboardCard"
+          element={
+            <div className="dashboard-stats">
+              <DashboardCard 
+                type="total"
+                value={10}
+                title="Propiedades total"
+            />
+              <DashboardCard 
+                type="rented"
+                value={7}
+                title="Propiedades alquilados"
+              />
+              <DashboardCard 
+                type="earnings"
+                value={150}
+                title="Ganancia Mensual"
+              />
+            </div>
+          }
+        />
 
         <Route
           path="/input"
