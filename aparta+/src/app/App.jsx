@@ -22,6 +22,7 @@ import ComboBox from "*/comboBox";
 import Button from "*/button";
 import DashboardCard from "*/dashboardCard";
 import Dashboard from "~/dashboard";
+import ListComponent from "*/ultimaTransaccion";
 
 function App() {
   return (
@@ -47,20 +48,83 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
 
         <Route
+          path="/ultimaTransaccion"
+          element={
+            <div className="dashboard-lists">
+              <ListComponent
+                type="transactions"
+                items={[
+                  {
+                    id: 1,
+                    propertyName: "Casa de Juan",
+                    date: "12 Sep 2024",
+                    amount: 30,
+                    image: "https://via.placeholder.com/50", // Imagen de prueba
+                  },
+                  {
+                    id: 2,
+                    propertyName: "Zona De Rico",
+                    date: "10 Sep 2024",
+                    amount: 10,
+                    image: "https://via.placeholder.com/50", // Imagen de prueba
+                  },
+                  {
+                    id: 3,
+                    propertyName: "Diddy House",
+                    date: "8 Sep 2024",
+                    amount: 20,
+                    image: "https://via.placeholder.com/50", // Imagen de prueba
+                  },
+                ]}
+              />
+              <ListComponent
+                type="issues"
+                items={[
+                  {
+                    id: 1,
+                    propertyName: "721 Meadowview",
+                    requestId: "MR-001",
+                    description: "Basura Rota",
+                    userName: "Jacob Jones",
+                    userImage: "https://via.placeholder.com/50", // Imagen de prueba
+                  },
+                  {
+                    id: 2,
+                    propertyName: "721 Meadowview",
+                    requestId: "MR-002",
+                    description: "Baño Sin Calefacción",
+                    userName: "Albert Flores",
+                    userImage: "https://via.placeholder.com/50", // Imagen de prueba
+                  },
+                  {
+                    id: 3,
+                    propertyName: "721 Meadowview",
+                    requestId: "MR-003",
+                    description: "Ventilador No Funcional",
+                    userName: "Robert Fox",
+                    userImage: "https://via.placeholder.com/50", // Imagen de prueba
+                  },
+                ]}
+              />
+            </div>
+          }
+        />
+
+        <Route
           path="/dashboardCard"
           element={
             <div className="dashboard-stats">
-              <DashboardCard 
+              <DashboardCard
                 type="total"
                 value={10}
                 title="Propiedades total"
-            />
-              <DashboardCard 
+              />
+              <DashboardCard
                 type="rented"
                 value={7}
                 title="Propiedades alquilados"
               />
-              <DashboardCard 
+              <DashboardCard
                 type="earnings"
                 value={150}
                 title="Ganancia Mensual"
