@@ -3,7 +3,7 @@ import Header from "*/header";
 import Sidebar from "*/generalSidebar";
 import Searchbar from "*/searchbar";
 import PropertyCard from "*/propertyCard";
-import "+/properties.scss"; // Archivo de estilos
+import "+/properties.scss"; 
 import { useLocation } from 'react-router-dom';
 
 const Property = () => {
@@ -30,7 +30,7 @@ const Property = () => {
         {/* Lista de propiedades */}
         <div className="property__properties">
           {/* Renderizamos varios PropertyCard */}
-          {[1, 2, 3, 4, 5, 6].map((_, index) => (
+          {[1, 2, 3, 4, 5, 6, 7].map((_, index) => (
             <PropertyCard key={index} />
           ))}
         </div>
