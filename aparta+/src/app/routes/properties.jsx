@@ -4,12 +4,14 @@ import Sidebar from "*/generalSidebar";
 import Searchbar from "*/searchbar";
 import PropertyCard from "*/propertyCard";
 import "+/properties.scss"; // Archivo de estilos
+import { useLocation } from 'react-router-dom';
 
 const Property = () => {
+  const location = useLocation();
   return (
     <div className="property">
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar selected={location.pathname} />
 
       {/* Contenido principal */}
       <div className="property__content">
