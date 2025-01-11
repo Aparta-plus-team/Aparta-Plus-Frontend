@@ -30,7 +30,7 @@ const LogIn = () => {
             </a>
           </div>
 
-          <a type="submit" className="register-button text-center" href="/property">
+          <a type="submit" className="register-button text-center" href="/dashboard">
             Iniciar Sesión
           </a>
         </form>
