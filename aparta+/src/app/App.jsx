@@ -20,6 +20,8 @@ import ComboBox from "*/comboBox";
 import Button from "*/button";
 import DashboardCard from "*/dashboardCard";
 import Dashboard from "~/dashboard";
+import TablaInquilinos from "*/tablaInquilinos";
+import InquilinosPage from "~/inquilinos";
 import ListComponent from "*/ultimaTransaccion";
 import Transactions from "~/transactions";
 import MainView from "*/mainView";
@@ -37,6 +39,8 @@ function App() {
         <Route path="/code" element={<Code />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/property" element={<Property />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/inquilinos" element={<InquilinosPage />} />
 
         {/* Account */}
         <Route path="/account" element={<Account />} />
@@ -119,6 +123,24 @@ function App() {
                 ]}
               />
             </div>
+          }
+        />
+
+        <Route
+          path="/tablaInquilinos"
+          element={
+            <TablaInquilinos
+              inquilinos={[
+                {
+                  nombre: "Keven",
+                  apellido: "Shein",
+                  correo: "keven.g@gmail.com",
+                  apartamento: "Apartamento Taiwané",
+                  estado: "Pagado",
+                },
+                // Puedes agregar más inquilinos aquí
+              ]}
+            />
           }
         />
 
