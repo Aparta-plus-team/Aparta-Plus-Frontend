@@ -27,6 +27,8 @@ import Transactions from "~/transactions";
 import MainView from "*/mainView";
 import Morosity from "~/morosidad";
 import ReporteVentas from "*/reporteVentas";
+import FormularioInquilino from "~/crearInquilino";
+import EditarFormularioInquilino from "~/editarInquilino";
 
 function App() {
   return (
@@ -42,6 +44,8 @@ function App() {
         <Route path="/property" element={<Property />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/inquilinos" element={<InquilinosPage />} />
+        <Route path="/crearinquilino" element={<FormularioInquilino />} />
+        <Route path="/editarinquilino/:id" element={<EditarFormularioInquilino />} />
 
         {/* Account */}
         <Route path="/account" element={<Account />} />

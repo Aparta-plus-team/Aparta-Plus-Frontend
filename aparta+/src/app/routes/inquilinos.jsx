@@ -30,8 +30,10 @@ const InquilinosPage = () => {
             <div className="inquilinos-header">
               <h1>Administrar Inquilinos</h1>
               <div className="inquilinos-actions">
-                <Searchbar />
-                <button className="add-button">Añadir un inquilino +</button>
+                <Searchbar placeholder = "Buscar inquilino" />
+                <a href="/crearinquilino">
+                  <button className="add-button">Añadir un inquilino +</button>
+                </a>
               </div>
             </div>
 

@@ -11,7 +11,7 @@ const Property = () => {
         <div className="property__header">
           <h1 className="property__welcome">WELCOME AQUILEN’T!</h1>
           <div className="property__actions">
-            <Searchbar />
+            <Searchbar placeholder="Buscar propiedad" />
             <button className="property__add-property">
               Añadir una propiedad +
             </button>
