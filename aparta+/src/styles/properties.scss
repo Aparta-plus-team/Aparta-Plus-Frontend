@@ -4,15 +4,9 @@
   display: flex;
   
   &__content {
-    flex: 1;
-    margin-left: 200px; // Ancho del Sidebar
-    min-height: 100vh;
-    position: relative;
-    padding-top: 80px; // Altura del Header fijo
     
     // Estilos para el header principal fijo
     > header {
-      position: fixed;
       top: 0;
       left: 200px; // Mismo ancho que el margin-left del content
       right: 0;
@@ -40,11 +34,11 @@
       display: flex;
       gap: 20px;
       align-items: center;
+      justify-content: right ;
     }
 
     .property__add-property {
   padding: 10px 20px;
-  margin-right: 50px;
   border: 2px solid #98B600; // Color del borde
   border-radius: 8px;
   background: white; // Fondo blanco
