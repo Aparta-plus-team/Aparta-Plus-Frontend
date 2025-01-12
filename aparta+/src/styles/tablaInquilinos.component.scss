@@ -6,11 +6,11 @@
 }
 
 .inquilino-row {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 2.5fr 2.5fr 3fr 1.5fr 1.5fr; 
+  background: #f8f8f8;
+  border-bottom: 1px solid #eee;
   padding: 1rem;
-  border-bottom: 1px solid #eaeaea;
-  transition: background-color 0.2s;
 
   &:hover {
     background-color: #f8f8f8;
