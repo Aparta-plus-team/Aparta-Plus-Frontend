@@ -32,7 +32,6 @@
   background-color: #fff; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
   box-sizing: border-box; 
-  position: fixed; 
   top: 0; 
   left: 0; 
   width: 100%; 
@@ -60,20 +59,6 @@
   background-color: #062d43; 
 }
 
-.sidebar {
-  width: 45px; 
-  background-color: #c9c2c4; 
-  height: calc(100vh - 20px); 
-  margin-top: 46px; 
-  display: flex;
-  align-items: flex-start; 
-  justify-content: center;
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1); 
-  position: fixed; 
-  top: 0;
-  left: 0;
-}
-
 // .main-content {
 //   flex: 1;
 //   margin-left: 45px;
@@ -88,13 +73,11 @@
 
 .main-content {
   flex: 1;
-  margin-left: 45px;
-  margin-top: 46px; // añadido para compensar el header fijo
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 50px;
+  padding: 10px;
   box-sizing: border-box;
   // removido el background-color de aquí ya que lo movimos al contenedor principal
 }

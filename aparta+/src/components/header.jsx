@@ -18,8 +18,8 @@ function Header() {
 
   return (
     <div className="header">
-      <img src={logo} alt="Logo Aparta+" className="account-logo" />
-      <div className="avatar-container">
+      <img src={logo} alt="Logo Aparta+" onClick={() => navigate("/dashboard")} className="account-logo cursor-pointer  " />
+      <div className="avatar-container cursor-pointer">
         <div className="avatar-circle" onClick={toggleDropdown}>
           K
         </div>
