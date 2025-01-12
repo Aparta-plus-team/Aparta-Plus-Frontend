@@ -22,6 +22,8 @@ import ComboBox from "*/comboBox";
 import Button from "*/button";
 import DashboardCard from "*/dashboardCard";
 import Dashboard from "~/dashboard";
+import TablaInquilinos from "*/tablaInquilinos";
+import InquilinosPage from "~/inquilinos";
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/code" element={<Code />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/property" element={<Property />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/inquilinos" element={<InquilinosPage />} />
 
         {/* Account */}
         <Route path="/account" element={<Account />} />
@@ -47,20 +51,38 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
 
         <Route
+          path="/tablaInquilinos"
+          element={
+            <TablaInquilinos
+              inquilinos={[
+                {
+                  nombre: "Keven",
+                  apellido: "Shein",
+                  correo: "keven.g@gmail.com",
+                  apartamento: "Apartamento Taiwané",
+                  estado: "Pagado",
+                },
+                // Puedes agregar más inquilinos aquí
+              ]}
+            />
+          }
+        />
+
+        <Route
           path="/dashboardCard"
           element={
             <div className="dashboard-stats">
-              <DashboardCard 
+              <DashboardCard
                 type="total"
                 value={10}
                 title="Propiedades total"
-            />
-              <DashboardCard 
+              />
+              <DashboardCard
                 type="rented"
                 value={7}
                 title="Propiedades alquilados"
               />
-              <DashboardCard 
+              <DashboardCard
                 type="earnings"
                 value={150}
                 title="Ganancia Mensual"
