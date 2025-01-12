@@ -9,13 +9,15 @@
 
   &__main {
     flex: 1;
-    margin-left: 150px; 
-    width: calc(100% - 240px);
+    width: calc(100%);
     min-height: 100vh;
+    margin: 50px 0 0 0;
   }
 
   &__content {
     padding: 20px;
+    display: flex;
+    justify-content: center;
   }
 }
 

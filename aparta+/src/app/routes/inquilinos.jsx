@@ -1,13 +1,9 @@
-// InquilinosPage.jsx
-import Header from "*/header";
-import Sidebar from "*/generalSidebar";
 import Searchbar from "*/searchbar";
 import TablaInquilinos from "*/tablaInquilinos";
 import "+/inquilinos.scss";
-import { useLocation } from 'react-router-dom';
+import MainView from "*/mainView";
 
 const InquilinosPage = () => {
-  const location = useLocation();
 
   const inquilinos = [
     {
@@ -15,24 +11,20 @@ const InquilinosPage = () => {
       apellido: "Sheih",
       correo: "keven.g@gmail.com",
       apartamento: "Apartamento Taiwané",
-      estado: "Pagado"
+      estado: "Pagado",
     },
     {
       nombre: "I Chia",
       apellido: "Sheih Juan",
       correo: "ichia.s@gmail.com",
       apartamento: "Apartamento Chino",
-      estado: "Atrasado"
-    }
+      estado: "Atrasado",
+    },
   ];
 
   return (
-    <div className="layout">
-      <Sidebar selected={location.pathname} />
-      
+    <MainView>
       <main className="layout__main">
-        <Header />
-        
         <div className="layout__content">
           <div className="inquilinos-container">
             <div className="inquilinos-header">
@@ -56,7 +48,7 @@ const InquilinosPage = () => {
           </div>
         </div>
       </main>
-    </div>
+    </MainView>
   );
 };
 
