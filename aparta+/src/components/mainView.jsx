@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import Header from "*/header";
 import Sidebar from "*/generalSidebar";
+import AccountSidebar from "*/accountSidebar";
 import { useLocation } from "react-router-dom";
 
-const MainView = ({ children }) => {
+const MainView = ({ children, sidebarType }) => {
   const location = useLocation();
   return (
     <div className="dashboard flex flex-col h-svh">
@@ -11,7 +12,9 @@ const MainView = ({ children }) => {
       <Header />
       <div className="principal-content">
         {/* Sidebar */}
-        <Sidebar selected={location.pathname} />
+        {sidebarType === "full" && <Sidebar selected={location.pathname} />}
+        {sidebarType === "thin" && <AccountSidebar />}
+        {sidebarType === "none" && <></>}
 
         {/* Contenido principal */}
 
@@ -24,8 +27,9 @@ const MainView = ({ children }) => {
 MainView.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-])
+    PropTypes.node,
+  ]),
+  sidebarType: PropTypes.oneOf(["full", "thin", "none"]).isRequired,
 };
 
 export default MainView;

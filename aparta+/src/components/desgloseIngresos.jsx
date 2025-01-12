@@ -5,8 +5,8 @@ export default function DesgloseIngresos({ data }) {
   // Specify the configuration items and data for the chart
   var option = {
     title: {
-      text: 'Referer of a Website',
-      subtext: 'Fake Data',
+      text: 'EChart pie chart',
+      subtext: 'Data',
     },
     tooltip: {
       trigger: "item",
@@ -18,7 +18,7 @@ export default function DesgloseIngresos({ data }) {
     },
     series: [
       {
-        name: "Access From",
+        name: "Ingresos de:",
         type: "pie",
         radius: ["40%", "70%"],
         avoidLabelOverlap: false,
@@ -41,11 +41,11 @@ export default function DesgloseIngresos({ data }) {
           show: false,
         },
         data: [
-          { value: 1048, name: "Search Engine" },
-          { value: 735, name: "Direct" },
-          { value: 580, name: "Email" },
-          { value: 484, name: "Union Ads" },
-          { value: 300, name: "Video Ads" },
+          { value: 1048, name: "Punta cana" },
+          { value: 735, name: "Santiago" },
+          { value: 580, name: "La Vega" },
+          { value: 484, name: "San Pedro" },
+          { value: 300, name: "Santo Domingo" },
         ],
       },
     ],

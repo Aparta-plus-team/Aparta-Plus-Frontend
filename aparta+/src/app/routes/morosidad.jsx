@@ -3,7 +3,7 @@ import MainView from "*/mainView";
 
 const Morosity = () => {
   return (
-    <MainView>
+    <MainView sidebarType="thin">
       <ListComponent
         type="issues"
         items={[

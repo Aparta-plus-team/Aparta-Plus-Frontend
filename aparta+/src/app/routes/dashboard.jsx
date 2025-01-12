@@ -7,7 +7,7 @@ import DesgloseIngresos from "../../components/desgloseIngresos";
 
 const Dashboard = () => {
   return (
-    <MainView>
+    <MainView sidebarType="full">
       <div className="dashboard__content m-10 flex flex-col gap-8">
         {/* Cards de estadísticas */}
         <div className="dashboard-stats">

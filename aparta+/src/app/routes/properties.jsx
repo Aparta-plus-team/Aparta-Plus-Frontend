@@ -5,7 +5,7 @@ import MainView from "*/mainView";
 
 const Property = () => {
   return (
-    <MainView>
+    <MainView sidebarType="full">
       <div className="property__content">
         {/* Sección de bienvenida y barra de búsqueda */}
         <div className="property__header">
