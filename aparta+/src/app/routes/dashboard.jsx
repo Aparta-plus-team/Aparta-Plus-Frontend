@@ -2,6 +2,8 @@ import DashboardCard from "*/dashboardCard";
 import "+/dashboard.scss";
 import ListComponent from "*/ultimaTransaccion";
 import MainView from "*/mainView";
+import ReporteVentas from "*/reporteVentas";
+import DesgloseIngresos from "../../components/desgloseIngresos";
 
 const Dashboard = () => {
   return (
@@ -16,6 +18,10 @@ const Dashboard = () => {
             title="Propiedades alquilados"
           />
           <DashboardCard type="earnings" value={150} title="Ganancia Mensual" />
+        </div>
+        <div className="flex flex-row justify-between gap-8 max-h-96">
+          <ReporteVentas />
+          <DesgloseIngresos />
         </div>
         <div className="flex flex-row justify-center gap-8 max-h-56">
           <ListComponent

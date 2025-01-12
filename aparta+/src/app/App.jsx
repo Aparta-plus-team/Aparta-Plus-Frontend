@@ -26,6 +26,7 @@ import ListComponent from "*/ultimaTransaccion";
 import Transactions from "~/transactions";
 import MainView from "*/mainView";
 import Morosity from "~/morosidad";
+import ReporteVentas from "*/reporteVentas";
 
 function App() {
   return (
@@ -53,6 +54,8 @@ function App() {
         <Route path="/transacciones" element={<Transactions />} />
 
         <Route path="/morosidad" element={<Morosity />} />
+        
+        <Route path="/ventas" element={<ReporteVentas />} />
 
         <Route
           path="/mainview"

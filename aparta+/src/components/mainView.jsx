@@ -21,8 +21,11 @@ const MainView = ({ children }) => {
   );
 };
 
-MainView.PropTypes = {
-  children: PropTypes.node,
+MainView.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+])
 };
 
 export default MainView;
