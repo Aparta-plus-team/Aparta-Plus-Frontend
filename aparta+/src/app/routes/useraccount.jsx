@@ -1,11 +1,9 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "+/useraccount.scss";
-import Header from "*/header";
-import Sidebar from "*/accountSidebar";
 import Input from "*/Input";
 import Button from "*/Button";
+import MainView from "*/mainView";
 
 function AccountPage() {
   const navigate = useNavigate();
@@ -42,11 +40,11 @@ function AccountPage() {
   // Manejador de guardado
   const handleSave = () => {
     console.log("Guardando cambios...", formData);
-    generateRandomColor();  // Cambiar color y letra cuando se guarda
+    generateRandomColor(); // Cambiar color y letra cuando se guarda
 
     // Guardar en localStorage
     localStorage.setItem("avatarColor", backgroundColor); // Guardar color
-    localStorage.setItem("avatarLetter", initialLetter);   // Guardar letra
+    localStorage.setItem("avatarLetter", initialLetter); // Guardar letra
 
     setTimeout(() => {
       navigate("/dashboard");
@@ -59,103 +57,99 @@ function AccountPage() {
   };
 
   return (
-    <div className="dashboard flex flex-col h-svh">
-      <Header /> {/* Ya no necesitamos pasarle color ni letra, ya que se leen desde localStorage */}
-      <div className="principal-content">
-        <Sidebar />
-        <div className="h-full w-full overflow-y-scroll">
-          <div className="main-content h-full">
-            <h1 className="title">Mi cuenta</h1>
-            <div className="profile-section">
-              <div
-                className="profile-picture"
-                style={{ backgroundColor: backgroundColor }}
-              >
-                {formData.firstName[0]} {/* Usamos la primera letra del nombre */}
-              </div>
-              <div className="profile-info">
-                <h2 className="profile-name">
-                  {formData.firstName} {formData.lastName}
-                </h2>
-                <p className="profile-email">{formData.email}</p>
-              </div>
+    <MainView sidebarType="thin">
+      <div className="h-full w-full overflow-y-scroll">
+        <div className="main-content h-full">
+          <h1 className="title">Mi cuenta</h1>
+          <div className="profile-section">
+            <div
+              className="profile-picture"
+              style={{ backgroundColor: backgroundColor }}
+            >
+              {formData.firstName[0]} {/* Usamos la primera letra del nombre */}
             </div>
-
-            {/* Formulario de edición con el componente Input */}
-            <div className="form-container">
-              <div className="form-row">
-                <Input
-                  content="Nombre"
-                  value={formData.firstName}
-                  width="400px"
-                  onChange={(value) => handleChange("firstName", value)}
-                />
-                <Input
-                  content="Apellido"
-                  value={formData.lastName}
-                  width="400px"
-                  onChange={(value) => handleChange("lastName", value)}
-                />
-              </div>
-
-              <div className="form-row">
-                <Input
-                  content="Género"
-                  value={formData.gender}
-                  width="400px"
-                  onChange={(value) => handleChange("gender", value)}
-                />
-                <Input
-                  content="Teléfono"
-                  value={formData.phone}
-                  width="400px"
-                  onChange={(value) => handleChange("phone", value)}
-                />
-              </div>
-
-              <div className="form-row">
-                <Input
-                  content="Correo"
-                  value={formData.email}
-                  width="400px"
-                  onChange={(value) => handleChange("email", value)}
-                />
-
-                {/* Contenedor del campo de contraseña con enlace */}
-                <div className="password-container">
-                  <Input
-                    isPassword={true}
-                    content="Contraseña"
-                    value="********"
-                    width="365px"
-                    disabled
-                  />
-                  {/* Enlace en lugar del botón */}
-                  <a href="/reset" className="edit-password-link">
-                    Editar
-                  </a>
-                </div>
-              </div>
+            <div className="profile-info">
+              <h2 className="profile-name">
+                {formData.firstName} {formData.lastName}
+              </h2>
+              <p className="profile-email">{formData.email}</p>
             </div>
+          </div>
 
-            <div className="button-group flex gap-4 mt-4">
-              <Button
-                text="Cancelar"
-                onClick={handleCancel}  // Llamar a la función cancelar
-                color="blue"
-                width="150px"
+          {/* Formulario de edición con el componente Input */}
+          <div className="form-container">
+            <div className="form-row">
+              <Input
+                content="Nombre"
+                value={formData.firstName}
+                width="400px"
+                onChange={(value) => handleChange("firstName", value)}
               />
-              <Button
-                text="Guardar"
-                onClick={handleSave}  // Llamar a la función guardar
-                color="green"
-                width="150px"
+              <Input
+                content="Apellido"
+                value={formData.lastName}
+                width="400px"
+                onChange={(value) => handleChange("lastName", value)}
               />
             </div>
+
+            <div className="form-row">
+              <Input
+                content="Género"
+                value={formData.gender}
+                width="400px"
+                onChange={(value) => handleChange("gender", value)}
+              />
+              <Input
+                content="Teléfono"
+                value={formData.phone}
+                width="400px"
+                onChange={(value) => handleChange("phone", value)}
+              />
+            </div>
+
+            <div className="form-row">
+              <Input
+                content="Correo"
+                value={formData.email}
+                width="400px"
+                onChange={(value) => handleChange("email", value)}
+              />
+
+              {/* Contenedor del campo de contraseña con enlace */}
+              <div className="password-container">
+                <Input
+                  isPassword={true}
+                  content="Contraseña"
+                  value="********"
+                  width="365px"
+                  disabled
+                />
+                {/* Enlace en lugar del botón */}
+                <a href="/reset" className="edit-password-link">
+                  Editar
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="button-group flex gap-4 mt-4">
+            <Button
+              text="Cancelar"
+              onClick={handleCancel} // Llamar a la función cancelar
+              color="blue"
+              width="150px"
+            />
+            <Button
+              text="Guardar"
+              onClick={handleSave} // Llamar a la función guardar
+              color="green"
+              width="150px"
+            />
           </div>
         </div>
       </div>
-    </div>
+    </MainView>
   );
 }
 

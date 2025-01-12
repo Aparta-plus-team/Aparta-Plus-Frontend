@@ -23,7 +23,7 @@ const InquilinosPage = () => {
   ];
 
   return (
-    <MainView>
+    <MainView sidebarType="full">
       <main className="layout__main">
         <div className="layout__content">
           <div className="inquilinos-container">

@@ -60,7 +60,7 @@ function App() {
         <Route
           path="/mainview"
           element={
-            <MainView>
+            <MainView sidebarType="full">
               <h1>hola, esta es la pantalla principal!</h1>
             </MainView>
           }

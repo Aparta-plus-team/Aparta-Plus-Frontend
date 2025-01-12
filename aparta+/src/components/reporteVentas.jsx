@@ -6,20 +6,22 @@ export default function ReporteVentas({ data }) {
   var option = {
     title: {
       text: "EChart bar chart",
+      subtext: 'Data',
     },
     tooltip: {},
     legend: {
       data: ["sales"],
+      bottom: "0%",
     },
     xAxis: {
-      data: ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"],
+      data: ["L", "M", "X", "J", "V", "S", "D"],
     },
     yAxis: {},
     series: [
       {
         name: "sales",
         type: "bar",
-        data: [5, 20, 36, 10, 10, 20],
+        data: [5, 20, 36, 10, 10, 20, 50],
       },
     ],
   };

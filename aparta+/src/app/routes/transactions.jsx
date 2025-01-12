@@ -3,7 +3,7 @@ import MainView from "*/mainView";
 
 const Transactions = () => {
   return (
-    <MainView>
+    <MainView sidebarType="thin">
       <ListComponent
         type="transactions"
         items={[
