@@ -1,3 +1,6 @@
+
+
+
 .account-page-container {
   display: flex; 
   flex-direction: column; 
@@ -59,17 +62,6 @@
   background-color: #062d43; 
 }
 
-// .main-content {
-//   flex: 1;
-//   margin-left: 45px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: center;
-//   padding: 50px;
-//   background-color: #F6F2F8;
-//   box-sizing: border-box;
-// }
 
 .main-content {
   flex: 1;
@@ -84,10 +76,9 @@
 
 .title {
   margin-bottom: 30px; 
-  font-size: 54px;
+  font-size: 50px;
   font-weight: bold; 
   text-align: center;  
-  margin-top: 30px;
 }
 
 .profile-picture {
@@ -110,7 +101,6 @@
   align-items: center; 
   justify-content: center; 
   gap: 10px; 
-  margin-top: 20px;
 }
 
 .profile-info {
@@ -200,3 +190,24 @@
   transform: scale(1.05); 
 }
 
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative; /* Para posicionar el enlace dentro del contenedor */
+  width: 400px; /* Mantener alineación con otros inputs */
+}
+
+.edit-password-link {
+  right: 10px; /* Ajusta la distancia desde el lado derecho */
+  text-decoration: none;
+  color: #094152;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-top: auto;
+}
+
+.edit-password-link:hover {
+  color: #98B600;
+}
