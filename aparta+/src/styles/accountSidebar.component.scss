@@ -1,13 +1,10 @@
 .accountSidebar {
   width: 45px; 
   background-color: #c9c2c4; 
-  height: calc(100vh - 20px); 
-  margin-top: 46px; 
   display: flex;
   align-items: flex-start; 
   justify-content: center;
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1); 
-  position: fixed; 
   top: 0;
   left: 0;
 }

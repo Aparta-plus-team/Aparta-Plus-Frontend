@@ -1,29 +1,20 @@
-
-import Header from "*/header";
-import Sidebar from "*/generalSidebar";
 import Searchbar from "*/searchbar";
 import PropertyCard from "*/propertyCard";
-import "+/properties.scss"; 
-import { useLocation } from 'react-router-dom';
+import "+/properties.scss";
+import MainView from "*/mainView";
 
 const Property = () => {
-  const location = useLocation();
   return (
-    <div className="property">
-      {/* Sidebar */}
-      <Sidebar selected={location.pathname} />
-
-      {/* Contenido principal */}
+    <MainView>
       <div className="property__content">
-        {/* Header */}
-        <Header />
-
         {/* Sección de bienvenida y barra de búsqueda */}
         <div className="property__header">
           <h1 className="property__welcome">WELCOME AQUILEN’T!</h1>
           <div className="property__actions">
             <Searchbar />
-            <button className="property__add-property">Añadir una propiedad +</button>
+            <button className="property__add-property">
+              Añadir una propiedad +
+            </button>
           </div>
         </div>
 
@@ -35,7 +26,7 @@ const Property = () => {
           ))}
         </div>
       </div>
-    </div>
+    </MainView>
   );
 };
 

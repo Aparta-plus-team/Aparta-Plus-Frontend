@@ -7,8 +7,6 @@ import Confirm from "~/confirm";
 import Account from "~/useraccount";
 import Homepage from "~/homepage";
 import Header from "*/header";
-import AccountSidebar from "*/accountSidebar";
-import GeneralSidebar from "*/generalsidebar";
 import Input from "*/input";
 import Searchbar from "*/searchbar";
 import Factura from "~/factura";
@@ -23,6 +21,9 @@ import Button from "*/button";
 import DashboardCard from "*/dashboardCard";
 import Dashboard from "~/dashboard";
 import ListComponent from "*/ultimaTransaccion";
+import Transactions from "~/transactions";
+import MainView from "*/mainView";
+import Morosity from "~/morosidad";
 
 function App() {
   return (
@@ -42,10 +43,21 @@ function App() {
 
         {/* testing components */}
         <Route path="/header" element={<Header />} />
-        <Route path="/accountsidebar" element={<AccountSidebar />} />
-        <Route path="/generalsidebar" element={<GeneralSidebar />} />
         <Route path="/searchbar" element={<Searchbar />} />
         <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/transacciones" element={<Transactions />} />
+
+        <Route path="/morosidad" element={<Morosity />} />
+
+        <Route
+          path="/mainview"
+          element={
+            <MainView>
+              <h1>hola, esta es la pantalla principal!</h1>
+            </MainView>
+          }
+        />
 
         <Route
           path="/ultimaTransaccion"
@@ -59,21 +71,24 @@ function App() {
                     propertyName: "Casa de Juan",
                     date: "12 Sep 2024",
                     amount: 30,
-                    image: "https://via.placeholder.com/50", // Imagen de prueba
+                    image:
+                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
                   },
                   {
                     id: 2,
                     propertyName: "Zona De Rico",
                     date: "10 Sep 2024",
                     amount: 10,
-                    image: "https://via.placeholder.com/50", // Imagen de prueba
+                    image:
+                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
                   },
                   {
                     id: 3,
                     propertyName: "Diddy House",
                     date: "8 Sep 2024",
                     amount: 20,
-                    image: "https://via.placeholder.com/50", // Imagen de prueba
+                    image:
+                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
                   },
                 ]}
               />
@@ -83,26 +98,23 @@ function App() {
                   {
                     id: 1,
                     propertyName: "721 Meadowview",
-                    requestId: "MR-001",
-                    description: "Basura Rota",
                     userName: "Jacob Jones",
-                    userImage: "https://via.placeholder.com/50", // Imagen de prueba
+                    userImage:
+                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
                   },
                   {
                     id: 2,
                     propertyName: "721 Meadowview",
-                    requestId: "MR-002",
-                    description: "Baño Sin Calefacción",
                     userName: "Albert Flores",
-                    userImage: "https://via.placeholder.com/50", // Imagen de prueba
+                    userImage:
+                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
                   },
                   {
                     id: 3,
                     propertyName: "721 Meadowview",
-                    requestId: "MR-003",
-                    description: "Ventilador No Funcional",
                     userName: "Robert Fox",
-                    userImage: "https://via.placeholder.com/50", // Imagen de prueba
+                    userImage:
+                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
                   },
                 ]}
               />

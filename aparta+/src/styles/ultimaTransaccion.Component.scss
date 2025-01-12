@@ -4,6 +4,12 @@
   border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+
+  .list-content {
+    height: 93%;
+    scrollbar-width: none;
+  }
 
   .list-header {
     display: flex;
@@ -35,7 +41,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem 0;
+    padding: 0.75rem 1.2rem;
     border-bottom: 1px solid #E2E8F0;
 
     &:last-child {
