@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.12.5",
     "aparta-": "file:",
     "echarts": "^5.6.0",
     "echarts-for-react": "^3.0.2",

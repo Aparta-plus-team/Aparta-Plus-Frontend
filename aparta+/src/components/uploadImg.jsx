@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '+/uploadImg.component.scss'; // Archivo SCSS para estilos
 
 function UploadImg() {
-    const [setFileNames] = useState([]); // Lista de nombres de archivos
+    const [fileName, setFileNames] = useState([]); // Lista de nombres de archivos
     const [previews, setPreviews] = useState([]); // Previsualizaciones de imágenes
 
     // Maneja la selección de archivos desde el botón
