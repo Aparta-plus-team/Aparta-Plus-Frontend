@@ -29,6 +29,7 @@ import Morosity from "~/morosidad";
 import ReporteVentas from "*/reporteVentas";
 import FormularioInquilino from "~/crearInquilino";
 import EditarFormularioInquilino from "~/editarInquilino";
+import FormularioPropiedad from  "~/crearPropiedad";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path="/inquilinos" element={<InquilinosPage />} />
         <Route path="/crearinquilino" element={<FormularioInquilino />} />
         <Route path="/editarinquilino/:id" element={<EditarFormularioInquilino />} />
+        <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
 
         {/* Account */}
         <Route path="/account" element={<Account />} />
