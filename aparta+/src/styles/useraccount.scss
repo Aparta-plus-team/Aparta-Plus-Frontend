@@ -1,3 +1,6 @@
+
+
+
 .account-page-container {
   display: flex; 
   flex-direction: column; 
@@ -32,7 +35,6 @@
   background-color: #fff; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
   box-sizing: border-box; 
-  position: fixed; 
   top: 0; 
   left: 0; 
   width: 100%; 
@@ -60,51 +62,23 @@
   background-color: #062d43; 
 }
 
-.sidebar {
-  width: 45px; 
-  background-color: #c9c2c4; 
-  height: calc(100vh - 20px); 
-  margin-top: 46px; 
-  display: flex;
-  align-items: flex-start; 
-  justify-content: center;
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1); 
-  position: fixed; 
-  top: 0;
-  left: 0;
-}
-
-// .main-content {
-//   flex: 1;
-//   margin-left: 45px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: center;
-//   padding: 50px;
-//   background-color: #F6F2F8;
-//   box-sizing: border-box;
-// }
 
 .main-content {
   flex: 1;
-  margin-left: 45px;
-  margin-top: 46px; // añadido para compensar el header fijo
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 50px;
+  padding: 10px;
   box-sizing: border-box;
   // removido el background-color de aquí ya que lo movimos al contenedor principal
 }
 
 .title {
   margin-bottom: 30px; 
-  font-size: 54px;
+  font-size: 50px;
   font-weight: bold; 
   text-align: center;  
-  margin-top: 30px;
 }
 
 .profile-picture {
@@ -127,7 +101,6 @@
   align-items: center; 
   justify-content: center; 
   gap: 10px; 
-  margin-top: 20px;
 }
 
 .profile-info {
@@ -217,3 +190,24 @@
   transform: scale(1.05); 
 }
 
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative; /* Para posicionar el enlace dentro del contenedor */
+  width: 400px; /* Mantener alineación con otros inputs */
+}
+
+.edit-password-link {
+  right: 10px; /* Ajusta la distancia desde el lado derecho */
+  text-decoration: none;
+  color: #094152;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  margin-top: auto;
+}
+
+.edit-password-link:hover {
+  color: #98B600;
+}
