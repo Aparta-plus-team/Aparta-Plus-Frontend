@@ -137,7 +137,7 @@ const LogIn = () => {
             required
           />
 
-          {error && <p className="error-message">Error: {error.message}</p>}
+          {error && <p className="error-message text-red-600">Correo o contraseña incorrecto</p>}
 
           <div className="form-links">
             <a href="/reset" className="form-link">
