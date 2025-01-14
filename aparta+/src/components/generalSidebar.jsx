@@ -6,7 +6,7 @@ const Sidebar = ({ selected }) => {
     { name: 'Dashboard', href: '/dashboard' },
     { name: 'Propiedades', href: '/property' },
     { name: 'Inquilinos', href: '/inquilinos' },
-    { name: 'Reportes', href: '/reportes' }
+    // { name: 'Reportes', href: '/reportes' }
   ];
 
   return (
