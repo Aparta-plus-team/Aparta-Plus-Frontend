@@ -30,6 +30,7 @@ import Morosity from "~/morosidad";
 import ReporteVentas from "*/reporteVentas";
 import FormularioInquilino from "~/crearInquilino";
 import EditarFormularioInquilino from "~/editarInquilino";
+import VerApartamentos from "~/verApartamentos";
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -284,6 +285,10 @@ function App() {
 
         {/* ContractContainer */}
         <Route path="/contractcontainer" element={<ContractContainer />} />
+          
+        {/* VerApartamentos */}
+        <Route path="/verapartamentos" element={<VerApartamentos />} />
+        
       </Routes>
     </BrowserRouter>
   );
