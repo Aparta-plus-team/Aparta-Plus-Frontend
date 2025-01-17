@@ -19,6 +19,7 @@ import Property from '~/properties';
 import CardApart from '*/apartmentCard';
 import ContractContainer from '*/contractContainer';
 import ComboBox from '*/comboBox';
+import Matrix from '*/Matrix';
 
 function App() {
   return (
@@ -62,6 +63,9 @@ function App() {
 
         {/* ContractContainer */}
         <Route path="/contractcontainer" element={<ContractContainer />} />
+
+        {/* Matrix */}
+        <Route path="/matrix" element={<Matrix />} />
 
       </Routes>
     </BrowserRouter>

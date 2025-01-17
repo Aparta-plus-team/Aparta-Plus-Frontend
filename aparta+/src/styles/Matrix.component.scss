@@ -1,0 +1,82 @@
+.matrix-container {
+    display: flex;
+    flex-direction: column;
+    width: 1230px;
+    height: 400px, 100%;
+    background-color: #D9D3D6;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.matrix-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 0 15px;
+    margin: 15px 0;
+}
+
+.matrix-title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.matrix-select {
+    display: flex;
+    font-size: 20px;
+    font-weight: 400;
+    gap: 10px;
+}
+
+.matrix-content {
+    margin-top: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 0 15px;
+}
+
+.matrix-months {
+
+    display: flex;
+    height: 225px;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 18px;
+}
+
+.month { 
+    flex: 185px;
+    height: 80px;
+    padding: 30px; background-color: white; border-radius: 5px; text-align: center; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.month:hover { 
+    height: 95px;
+    align-content: center;
+    transition: 
+    height 0.5s; 
+    .matrix-state { 
+        visibility: visible;
+        height: 35px;
+        color: white;
+        border-radius: 5px;
+        background-color: $color-green;
+        align-content: center;
+        background-color: $color-green;
+        white-space: normal; 
+    }
+}
+
+.matrix-state { 
+    visibility: hidden;
+    margin: 10px 0;
+    height: 95px;
+    background-color: $color-green;
+    height: 4px;
+    border-radius: 2px;
+} 
+
