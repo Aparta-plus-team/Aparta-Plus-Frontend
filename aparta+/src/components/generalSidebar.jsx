@@ -1,36 +1,36 @@
-import "+/generalSidebar.component.scss";
+import PropTypes from 'prop-types';
+import '+/generalSidebar.component.scss';
 
-const Sidebar = () => {
+const Sidebar = ({ selected }) => {
+  const links = [
+    { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Propiedades', href: '/property' },
+    { name: 'Inquilinos', href: '/inquilinos' },
+    // { name: 'Reportes', href: '/reportes' }
+  ];
+
   return (
     <div className="sidebar">
       <nav className="sidebar__nav">
-        <div className="sidebar__item">
-          <a href="/dashboard" className="sidebar__link">
-            Dashboard
-          </a>
-        </div>
-        
-        <div className="sidebar__item">
-          <a href="/propiedades" className="sidebar__link sidebar__link--active">
-            Propiedades
-          </a>
-        </div>
-
-        <div className="sidebar__item">
-          <a href="/inquilinos" className="sidebar__link">
-            Inquilinos
-          </a>
-        </div>
-
-        <div className="sidebar__item">
-          <a href="/reportes" className="sidebar__link">
-            Reportes
-          </a>
-        </div>
+        {links.map((link) => (
+          <div key={link.name} className="sidebar__item">
+            <a
+              href={link.href}
+              className={`sidebar__link ${
+                selected === link.href ? 'sidebar__link--active' : ''
+              }`}
+            >
+              {link.name}
+            </a>
+          </div>
+        ))}
       </nav>
     </div>
   );
 };
 
-export default Sidebar;
+Sidebar.propTypes = {
+  selected: PropTypes.string.isRequired
+};
 
+export default Sidebar;

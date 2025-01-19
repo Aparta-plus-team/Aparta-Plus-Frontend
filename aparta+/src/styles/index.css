@@ -5,3 +5,8 @@
 html * {
   font-family: "Poppins", serif;
 }
+
+.principal-content{
+  display: flex;
+  height: calc(100vh - 50px);
+}
