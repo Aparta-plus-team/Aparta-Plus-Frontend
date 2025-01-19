@@ -1,6 +1,6 @@
 import "+/apartmentCard.component.scss";
 
-function CardApart() {
+const CardApart = () => {
     return (
 
         <div className="container-apartment-card">   

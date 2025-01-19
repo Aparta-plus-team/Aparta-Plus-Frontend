@@ -31,6 +31,7 @@ import ReporteVentas from "*/reporteVentas";
 import FormularioInquilino from "~/crearInquilino";
 import EditarFormularioInquilino from "~/editarInquilino";
 import FormularioPropiedad from  "~/crearPropiedad";
+import Matrix from '*/Matrix';
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -287,6 +288,9 @@ function App() {
 
         {/* ContractContainer */}
         <Route path="/contractcontainer" element={<ContractContainer />} />
+          
+        {/* Matrix */}
+        <Route path="/matrix" element={<Matrix />} />
       </Routes>
     </BrowserRouter>
   );
