@@ -85,7 +85,7 @@ export default function FormularioPropiedad() {
               <Button
                 text="Cancelar"
                 color="blue"
-                onClick={() => navegar("/propiedades")}
+                onClick={() => navegar("/property")}
                 width="150px"
                 height="45px"
                 fontSize="16px"
