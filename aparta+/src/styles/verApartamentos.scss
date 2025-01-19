@@ -1,13 +1,57 @@
-.View-img {
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrapx;
+
+.view-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 30px 50px;
+}
+
+.first-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 50px;
+    gap: 50px;
+}
+
+.view-imagenes {
+    display: flex;
+    flex-direction: row;
+    width: 800px;   
+    height: 620px;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+
+.view-imagenes img:first-of-type {
+    width: 100%;
+    height: 100%;
+    width: 800px;
+    height: 380px;
+}
+
+.view-imagenes img:last-of-type {
+    object-fit: cover;
+}
+
+.view-apartamentos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .imagenes {
+    width: 100%;
+    height: 100%;
+    width: 250px;
+    height: 150px;
+    border-radius: 4px;
+    object-fit: cover;
+}
 
+.buttons {
     display: flex;
-    width: 230px;
-    height: 140px;
+    flex-direction: row;
+    gap: 20px;
 }
