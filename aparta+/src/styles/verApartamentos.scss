@@ -55,3 +55,60 @@
     flex-direction: row;
     gap: 20px;
 }
+
+.second-content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 50px 50px;
+    gap: 20px;
+}
+
+.info-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.info-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    gap: 20px;
+}
+
+.info-1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    justify-content: space-between;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.info-2 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    justify-content: space-between;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.third-content {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.fourth-content {
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}

@@ -1,6 +1,8 @@
 import MainView from "*/mainView";
 import ApartamentCard from "*/apartmentCard"; 
 import Button from "*/button";
+import ContractApartment from "*/contractContainer";
+import Matrix from "*/matrix";
 import React from "react";
 import "+/verApartamentos.scss";
 
@@ -30,14 +32,26 @@ const VerApartamentos = () => {
 
                 <section className="second-content">
                     <header className="info-title"><h2>Información</h2></header>
-                    <body>
+                    <body className="info-body">
                         <p><strong>Inquilino:</strong> Aquilenyi Suero De Los Santos</p>
                         <p><strong>Monto:</strong> 30,000</p>
-                        <div>
-                            
+                        <div className="information">
+                            <div className="info-1">
+                                <p><strong>Habitaciones:</strong> 3</p> 
+                                <p><strong>Baños:</strong> 4</p> 
+                            </div>
+                            <div className="info-2">
+                                <p><strong>Parqueo:</strong>Si</p> 
+                                <p><strong>Amueblado:</strong>No</p> 
+                            </div>
                         </div>
-
                     </body>
+                </section>
+                <section className="third-content">
+                    <ContractApartment></ContractApartment>
+                </section>
+                <section className="fourth-content">
+                    <Matrix></Matrix>
                 </section>
             </div>
         </MainView>
