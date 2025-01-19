@@ -27,6 +27,7 @@ const VerApartamentos = () => {
                     <div className="view-apartamentos">
                         <ApartamentCard></ApartamentCard>
                         <ApartamentCard></ApartamentCard>
+                        <ApartamentCard></ApartamentCard>
                     </div>
                 </section>
 
