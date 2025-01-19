@@ -4,7 +4,7 @@ const Matrix = () => {
 return (
   <section className="matrix-container">
     <header className="matrix-header">
-        <h1 className='matrix-title'>Estadisticas</h1>
+        <h2 className='matrix-title'>Estadisticas</h2>
         <div className="matrix-select">    
           <select className='select-box' name="Años"> 
             <option value="">Año</option> 

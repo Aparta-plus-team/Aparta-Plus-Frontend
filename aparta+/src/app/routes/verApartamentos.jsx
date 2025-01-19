@@ -49,6 +49,7 @@ const VerApartamentos = () => {
                     </body>
                 </section>
                 <section className="third-content">
+                    <h2 className="documentos">Documentos</h2>
                     <ContractApartment></ContractApartment>
                 </section>
                 <section className="fourth-content">
