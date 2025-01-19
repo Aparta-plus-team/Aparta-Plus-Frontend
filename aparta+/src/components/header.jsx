@@ -61,8 +61,8 @@ function Header() {
 
 // Validación de propiedades
 Header.propTypes = {
-  color: PropTypes.string.isRequired,  // Se espera que 'color' sea una cadena
-  letter: PropTypes.string.isRequired, // Se espera que 'letter' sea una cadena
+  color: PropTypes.string,  // Se espera que 'color' sea una cadena
+  letter: PropTypes.string, // Se espera que 'letter' sea una cadena
 };
 
 export default Header;

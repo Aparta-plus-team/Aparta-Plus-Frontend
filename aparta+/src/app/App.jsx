@@ -1,3 +1,4 @@
+import { useQuery, gql } from "@apollo/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "~/login";
 import SignUp from "~/signUp";
@@ -32,6 +33,50 @@ import EditarFormularioInquilino from "~/editarInquilino";
 import FormularioPropiedad from  "~/crearPropiedad";
 
 function App() {
+  const GET_CONTRATOS = gql`
+    query we {
+      contratos {
+        items {
+          contratoid
+          contratourl
+          diapago
+          estado
+          fechafirma
+          fechaterminacion
+          fiadorcorreo
+          fiadornombre
+          fiadortelefono
+          inquilinoid
+          mora
+          precioalquiler
+        }
+      }
+    }
+  `;
+
+  const { loading, error, data } = useQuery(GET_CONTRATOS);
+
+  if (loading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-5xl font-bold">Loading </p>
+        <img
+          src="https://cdn.statically.io/img/www.blogson.com.br/wp-content/uploads/2017/10/584b607f5c2ff075429dc0e7b8d142ef.gif"
+          alt=""
+        />
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="flex flex-col justify-center items-center h-screen">
+        <p className="text-9xl font-sans font-bold text-red-600">ERROR \(.___.)/ </p>
+        <p className="text-xl font-sans text-red-600 m-7">Query failed! (Enciende la API del backend)</p>
+      </div>
+    );
+
+  console.log(data);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -48,6 +93,10 @@ function App() {
         <Route path="/crearinquilino" element={<FormularioInquilino />} />
         <Route path="/editarinquilino/:id" element={<EditarFormularioInquilino />} />
         <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
+        <Route
+          path="/editarinquilino/:id"
+          element={<EditarFormularioInquilino />}
+        />
 
         {/* Account */}
         <Route path="/account" element={<Account />} />
@@ -60,7 +109,7 @@ function App() {
         <Route path="/transacciones" element={<Transactions />} />
 
         <Route path="/morosidad" element={<Morosity />} />
-        
+
         <Route path="/ventas" element={<ReporteVentas />} />
 
         <Route

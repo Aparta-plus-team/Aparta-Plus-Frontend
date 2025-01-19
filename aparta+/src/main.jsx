@@ -4,6 +4,12 @@ import "+/index.css";
 import "+/static/fonts/poppins.scss";
 import App from "@/app/App.jsx";
 import * as echarts from "echarts";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "http://localhost:5095/graphql/",
+  cache: new InMemoryCache(),
+});
 
 echarts.registerTheme(
   "aparta-plus",
@@ -408,7 +414,12 @@ echarts.registerTheme(
 );
 
 createRoot(document.getElementById("root")).render(
+
+    //!(Important) Remove "StrictMode" after development
+
   <StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </StrictMode>
 );
