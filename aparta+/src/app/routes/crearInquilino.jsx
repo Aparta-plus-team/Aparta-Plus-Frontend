@@ -1,28 +1,71 @@
+
 import { useState } from "react";
+import { useMutation, gql } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import MainView from "*/mainView";
 import Input from "*/input";
 import Button from "*/button";
 
+// Definir la mutación para crear un inquilino
+const CREAR_INQUILINO = gql`
+  mutation crearInquilino(
+    $nombre: String!
+    $telefono: String!
+    $correo: String!
+    $genero: Boolean!
+    $estado: Boolean!
+  ) {
+    createInquilino(
+      inquilinoNombre: $nombre
+      inquilinoTelefono: $telefono
+      inquilinoCorreo: $correo
+      inquilinoGenero: $genero
+      estado: $estado
+    ) {
+      inquilinoid
+      inquilinonombre
+      inquilinotelefono
+      inquilinocorreo
+      inquilinogenero
+      estado
+    }
+  }
+`;
+
 export default function FormularioInquilino() {
   const navegar = useNavigate();
+  const [crearInquilino] = useMutation(CREAR_INQUILINO);
 
   const [datosFormulario, setDatosFormulario] = useState({
     nombre: "",
-    apellido: "",
+    apellido: "", // Solo localmente, no se envía a la BD
     genero: "",
     correo: "",
-    apartamento: "",
     telefono: "",
+    estado: false, // Por defecto, estado en false (Atrasado)
   });
 
   const manejarCambio = (campo, valor) => {
-    setDatosFormulario({ ...datosFormulario, [campo]: valor });
+    setDatosFormulario({ ...datosFormulario, [campo]: valor.toLowerCase() });
   };
 
-  const manejarGuardar = () => {
-    console.log("Nuevo inquilino añadido:", datosFormulario);
-    navegar("/inquilinos");
+  const manejarGuardar = async () => {
+    try {
+      await crearInquilino({
+        variables: {
+          nombre: datosFormulario.nombre,
+          telefono: datosFormulario.telefono,
+          correo: datosFormulario.correo,
+          genero: datosFormulario.genero === "femenino", // 0 = Masculino (false), 1 = Femenino (true)
+          estado: datosFormulario.estado, // true = Pagado, false = Atrasado
+        },
+      });
+
+      console.log("Nuevo inquilino añadido:", datosFormulario);
+      navegar("/inquilinos");
+    } catch (error) {
+      console.error("Error al crear inquilino:", error);
+    }
   };
 
   return (
@@ -30,9 +73,7 @@ export default function FormularioInquilino() {
       <div className="h-full w-full overflow-y-scroll">
         <div className="main-content h-full px-8">
           <div className="mt-24 mb-16">
-            <h1 className="text-4xl font-bold">
-              Añadir Inquilino
-            </h1>
+            <h1 className="text-4xl font-bold">Añadir Inquilino</h1>
           </div>
 
           <div className="form-container max-w-4xl">
@@ -55,7 +96,7 @@ export default function FormularioInquilino() {
 
             <div className="form-row flex gap-8 mb-8">
               <Input 
-                content="Género" 
+                content="Género (Masculino / Femenino)" 
                 value={datosFormulario.genero} 
                 onChange={(valor) => manejarCambio("genero", valor)} 
                 width="400px" 
@@ -72,17 +113,10 @@ export default function FormularioInquilino() {
 
             <div className="form-row flex gap-8 mb-8">
               <Input 
-                content="Apartamento Asociado" 
-                value={datosFormulario.apartamento} 
-                onChange={(valor) => manejarCambio("apartamento", valor)} 
-                width="400px" 
-                fontSize="16px" 
-              />
-              <Input 
                 content="Teléfono" 
                 value={datosFormulario.telefono} 
                 onChange={(valor) => manejarCambio("telefono", valor)} 
-                width="400px" 
+                width="296px" 
                 fontSize="16px" 
               />
             </div>

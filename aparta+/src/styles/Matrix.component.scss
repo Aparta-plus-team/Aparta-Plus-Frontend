@@ -1,0 +1,127 @@
+.matrix-container {
+    display: flex;
+    flex-direction: column;
+    width: 1230px;
+    background-color: #D9D3D6;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.matrix-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    padding: 0 20px;
+    margin: 15px 0;
+}
+
+.matrix-title {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.matrix-select {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+    width: 100px;
+    font-weight: 400;
+}
+
+.select-box {
+    width: 100px;
+    appearance: none;
+    height: 35px;
+    text-align: center;
+    color: white;
+    border-radius: 3px;
+    background-color: $color-blue;
+    font-size: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.select-box option {
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
+    font-size: 20px; /* Tamaño del texto */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.matrix-content {
+    margin: 50px 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.matrix-months {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 18px;
+}
+
+.matrix-months p {
+    visibility: hidden;
+}
+
+.month {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 5px;
+    flex: 180px;
+    height: 80px;
+    padding: 15px 20px;
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.month:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.month:hover p {
+    visibility: visible;
+}
+
+.month:hover .matrix-state-adelantado,
+.month:hover .matrix-state-desocupado,
+.month:hover .matrix-state-pagado{
+    visibility: visible;
+    align-items: center;
+    height: 35px;
+    color: white;
+    border-radius: 5px;
+    align-content: center;
+}
+
+.matrix-state-desocupado,
+.matrix-state-adelantado,
+.matrix-state-pagado {
+    color: transparent;
+    height: 4.5px;
+    border-radius: 2px;
+    transition: height 0.5s ease, color 0.5s ease;
+}
+
+.matrix-state-desocupado {
+    background-color: gray;
+}
+
+.matrix-state-adelantado {
+    background-color: $color-blue;
+}
+
+.matrix-state-pagado {
+    background-color: $color-green;
+}

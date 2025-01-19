@@ -31,6 +31,9 @@ import ReporteVentas from "*/reporteVentas";
 import FormularioInquilino from "~/crearInquilino";
 import EditarFormularioInquilino from "~/editarInquilino";
 import VerApartamentos from "~/verApartamentos";
+import FormularioPropiedad from  "~/crearPropiedad";
+import CrearApartamento from "~/crearApartamento";
+import Matrix from '*/Matrix';
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -91,6 +94,9 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/inquilinos" element={<InquilinosPage />} />
         <Route path="/crearinquilino" element={<FormularioInquilino />} />
+        <Route path="/editarinquilino/:id" element={<EditarFormularioInquilino />} />
+        <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
+        <Route path="/crearapartamento" element={<CrearApartamento />} />
         <Route
           path="/editarinquilino/:id"
           element={<EditarFormularioInquilino />}
@@ -289,6 +295,9 @@ function App() {
         {/* VerApartamentos */}
         <Route path="/verapartamentos" element={<VerApartamentos />} />
         
+        {/* Matrix */}
+        <Route path="/matrix" element={<Matrix />} />
+
       </Routes>
     </BrowserRouter>
   );
