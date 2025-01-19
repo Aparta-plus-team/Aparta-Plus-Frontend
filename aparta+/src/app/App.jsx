@@ -30,6 +30,7 @@ import Morosity from "~/morosidad";
 import ReporteVentas from "*/reporteVentas";
 import FormularioInquilino from "~/crearInquilino";
 import EditarFormularioInquilino from "~/editarInquilino";
+import PagoInquilino from "~/pagoInquilino";
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -90,6 +91,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/inquilinos" element={<InquilinosPage />} />
         <Route path="/crearinquilino" element={<FormularioInquilino />} />
+        <Route path="/pagoInquilino" element={<PagoInquilino />} />
         <Route
           path="/editarinquilino/:id"
           element={<EditarFormularioInquilino />}
