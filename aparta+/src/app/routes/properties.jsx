@@ -12,9 +12,11 @@ const Property = () => {
           <h1 className="property__welcome">WELCOME AQUILEN’T!</h1>
           <div className="property__actions">
             <Searchbar placeholder="Buscar propiedad" />
-            <button className="property__add-property">
-              Añadir una propiedad +
-            </button>
+            <a href="/crearpropiedad">
+              <button className="property__add-property">
+                Añadir una propiedad +
+              </button>
+            </a>
           </div>
         </div>
 
