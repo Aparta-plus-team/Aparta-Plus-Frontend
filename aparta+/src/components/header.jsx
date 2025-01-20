@@ -17,6 +17,11 @@ function Header() {
 
   const handleLogout = () => {
     console.log("Cerrando sesión...");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("username");
+    localStorage.removeItem("avatarLetter");
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
     navigate("/login");
   };
 
