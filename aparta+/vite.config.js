@@ -19,8 +19,7 @@ export default defineConfig({
         additionalData: `@use "@/styles/static/_variables.scss" as *;`
       },
       sass: {
-        additionalData: `@use "@/styles/static/_variables.scss" as *
-`
+        additionalData: `@use "@/styles/static/_variables.scss" as *`
       }
     }
   }
