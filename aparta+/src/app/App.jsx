@@ -30,7 +30,9 @@ import Morosity from "~/morosidad";
 import ReporteVentas from "*/reporteVentas";
 import FormularioInquilino from "~/crearInquilino";
 import EditarFormularioInquilino from "~/editarInquilino";
-import FormularioPropiedad from  "~/crearPropiedad";
+import FormularioPropiedad from "~/crearPropiedad";
+import CodeSignUp from "./routes/codeSignUp";
+import ProtectedRoutes from "../utilis/ProtectedRoutes";
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -70,8 +72,12 @@ function App() {
   if (error)
     return (
       <div className="flex flex-col justify-center items-center h-screen">
-        <p className="text-9xl font-sans font-bold text-red-600">ERROR \(.___.)/ </p>
-        <p className="text-xl font-sans text-red-600 m-7">Query failed! (Enciende la API del backend)</p>
+        <p className="text-9xl font-sans font-bold text-red-600">
+          ERROR \(.___.)/{" "}
+        </p>
+        <p className="text-xl font-sans text-red-600 m-7">
+          Query failed! (Enciende la API del backend)
+        </p>
       </div>
     );
 
@@ -80,18 +86,35 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="*"
+          element={
+            <div className="flex items-center justify-center h-svh">
+              <h1 className="text-center m-auto font-black text-9xl font-sans">
+                \(＞﹏＜)/ Page not found
+              </h1>
+            </div>
+          }
+        />
         {/* Autenticacion */}
         <Route index element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/code" element={<Code />} />
+        <Route path="/confirmSignUp/:email" element={<CodeSignUp />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/property" element={<Property />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+
         <Route path="/inquilinos" element={<InquilinosPage />} />
         <Route path="/crearinquilino" element={<FormularioInquilino />} />
-        <Route path="/editarinquilino/:id" element={<EditarFormularioInquilino />} />
+        <Route
+          path="/editarinquilino/:id"
+          element={<EditarFormularioInquilino />}
+        />
         <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
         <Route
           path="/editarinquilino/:id"
