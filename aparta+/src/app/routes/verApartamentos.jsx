@@ -53,7 +53,7 @@ const VerApartamentos = () => {
                     <ContractApartment></ContractApartment>
                 </section>
                 <section className="fourth-content">
-                    <Matrix></Matrix>
+                    <Matrix tipo="estadisticas" nombreApartamento="Z05" nombreInquilino="Aquilenyi Suero De Los Santos" monto="35,000"></Matrix>
                 </section>
             </div>
         </MainView>
