@@ -1,5 +1,3 @@
-
-
 import "+/input.component.scss";
 import PropTypes from "prop-types";
 import { useState } from "react";
@@ -10,7 +8,8 @@ export default function Input({
   width,
   onChange,
   isPassword,
-  placeholder, 
+  placeholder,
+  disabled,  
 }) {
   const [ShowPassword, setShowPassword] = useState(false);
 
@@ -19,13 +18,16 @@ export default function Input({
       <h1>{content}</h1>
       <div className="flex items-center">
         <input
-          type={ShowPassword ? "password" : "text"}
+          type={isPassword && !ShowPassword ? "password" : "text"}
           className="input"
-          placeholder={placeholder} // Usa el placeholder proporcionado o el valor predeterminado
+          placeholder={placeholder} 
           value={value}
           onChange={(e) => {
-            onChange(e.target.value);
+            if (!disabled) {
+              onChange(e.target.value);  
+            }
           }}
+          disabled={disabled} 
         />
         {isPassword ? (
           <span
@@ -46,5 +48,6 @@ Input.propTypes = {
   width: PropTypes.string,
   onChange: PropTypes.func,
   isPassword: PropTypes.bool,
-  placeholder: PropTypes.string, 
+  placeholder: PropTypes.string,
+  disabled: PropTypes.bool, 
 };

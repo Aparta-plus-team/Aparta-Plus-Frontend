@@ -86,10 +86,10 @@ function AccountPage() {
                 onChange={(value) => handleChange("firstName", value)}
               />
               <Input
-                content="Apellido"
-                value={formData.lastName}
+                content="Correo"
+                value={formData.email}
                 width="400px"
-                onChange={(value) => handleChange("lastName", value)}
+                onChange={(value) => handleChange("email", value)}
               />
             </div>
 
@@ -109,12 +109,7 @@ function AccountPage() {
             </div>
 
             <div className="form-row">
-              <Input
-                content="Correo"
-                value={formData.email}
-                width="400px"
-                onChange={(value) => handleChange("email", value)}
-              />
+              
 
               {/* Contenedor del campo de contraseña con enlace */}
               <div className="password-container">
@@ -154,3 +149,5 @@ function AccountPage() {
 }
 
 export default AccountPage;
+
+

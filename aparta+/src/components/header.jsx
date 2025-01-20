@@ -1,5 +1,4 @@
-
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";  // Importar useNavigate
 import PropTypes from "prop-types";  // Importar PropTypes
 import logo from "&/logo.jpg";
@@ -7,8 +6,6 @@ import "+/header.component.scss";
 
 function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [storedLetter, setStoredLetter] = useState("");  // Estado para almacenar la letra
-  const [storedColor, setStoredColor] = useState("");    // Estado para almacenar el color
   const navigate = useNavigate();  // Crear una instancia de navigate
 
   const toggleDropdown = () => {
@@ -19,15 +16,6 @@ function Header() {
     console.log("Cerrando sesión...");
     navigate("/login");
   };
-
-  // Leer desde localStorage cuando el componente se monta
-  useEffect(() => {
-    const savedColor = localStorage.getItem("avatarColor");
-    const savedLetter = localStorage.getItem("avatarLetter");
-    
-    if (savedColor) setStoredColor(savedColor);
-    if (savedLetter) setStoredLetter(savedLetter);
-  }, []); // El useEffect se ejecuta solo una vez cuando el componente se monta
 
   return (
     <div className="header">
@@ -42,11 +30,11 @@ function Header() {
           className="avatar-circle"
           onClick={toggleDropdown}
           style={{
-            backgroundColor: storedColor,  // Usar el color guardado
+            backgroundColor: "grey",  // Color gris para el avatar
             color: "white",  // Asegurarse de que la letra sea blanca
           }}
         >
-          {storedLetter} {/* Usar la letra guardada */}
+          K {/* Letra fija */}
         </div>
         {showDropdown && (
           <div className="dropdown-menu">
