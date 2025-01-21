@@ -33,6 +33,7 @@ import FormularioPropiedad from "~/crearPropiedad";
 import CodeSignUp from "./routes/codeSignUp";
 import ProtectedRoutes from "../utilis/ProtectedRoutes";
 import VerApartamentos from "~/verApartamentos";
+import VerPropiedades from "~/verPropiedades";
 import CrearApartamento from "~/crearApartamento";
 import AlojarInquilino from "~/alojarInquilino";
 import VerPropiedades from "~/verPropiedades";
@@ -61,7 +62,7 @@ function App() {
     }
   `;
 
-  const { loading, error } = useQuery(GET_CONTRATOS);
+  const { loading, error, data } = useQuery(GET_CONTRATOS);
 
   if (loading)
     return (
@@ -85,6 +86,8 @@ function App() {
         </p>
       </div>
     );
+
+  console.log(data);
 
   return (
     <BrowserRouter>
@@ -154,7 +157,6 @@ function App() {
           element={
             <div className="dashboard-lists">
               <ListComponent
-                showMore={false}
                 type="transactions"
                 items={[
                   {
@@ -184,7 +186,6 @@ function App() {
                 ]}
               />
               <ListComponent
-                showMore={false}
                 type="issues"
                 items={[
                   {
@@ -315,10 +316,10 @@ function App() {
 
         {/* ContractContainer */}
         <Route path="/contractcontainer" element={<ContractContainer />} />
-
+          
         {/* VerApartamentos */}
         <Route path="/verapartamentos" element={<VerApartamentos />} />
-
+        
         {/* Matrix */}
         <Route path="/matrix" element={<Matrix />} />
 
