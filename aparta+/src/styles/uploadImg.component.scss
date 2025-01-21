@@ -1,16 +1,17 @@
-// Variables
-$primary-color: #094152;
-$secondary-color: #DAF3FB;
-$text-color: #4D4D4D;
-$font-family: 'Poppins', sans-serif;
+  // Variables
+  $primary-color: #094152;
+  $secondary-color: #DAF3FB;
+  $text-color: #4D4D4D;
+  $font-family: 'Poppins', sans-serif;
 
-// Mixins
-@mixin center-flex {
-    justify-content: center;
-    align-items: center;
+  // Mixins
+  @mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   }
 
-@mixin button-style($bg-color, $text-color) {
+  @mixin button-style($bg-color, $text-color) {
   @include center-flex;
   width: 150px;
   height: 40px;
@@ -21,10 +22,23 @@ $font-family: 'Poppins', sans-serif;
   font-size: 16px;
   font-weight: 200;
   border: none;
-}
+  }
 
-// Component Styles
-.upload-container-img {
+  .upload-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .upload-box {
+    @include center-flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+  }
+  
+  // Component Styles
+  .upload-container-img {
   @include center-flex;
   flex-direction: column;
   padding: 20px;
@@ -32,6 +46,17 @@ $font-family: 'Poppins', sans-serif;
   border-radius: 10px;
   width: 1230px;
   background-color: $secondary-color;
+
+  .upload-text {
+    color: $text-color;
+    padding: 15px;
+  }
+
+  .upload-button {
+    @include button-style($primary-color, white);
+    cursor: pointer;
+    font-weight: 300;
+  }
 
   .upload-title {
     font-size: 22px;
