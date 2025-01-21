@@ -33,15 +33,14 @@ $font-family: 'Poppins', sans-serif;
 // }
 
 // Component Styles
-.upload-container {
+.upload-container-doc {
   @include center-flex;
   position: static;
   flex-direction: column;
   padding: auto;
-  margin: auto;
   border: 1.5px dashed $primary-color;
   border-radius: 5px;
-  width: 395px;
+  width: 1230px;
   height: auto;
   background-color: $secondary-color;
 

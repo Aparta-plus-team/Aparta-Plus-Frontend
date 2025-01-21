@@ -1,0 +1,62 @@
+.alojar-inquilino-title {
+    font-size: 46px;
+    font-weight: bold;
+    margin: 30px 185px 50px;
+    display: flex;
+    width: auto;
+    height: 50px;
+    align-items: center;
+}
+
+.contrato-Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    margin: 0 185px;
+}
+
+.contrato-title {
+    font-weight: bold;
+}
+
+.info-title {
+    font-weight: bold;
+}
+
+.info-alojar-inquilino {
+    display: flex;
+    margin: 80px 185px;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .input {
+        width: 650px;
+    }
+
+    .ComboBox {
+        width: 650px;
+    }
+}
+
+.last-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .input {
+        width: 650px;
+    }
+}
+
+.buttons-container {
+    align-items: flex-end;
+    display: flex;
+    gap: 20px;
+    width: 650px;
+}
