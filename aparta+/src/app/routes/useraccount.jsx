@@ -58,7 +58,7 @@ function AccountPage() {
 
   return (
     <MainView sidebarType="thin">
-      <div className="h-full w-full overflow-y-scroll">
+      <div className="h-full w-full">
         <div className="main-content h-full">
           <h1 className="title">Mi cuenta</h1>
           <div className="profile-section">

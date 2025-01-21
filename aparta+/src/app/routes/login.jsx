@@ -8,13 +8,12 @@ import "+/autenticacion.scss";
 // Mutación GraphQL
 const LOGIN_USER = gql`
   mutation LoginUser($email: String!, $password: String!) {
-    loginUser(input: { email: $email, password: $password })
-  }
-`;
-
-const VERIFY_USER = gql`
-  mutation userConfirmed($email: String!) {
-    userConfirmed(email: $email)
+    loginUser(input: { email: $email, password: $password }) {
+    success
+    message
+    status
+    token
+    }
   }
 `;
 
@@ -31,8 +30,8 @@ const GET_USER = gql`
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginUser, { loading, error }] = useMutation(LOGIN_USER);
-  const [verifyUser] = useMutation(VERIFY_USER);
+  const [er, setEr] = useState("");
+  const [loginUser, { loading }] = useMutation(LOGIN_USER);
   const [getUser] = useMutation(GET_USER);
   const navigate = useNavigate();
 
@@ -41,18 +40,6 @@ const LogIn = () => {
       navigate("/dashboard");
     }
   }, [navigate]);
-
-  const handleVerify = async () => {
-    try {
-      const { data } = await verifyUser({
-        variables: { email },
-      });
-      return data;
-    } catch (err) {
-      console.error("❌ Error en la verificación:", err);
-      throw err;
-    }
-  };
 
   const handleGetUser = async (token) => {
     try {
@@ -85,8 +72,8 @@ const LogIn = () => {
       console.log("✅ Respuesta del servidor:", data);
 
       // Si se recibe un token, guarda en localStorage y redirige al dashboard
-      if (data?.loginUser && (await handleVerify())) {
-        const userData = await handleGetUser(data.loginUser);
+      if (data?.loginUser && data?.loginUser.status == "SUCCESS") {
+        const userData = await handleGetUser(data.loginUser.token);
 
         localStorage.setItem("userId", userData.userByToken.id);
         localStorage.setItem("username", userData.userByToken.username);
@@ -94,17 +81,16 @@ const LogIn = () => {
         localStorage.setItem("token", data.loginUser); // Guarda el token
         localStorage.setItem("email", email); // Guarda el email
         navigate("/dashboard"); // Redirección al dashboard
-      } else {
-        console.error("❌ Error: No se recibió un token del servidor.");
+      } else if (data?.loginUser && data.loginUser.status == "UNVERIFIED_USER") {
+        console.error("❌ Error: No esta verificado el usuario");
         navigate("/confirmSignUp/" + email); // Redirección al dashboard
+      } else if (data?.loginUser && data.loginUser.status == "INVALID_CREDENTIALS") {
+        console.error("❌ Error: Credenciales inválidas.");
+        setEr("❌ Credenciales inválidas.");
       }
     } catch (err) {
 
-      //! I Chia tiene que arreglar el login para que envie un mensaje de login fallido en vez de un error
-
-      console.error("❌ Error de autenticación:", err);
-      localStorage.setItem("email", email); // Guarda el email
-      navigate("/confirmSignUp/" + email); // Redirección al dashboard
+      setEr("❌ Error de autenticación:", err);
 
       if (err.graphQLErrors?.length > 0) {
         console.error("📌 GraphQL Errors:", err.graphQLErrors);
@@ -144,9 +130,9 @@ const LogIn = () => {
             required
           />
 
-          {error && (
+          {er && (
             <p className="error-message text-red-600">
-              Correo o contraseña incorrecto
+              { er }
             </p>
           )}
 

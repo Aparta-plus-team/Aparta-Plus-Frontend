@@ -8,7 +8,7 @@ import MainView from "*/mainView";
 // Definir el query GraphQL para obtener los inquilinos
 const GET_INQUILINOS = gql`
   query verInquilino {
-    inquilinos {
+    inquilinos{
       items {
         inquilinoid
         inquilinonombre

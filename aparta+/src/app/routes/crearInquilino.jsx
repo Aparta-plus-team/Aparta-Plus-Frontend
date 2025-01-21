@@ -86,22 +86,15 @@ export default function FormularioInquilino() {
                 fontSize="16px" 
               />
               <Input 
-                content="Apellido" 
-                value={datosFormulario.apellido} 
-                onChange={(valor) => manejarCambio("apellido", valor)} 
-                width="400px" 
-                fontSize="16px" 
-              />
-            </div>
-
-            <div className="form-row flex gap-8 mb-8">
-              <Input 
                 content="Género (Masculino / Femenino)" 
                 value={datosFormulario.genero} 
                 onChange={(valor) => manejarCambio("genero", valor)} 
                 width="400px" 
                 fontSize="16px" 
               />
+            </div>
+
+            <div className="form-row flex gap-8 mb-8">
               <Input 
                 content="Correo" 
                 value={datosFormulario.correo} 
@@ -109,14 +102,11 @@ export default function FormularioInquilino() {
                 width="400px" 
                 fontSize="16px" 
               />
-            </div>
-
-            <div className="form-row flex gap-8 mb-8">
               <Input 
                 content="Teléfono" 
                 value={datosFormulario.telefono} 
                 onChange={(valor) => manejarCambio("telefono", valor)} 
-                width="296px" 
+                width="400px" 
                 fontSize="16px" 
               />
             </div>

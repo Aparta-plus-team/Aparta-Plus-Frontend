@@ -3,7 +3,7 @@ import fotoAutenticacion from "&/foto_autenticacion.jpg";
 import "+/autenticacion.scss";
 import { useEffect, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // Mutación GraphQL para confirmar usuario
 const CONFIRM_USER = gql`
@@ -13,7 +13,7 @@ const CONFIRM_USER = gql`
 `;
 
 const CodeSignUp = () => {
-  const [email, setEmail] = useState("");
+  const { email } = useParams();
   const [confirmationCode, setConfirmationCode] = useState("");
   const [confirmUser] = useMutation(CONFIRM_USER);
   const [error, setError] = useState("");
@@ -27,7 +27,6 @@ const CodeSignUp = () => {
 
   const handleSubmit = async () => {
     try {
-      setEmail(localStorage.getItem("email"));
       // Llamada a la mutación para confirmar usuario
       const { data } = await confirmUser({
         variables: { confirmationCode, email },
