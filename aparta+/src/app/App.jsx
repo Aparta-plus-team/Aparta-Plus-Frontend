@@ -34,6 +34,7 @@ import FormularioPropiedad from "~/crearPropiedad";
 import CodeSignUp from "./routes/codeSignUp";
 import ProtectedRoutes from "../utilis/ProtectedRoutes";
 import VerApartamentos from "~/verApartamentos";
+import VerPropiedades from "~/verPropiedades";
 import CrearApartamento from "~/crearApartamento";
 import Matrix from '*/Matrix';
 
@@ -321,6 +322,8 @@ function App() {
         {/* Matrix */}
         <Route path="/matrix" element={<Matrix />} />
 
+        {/* VerPropiedades */}
+        <Route path="/verpropiedades" element={<VerPropiedades />} />
       </Routes>
     </BrowserRouter>
   );

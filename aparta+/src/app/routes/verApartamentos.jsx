@@ -9,53 +9,53 @@ import "+/verApartamentos.scss";
 const VerApartamentos = () => {
     return (
         <MainView sidebarType="thin">
-            <div className="page-container">
+                <h1 className="page-title">B4</h1>
 
-                <h1 className="view-title">B4</h1>
-
-                <section className="first-content">
-                    <div className="view-imagenes">
-                        <img className="imagenes" src="./src/assets/house.png" alt="house" />
-                        <img className="imagenes" src="./src/assets/house1.png" alt="house" />
-                        <img className="imagenes" src="./src/assets/house3.png" alt="house" />
-                        <img className="imagenes" src="./src/assets/house4.jpg" alt="house" />
-                        <div className="buttons">
+                <section className="apartment-details-section">
+                    <div className="apartment-overview">
+                        <div className="apartment-header">
+                            <h2 className="apartment-name">BZ5</h2>
+                        </div>
+                        <div className="action-buttons">
                             <Button text="Eliminar" color="blue" width="150px"></Button>
                             <Button text="Editar" color="green" width="150px"></Button>
+                            <Button text="Desalojar Inquilino" color="red" width="190px"></Button>
+
                         </div>
                     </div>
-                    <div className="view-apartamentos">
+                    <div className="apartment-cards">
                         <ApartamentCard></ApartamentCard>
                         <ApartamentCard></ApartamentCard>
                         <ApartamentCard></ApartamentCard>
                     </div>
                 </section>
 
-                <section className="second-content">
-                    <header className="info-title"><h2>Información</h2></header>
-                    <body className="info-body">
+                <section className="apartment-info-section">
+                    <header className="info-header"><h2>Información</h2></header>
+                    <body className="info-details">
                         <p><strong>Inquilino:</strong> Aquilenyi Suero De Los Santos</p>
                         <p><strong>Monto:</strong> 30,000</p>
-                        <div className="information">
-                            <div className="info-1">
+                        <div className="apartment-details">
+                            <div className="room-details">
                                 <p><strong>Habitaciones:</strong> 3</p> 
-                                <p><strong>Baños:</strong> 4</p> 
+                                <p><strong>Amueblado:</strong> No</p> 
                             </div>
-                            <div className="info-2">
-                                <p><strong>Parqueo:</strong>Si</p> 
-                                <p><strong>Amueblado:</strong>No</p> 
+                            <div className="additional-info">
+                                <p><strong>Parqueo:</strong> Si</p> 
+                                <p><strong>Baños:</strong> 4</p> 
                             </div>
                         </div>
                     </body>
                 </section>
-                <section className="third-content">
-                    <h2 className="documentos">Documentos</h2>
+
+                <section className="document-section">
+                    <h2 className="documents-title">Documentos</h2>
                     <ContractApartment></ContractApartment>
                 </section>
-                <section className="fourth-content">
+
+                <section className="statistics-section">
                     <Matrix tipo="estadisticas" nombreApartamento="Z05" nombreInquilino="Aquilenyi Suero De Los Santos" monto="35,000"></Matrix>
                 </section>
-            </div>
         </MainView>
     );
 }
