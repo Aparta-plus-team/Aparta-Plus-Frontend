@@ -1,4 +1,5 @@
 
+import { useState } from "react"; // Importar useState
 import { useQuery, gql } from "@apollo/client";
 import Searchbar from "*/searchbar";
 import TablaInquilinos from "*/tablaInquilinos";
@@ -8,7 +9,7 @@ import MainView from "*/mainView";
 // Definir el query GraphQL para obtener los inquilinos
 const GET_INQUILINOS = gql`
   query verInquilino {
-    inquilinos{
+    inquilinos (where: { estado: { eq: true } }) {
       items {
         inquilinoid
         inquilinonombre
@@ -21,6 +22,10 @@ const GET_INQUILINOS = gql`
 `;
 
 const InquilinosPage = () => {
+  // Definir estado para inquilinos, término de búsqueda y los inquilinos filtrados
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredInquilinos, setFilteredInquilinos] = useState([]);
+
   // Ejecutar el query con useQuery de Apollo
   const { loading, error, data } = useQuery(GET_INQUILINOS);
 
@@ -36,6 +41,23 @@ const InquilinosPage = () => {
     estado: item.estado,
   })) || [];
 
+  // Función para manejar la búsqueda
+  const handleSearch = (searchTerm) => {
+    setSearchTerm(searchTerm); // Actualizar el término de búsqueda
+
+    // Filtrar los inquilinos basados en el término de búsqueda
+    const filtered = inquilinos.filter((inquilino) =>
+      inquilino.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      inquilino.correo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      inquilino.telefono.includes(searchTerm) ||
+      (inquilino.estado ? "Alquilado" : "Libre").toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredInquilinos(filtered); // Actualizar el estado con los inquilinos filtrados
+  };
+
+  // Mostrar inquilinos filtrados, o todos si no hay filtro
+  const displayInquilinos = searchTerm ? filteredInquilinos : inquilinos;
+
   return (
     <MainView sidebarType="full">
       <main className="layout__main">
@@ -44,7 +66,8 @@ const InquilinosPage = () => {
             <div className="inquilinos-header">
               <h1>Administrar Inquilinos</h1>
               <div className="inquilinos-actions">
-                <Searchbar placeholder="Buscar inquilino" />
+                {/* Pasa la función onSearch */}
+                <Searchbar placeholder="Buscar inquilino" onSearch={handleSearch} />
                 <a href="/crearinquilino">
                   <button className="add-button">Añadir un inquilino +</button>
                 </a>
@@ -59,7 +82,8 @@ const InquilinosPage = () => {
                 <div className="header-cell">Estado</div>
                 <div className="header-cell">Acciones</div>
               </div>
-              <TablaInquilinos inquilinos={inquilinos} />
+              {/* Aquí pasamos los inquilinos filtrados o todos los inquilinos */}
+              <TablaInquilinos inquilinos={displayInquilinos} />
             </div>
           </div>
         </div>
@@ -69,4 +93,3 @@ const InquilinosPage = () => {
 };
 
 export default InquilinosPage;
-

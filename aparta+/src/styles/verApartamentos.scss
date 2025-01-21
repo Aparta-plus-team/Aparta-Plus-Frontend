@@ -1,45 +1,57 @@
-
-.view-title {
-    font-size: 36px;
+.page-title {
+    font-size: 46px;
     font-weight: bold;
-    margin: 30px 50px;
+    margin: 30px 185px;
+    display: flex;
+    width: auto;
+    height: 50px;
+    align-items: center;
 }
 
-.first-content {
+.apartment-details-section {
     display: flex;
-    height: 620px;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 30px 50px;
-    gap: 50px;
-    
+    margin:  0 185px;
 }
 
-
-.view-imagenes {
+.apartment-overview {
     display: flex;
-    flex-direction: row;
-    width: 800px;   
-    height: 620px;
+    flex-direction: column;
+    width: 700px;   
+    height: 640px;
     flex-wrap: wrap;
-    align-content: space-between;
+    align-content: flex-start;
     justify-content: space-between;
+    padding: 10px 0;
 }
 
-
-.view-imagenes img:first-of-type {
+.apartment-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     width: 100%;
-    height: 100%;
-    width: 800px;
-    height: 380px;
+    height: 500px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
 }
 
-.view-apartamentos {
+.apartment-name {
+    font-size: 124px;
+    color: #333333;
+    font-weight: bold;
+}
+
+.apartment-cards {
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 640px;
-    width: 350px;
+    width: 400px;
     padding: 10px 0;
     overflow: auto;
     gap: 20px;
@@ -55,46 +67,49 @@
     object-fit: cover;
 }
 
-.buttons {
+.action-buttons {
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
-.second-content {
+.apartment-info-section {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 50px 50px;
+    margin: 50px 185px;
     gap: 20px;
+    strong {
+        color: $color-blue;
+    }
 }
 
-.documentos {
+.documents-title {
     font-size: 24px;
     font-weight: bold;
     margin: 20px 0;
 }
 
-.info-title {
+.info-header {
     font-size: 24px;
     font-weight: bold;
 }
 
-.info-body {
+.info-details {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.information {
+.apartment-details {
     display: flex;
     flex-direction: row;
-    width: 300px;
-    gap: 20px;
+    width: 350px;
+    gap: 60px;
 }
 
-.info-1 {
+.room-details {
     display: flex;
     flex-wrap: wrap;
     width: 300px;
@@ -103,7 +118,7 @@
     flex-direction: column;
 }
 
-.info-2 {
+.additional-info {
     display: flex;
     flex-wrap: wrap;
     width: 300px;
@@ -112,14 +127,14 @@
     flex-direction: column;
 }
 
-.third-content {
+.document-section {
     display: flex;
     flex-direction: column;
-    margin: 50px;
+    margin: 50px 185px;
 }
 
-.fourth-content {
+.statistics-section {
     display: flex;
     flex-direction: column;
-    margin: 70px 50px;
+    margin: 70px 185px;
 }

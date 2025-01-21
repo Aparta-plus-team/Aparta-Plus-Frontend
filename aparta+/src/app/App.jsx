@@ -11,7 +11,6 @@ import Header from "*/header";
 import Input from "*/input";
 import Searchbar from "*/searchbar";
 import Factura from "~/factura";
-import PropertyCard from "*/propertyCard";
 import UploadDocuments from "*/uploadDocs";
 import UploadImg from "*/uploadImg";
 import Property from "~/properties";
@@ -36,6 +35,7 @@ import ProtectedRoutes from "../utilis/ProtectedRoutes";
 import VerApartamentos from "~/verApartamentos";
 import CrearApartamento from "~/crearApartamento";
 import Matrix from "*/Matrix";
+import EditarApartamento from "~/editarApartamento";
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -118,6 +118,7 @@ function App() {
         />
         <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
         <Route path="/crearapartamento" element={<CrearApartamento />} />
+        <Route path="/editarapartamento" element={<EditarApartamento />} />
         <Route
           path="/editarinquilino/:id"
           element={<EditarFormularioInquilino />}
@@ -298,8 +299,6 @@ function App() {
           }
         />
 
-        <Route path="/propertyCard" element={<PropertyCard />} />
-
         {/* Factura */}
         <Route path="/factura" element={<Factura />} />
 
@@ -320,6 +319,7 @@ function App() {
 
         {/* Matrix */}
         <Route path="/matrix" element={<Matrix />} />
+
       </Routes>
     </BrowserRouter>
   );
