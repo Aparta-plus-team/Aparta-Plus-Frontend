@@ -1,6 +1,5 @@
 .dropdown-container {
     position: relative;
-    width: 300px;
     margin: 0;
     padding: 2px 15px;
     font-size: 16px;
@@ -30,6 +29,7 @@
       height: 200px;
       overflow-y: scroll;
       scrollbar-width: none;
+      z-index: 1000;
   
       .dropdown-item {
         padding: 10px 15px;

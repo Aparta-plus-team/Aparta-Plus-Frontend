@@ -47,7 +47,7 @@ export default function FormularioPropiedad() {
               />
               <ComboBox
                 title="Ubicación"
-                content="Genero"
+                content="Ubicacion"
                 options={[
                   "Azua de Compostela",
                   "Estebanía",
@@ -186,6 +186,7 @@ export default function FormularioPropiedad() {
                   "Distrito Nacional (Santo Domingo)",
                 ]}
                 onChange={(e) => console.log(e)}
+                width= "400px"
               />
             </div>
 

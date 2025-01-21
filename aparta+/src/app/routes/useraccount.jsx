@@ -4,6 +4,7 @@ import "+/useraccount.scss";
 import Input from "*/Input";
 import Button from "*/Button";
 import MainView from "*/mainView";
+import ComboBox from "*/ComboBox";
 
 function AccountPage() {
   const navigate = useNavigate();
@@ -94,11 +95,12 @@ function AccountPage() {
             </div>
 
             <div className="form-row">
-              <Input
-                content="Género"
-                value={formData.gender}
+              <ComboBox 
+                title="Género"
+                content="Genero"
+                options={["Masculino", "Femenino"]}
+                onChange={(e) => console.log(e)}
                 width="400px"
-                onChange={(value) => handleChange("gender", value)}
               />
               <Input
                 content="Teléfono"
@@ -109,8 +111,6 @@ function AccountPage() {
             </div>
 
             <div className="form-row">
-              
-
               {/* Contenedor del campo de contraseña con enlace */}
               <div className="password-container">
                 <Input
@@ -149,5 +149,3 @@ function AccountPage() {
 }
 
 export default AccountPage;
-
-
