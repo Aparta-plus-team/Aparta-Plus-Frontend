@@ -10,19 +10,21 @@ import MainView from "*/mainView";
 
 // Consulta GraphQL para obtener las propiedades
 const GET_PROPIEDADES = gql`
-  query verPropiedad {
-    propiedads {
-      items {
-        estado
-        fechacreacion
-        nombre
-        portadaurl
-        propiedadid
-        ubicacion
-        usuarioid
+  query verPropiedadCarta {
+  propiedads {
+    items {
+      nombre
+      ubicacion
+      propiedadid
+      inmuebles {
+        numbanos
+        numhabitaciones
+        inmuebleid
+        tieneparqueo
       }
     }
   }
+}
 `;
 
 const Property = () => {

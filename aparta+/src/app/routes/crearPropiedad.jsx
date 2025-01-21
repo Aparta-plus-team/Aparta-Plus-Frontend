@@ -1,12 +1,10 @@
-
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MainView from "*/mainView";
 import Input from "*/input";
 import Button from "*/button";
 import UploadImage from "*/uploadImg";
-
+import ComboBox from "*/comboBox";
 export default function FormularioPropiedad() {
   const navegar = useNavigate();
 
@@ -47,13 +45,147 @@ export default function FormularioPropiedad() {
                 fontSize="16px"
                 placeholder="Introduce el Nombre"
               />
-              <Input
-                content="Ubicación"
-                value={datosFormulario.ubicacion}
-                onChange={(valor) => manejarCambio("ubicacion", valor)}
-                width="60%"
-                fontSize="16px"
-                placeholder="Introduce tu Ubicación"
+              <ComboBox
+                title="Ubicación"
+                content="Genero"
+                options={[
+                  "Azua de Compostela",
+                  "Estebanía",
+                  "Guayabal",
+                  "Las Charcas",
+                  "Las Yayas de Viajama",
+                  "Padre Las Casas",
+                  "Peralta",
+                  "Pueblo Viejo",
+                  "Sabana Yegua",
+                  "Tábara Arriba",
+                  "Baní",
+                  "Matanzas",
+                  "Nizao",
+                  "Villa Bisonó (Navarrete)",
+                  "Villa González",
+                  "Santiago de los Caballeros",
+                  "Esperanza",
+                  "Laguna Salada",
+                  "Mao",
+                  "Bonao",
+                  "Maimón",
+                  "Piedra Blanca",
+                  "Comendador",
+                  "El Llano",
+                  "Hondo Valle",
+                  "Juan Santiago",
+                  "Pedro Santana",
+                  "Enriquillo",
+                  "La Ciénaga",
+                  "Paraíso",
+                  "Polo",
+                  "Santa Cruz de Barahona",
+                  "Vicente Noble",
+                  "Cotuí",
+                  "Cevicos",
+                  "Fantino",
+                  "La Mata",
+                  "Dajabón",
+                  "El Pino",
+                  "Loma de Cabrera",
+                  "Partido",
+                  "Restauración",
+                  "San Francisco de Macorís",
+                  "Arenoso",
+                  "Castillo",
+                  "Eugenio María de Hostos",
+                  "Las Guáranas",
+                  "Pimentel",
+                  "Villa Riva",
+                  "Santo Domingo Este",
+                  "Santo Domingo Norte",
+                  "Santo Domingo Oeste",
+                  "Boca Chica",
+                  "Los Alcarrizos",
+                  "Pedro Brand",
+                  "San Antonio de Guerra",
+                  "El Seibo",
+                  "Miches",
+                  "Comendador",
+                  "El Llano",
+                  "Hondo Valle",
+                  "Juan Santiago",
+                  "Pedro Santana",
+                  "San Pedro de Macorís",
+                  "Consuelo",
+                  "Guayacanes",
+                  "Quisqueya",
+                  "Ramón Santana",
+                  "Hato Mayor del Rey",
+                  "El Valle",
+                  "Sabana de la Mar",
+                  "Hermanas Mirabal",
+                  "Salcedo",
+                  "Tenares",
+                  "Villa Tapia",
+                  "La Romana",
+                  "Guaymate",
+                  "Villa Hermosa",
+                  "La Vega",
+                  "Constanza",
+                  "Jarabacoa",
+                  "Jima Abajo",
+                  "Moca",
+                  "Cayetano Germosén",
+                  "Gaspar Hernández",
+                  "Jamao al Norte",
+                  "Monte Cristi",
+                  "Castañuelas",
+                  "Guayubín",
+                  "Las Matas de Santa Cruz",
+                  "Manzanillo",
+                  "Pepillo Salcedo",
+                  "Villa Vásquez",
+                  "Monte Plata",
+                  "Bayaguana",
+                  "Peralvillo",
+                  "Sabana Grande de Boyá",
+                  "Yamasá",
+                  "Samaná",
+                  "Las Terrenas",
+                  "Sánchez",
+                  "San Cristóbal",
+                  "Bajos de Haina",
+                  "Cambita Garabitos",
+                  "Los Cacaos",
+                  "Sabana Grande de Palenque",
+                  "San Gregorio de Nigua",
+                  "Villa Altagracia",
+                  "Yaguate",
+                  "San José de Ocoa",
+                  "Sabana Larga",
+                  "Rancho Arriba",
+                  "San Juan de la Maguana",
+                  "Bohechío",
+                  "El Cercado",
+                  "Juan de Herrera",
+                  "Las Matas de Farfán",
+                  "Vallejuelo",
+                  "Santiago Rodríguez",
+                  "Monción",
+                  "San Ignacio de Sabaneta",
+                  "Villa Los Almácigos",
+                  "Puerto Plata",
+                  "Altamira",
+                  "Guananico",
+                  "Imbert",
+                  "Los Hidalgos",
+                  "Luperón",
+                  "Sosúa",
+                  "Villa Isabela",
+                  "Valverde",
+                  "Esperanza",
+                  "Laguna Salada",
+                  "Mao",
+                  "Distrito Nacional (Santo Domingo)",
+                ]}
+                onChange={(e) => console.log(e)}
               />
             </div>
 

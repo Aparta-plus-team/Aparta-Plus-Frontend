@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "+/comboBox.component.scss";
 
-const ComboBox = ({ options, onChange }) => {
+const ComboBox = ({ options, onChange, title }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,7 +18,7 @@ const ComboBox = ({ options, onChange }) => {
 
   return (
     <div className="flex flex-col items-left">
-      <h1>{'Género'}</h1>
+      <h1>{title}</h1>
       <div className="dropdown-container">
         <div className="flex flex-row items-center" onClick={toggleDropdown}>
           <div className="dropdown-header">
@@ -51,4 +51,5 @@ export default ComboBox;
 ComboBox.propTypes = {
   options: PropTypes.array,
   onChange: PropTypes.func,
+  title: PropTypes.string,
 };
