@@ -32,18 +32,8 @@ const VerPropiedades = () => {
                 <section className="property-info-section">
                     <header className="info-header"><h2>Información</h2></header>
                     <div className="info-content">
-                        <p><strong>Inquilino:</strong> Aquilenyi Suero De Los Santos</p>
-                        <p><strong>Monto:</strong> 30,000</p>
-                        <div className="details-container">
-                            <div className="details-group">
-                                <p><strong>Habitaciones:</strong> 3</p> 
-                                <p><strong>Baños:</strong> 4</p> 
-                            </div>
-                            <div className="details-group">
-                                <p><strong>Parqueo:</strong> Si</p> 
-                                <p><strong>Amueblado:</strong> No</p> 
-                            </div>
-                        </div>
+                        <p><strong>Ubicación:</strong> Calle 15, #12, Residencial Los Mangos, Las Terrenas</p>
+                        <p><strong>Unidades:</strong> 3</p>
                     </div>
                 </section>
                 <section className="apartments-section">
