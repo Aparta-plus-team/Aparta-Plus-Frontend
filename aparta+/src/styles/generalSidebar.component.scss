@@ -1,6 +1,6 @@
 .sidebar {
   width: 170px;
-  background-color: #9b9a9a;
+  background-color: #1D3557;
   padding: 2rem 1rem;
   left: 0;
   top: 0;
@@ -33,7 +33,7 @@
     }
 
     &--active {
-      background-color: #094152;
+      background-color: $color-green;
       color: white;
 
       &:hover {

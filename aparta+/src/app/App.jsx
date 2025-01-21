@@ -37,6 +37,7 @@ import VerPropiedades from "~/verPropiedades";
 import CrearApartamento from "~/crearApartamento";
 import AlojarInquilino from "~/alojarInquilino";
 import Matrix from '*/Matrix';
+import EditarApartamento from "~/editarApartamento";
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -121,6 +122,7 @@ function App() {
         />
         <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
         <Route path="/crearapartamento" element={<CrearApartamento />} />
+        <Route path="/editarapartamento" element={<EditarApartamento />} />
         <Route
           path="/editarinquilino/:id"
           element={<EditarFormularioInquilino />}

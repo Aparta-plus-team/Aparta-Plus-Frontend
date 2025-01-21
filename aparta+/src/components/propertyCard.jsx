@@ -4,7 +4,7 @@
   import PropertyCardImage from "&/PropertyCard.svg";
   
   // Recibimos las propiedades a través de props
-  const PropertyCard = ({ nombre, portadaurl, ubicacion, estado, propiedadid }) => {
+  const PropertyCard = ({ portadaurl, ubicacion, propiedadid, inmuebles }) => {
     return (
       <div className="property-card" data-id={propiedadid}>
         {/* Usamos la imagen de portada si está disponible */}
@@ -14,10 +14,10 @@
           className="property-card__image"
         />
         <div className="property-card__content">
-          <h3 className="property-card__title">{nombre}</h3>
+          <h3 className="property-card__title">{propiedadid}</h3>
           <div className="property-card__details">
             {/* Convertir el estado a cadena si es un booleano */}
-            <span className="property-card__units">{estado ? 'Alquilado' : 'Libre'}</span>
+            <span className="property-card__units">Apartamentos: {inmuebles.length}</span>
           </div>
           <p className="property-card__address">{ubicacion}</p>
         </div>
@@ -27,11 +27,12 @@
   
   // Validamos las propiedades
   PropertyCard.propTypes = {
-    nombre: PropTypes.string.isRequired, // nombre debe ser una cadena de texto y es obligatorio
-    portadaurl: PropTypes.string, // portadaurl debe ser una cadena de texto, puede ser opcional
-    ubicacion: PropTypes.string.isRequired, // ubicacion debe ser una cadena de texto y es obligatorio
-    estado: PropTypes.bool.isRequired, // estado debe ser un booleano y es obligatorio
-    propiedadid: PropTypes.string.isRequired, // propiedadid debe ser una cadena de texto y es obligatorio
+    nombre: PropTypes.string.isRequired, 
+    portadaurl: PropTypes.string, 
+    ubicacion: PropTypes.string.isRequired, 
+    estado: PropTypes.bool.isRequired, 
+    propiedadid: PropTypes.string.isRequired, 
+    inmuebles: PropTypes.array.isRequired,
   };
   
   export default PropertyCard;

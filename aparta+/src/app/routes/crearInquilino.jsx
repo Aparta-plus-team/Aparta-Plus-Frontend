@@ -95,6 +95,7 @@ export default function FormularioInquilino() {
 
             <div className="form-row flex gap-8 mb-8">
               <ComboBox
+                title= "Género"
                 content="Genero"
                 options={["Masculino", "Femenino"]}
                 onChange={(e) => console.log(e)}
