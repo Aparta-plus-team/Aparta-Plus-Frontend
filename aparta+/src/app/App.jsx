@@ -35,6 +35,7 @@ import ProtectedRoutes from "../utilis/ProtectedRoutes";
 import VerApartamentos from "~/verApartamentos";
 import VerPropiedades from "~/verPropiedades";
 import CrearApartamento from "~/crearApartamento";
+import AlojarInquilino from "~/alojarInquilino";
 import Matrix from '*/Matrix';
 import EditarApartamento from "~/editarApartamento";
 
@@ -323,6 +324,9 @@ function App() {
 
         {/* VerPropiedades */}
         <Route path="/verpropiedades" element={<VerPropiedades />} />
+        
+        {/* AlojarInquilino */}
+        <Route path="/alojarinquilino" element={<AlojarInquilino />} />
       </Routes>
     </BrowserRouter>
   );
