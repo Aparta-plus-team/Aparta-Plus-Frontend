@@ -18,7 +18,7 @@ const ComboBox = ({ options, onChange }) => {
 
   return (
     <div className="flex flex-col items-left">
-      <h1>{'content'}</h1>
+      <h1>{'Género'}</h1>
       <div className="dropdown-container">
         <div className="flex flex-row items-center" onClick={toggleDropdown}>
           <div className="dropdown-header">
