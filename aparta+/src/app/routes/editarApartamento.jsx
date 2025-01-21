@@ -4,7 +4,7 @@ import MainView from "*/mainView";
 import Input from "*/input";
 import Button from "*/button";
 
-export default function CrearApartamento() {
+export default function EditarApartamento() {
   const navegar = useNavigate();
 
   const [datosFormulario, setDatosFormulario] = useState({
@@ -29,7 +29,7 @@ export default function CrearApartamento() {
         <div className="w-full px-8">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-3xl font-bold text-[#2D2D2D] mb-6">
-              Crear Apartamento
+              Editar Apartamento
             </h1>
 
             <h2 className="text-xl font-semibold text-[#2D2D2D] mb-6">
@@ -86,7 +86,7 @@ export default function CrearApartamento() {
                 fontSize="16px"
               />
               <Button
-                text="Crear"
+                text="Guardar"
                 color="green"
                 onClick={manejarGuardar}
                 width="150px"
