@@ -24,13 +24,13 @@ const AlojarInquilino = () => {
                     <header>
                         <h2 className='info-title'>Información</h2>
                     </header>
-
-                    <ComboBox
-                    content="Inquilino"
-                    selectedOption="Selecciona el inquilino"
-                    options={["Aquilenyi", "Juan"]}
-                    onChange={(e) => console.log(e)}
-                    />
+                    <div>
+                        <p>Inquilino</p>
+                        <ComboBox
+                        options={["Aquilenyi", "Juan"]}
+                        onChange={(e) => console.log(e)}
+                        />
+                    </div>
                     <div className='line'>
                         <div>
                             <p>Día dep ago</p>
