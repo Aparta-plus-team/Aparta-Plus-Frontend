@@ -30,7 +30,7 @@ function Header() {
           className="avatar-circle"
           onClick={toggleDropdown}
           style={{
-            backgroundColor: "grey",  // Color gris para el avatar
+            backgroundColor: "red",  // Color gris para el avatar
             color: "white",  // Asegurarse de que la letra sea blanca
           }}
         >

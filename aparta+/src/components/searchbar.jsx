@@ -19,7 +19,7 @@ function Searchbar({ placeholder, onSearch }) {
 
 Searchbar.propTypes = {
   placeholder: PropTypes.string, // Haciendo placeholder opcional
-  onSearch: PropTypes.func.isRequired, // Validación de la función onSearch
+  onSearch: PropTypes.func, // Validación de la función onSearch
 };
 
 export default Searchbar;

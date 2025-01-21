@@ -11,7 +11,6 @@ import Header from "*/header";
 import Input from "*/input";
 import Searchbar from "*/searchbar";
 import Factura from "~/factura";
-import PropertyCard from "*/propertyCard";
 import UploadDocuments from "*/uploadDocs";
 import UploadImg from "*/uploadImg";
 import Property from "~/properties";
@@ -274,8 +273,6 @@ function App() {
             />
           }
         />
-
-        <Route path="/propertyCard" element={<PropertyCard />} />
 
         {/* Factura */}
         <Route path="/factura" element={<Factura />} />
