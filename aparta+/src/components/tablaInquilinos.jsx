@@ -1,7 +1,7 @@
 import "+/tablaInquilinos.component.scss";
 import PropTypes from "prop-types";
 
-const TablaInquilinos = ({ inquilinos = [], onPagoConfirmado }) => {
+const TablaInquilinos = ({ inquilinos, onPagoConfirmado }) => {
   // Función para obtener la clase CSS basada en el estado
   const getStatusClass = (status) => {
     return status ? "status-paid" : "status-late";
@@ -66,10 +66,6 @@ const TablaInquilinos = ({ inquilinos = [], onPagoConfirmado }) => {
 TablaInquilinos.propTypes = {
   inquilinos: PropTypes.array,
   onPagoConfirmado: PropTypes.func,
-};
-
-TablaInquilinos.defaultProps = {
-  inquilinos: [],
 };
 
 export default TablaInquilinos;

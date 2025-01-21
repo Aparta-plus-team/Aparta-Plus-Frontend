@@ -4,7 +4,7 @@
   import PropertyCardImage from "&/PropertyCard.svg";
   
   // Recibimos las propiedades a través de props
-  const PropertyCard = ({ portadaurl, ubicacion, propiedadid, inmuebles }) => {
+  const PropertyCard = ({ nombre, portadaurl, ubicacion, propiedadid, inmuebles }) => {
     return (
       <div className="property-card" data-id={propiedadid}>
         {/* Usamos la imagen de portada si está disponible */}
@@ -30,7 +30,6 @@
     nombre: PropTypes.string.isRequired, 
     portadaurl: PropTypes.string, 
     ubicacion: PropTypes.string.isRequired, 
-    estado: PropTypes.bool.isRequired, 
     propiedadid: PropTypes.string.isRequired, 
     inmuebles: PropTypes.array.isRequired,
   };

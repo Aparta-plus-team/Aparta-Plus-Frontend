@@ -73,7 +73,7 @@ const Property = () => {
           // Renderizar las propiedades filtradas
           <div className="property__properties">
             {filteredProperties.map((propiedad) => (
-              <PropertyCard key={propiedad.propiedadid} {...propiedad} />
+              <PropertyCard nombre={propiedad.nombre} key={propiedad.propiedadid} {...propiedad} />
             ))}
           </div>
         ) : (
