@@ -34,7 +34,8 @@ import CodeSignUp from "./routes/codeSignUp";
 import ProtectedRoutes from "../utilis/ProtectedRoutes";
 import VerApartamentos from "~/verApartamentos";
 import CrearApartamento from "~/crearApartamento";
-import Matrix from "*/Matrix";
+import AlojarInquilino from "~/alojarInquilino";
+import Matrix from '*/Matrix';
 import EditarApartamento from "~/editarApartamento";
 
 function App() {
@@ -320,6 +321,11 @@ function App() {
         {/* Matrix */}
         <Route path="/matrix" element={<Matrix />} />
 
+        {/* VerPropiedades */}
+        <Route path="/verpropiedades" element={<VerPropiedades />} />
+        
+        {/* AlojarInquilino */}
+        <Route path="/alojarinquilino" element={<AlojarInquilino />} />
       </Routes>
     </BrowserRouter>
   );

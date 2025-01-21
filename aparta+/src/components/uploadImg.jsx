@@ -64,7 +64,7 @@ function UploadImg() {
   };
 
   return (
-    <div className="upload-container">
+    <div className="upload-container-img">
       <div
         className="upload-box"
         onDrop={handleDrop}
