@@ -36,7 +36,6 @@ import VerApartamentos from "~/verApartamentos";
 import VerPropiedades from "~/verPropiedades";
 import CrearApartamento from "~/crearApartamento";
 import AlojarInquilino from "~/alojarInquilino";
-import VerPropiedades from "~/verPropiedades";
 import Matrix from '*/Matrix';
 import EditarApartamento from "~/editarApartamento";
 
