@@ -38,13 +38,13 @@
 
 /* Botón de descarga */
 .download-btn {
-  transition: 0.3s ease-in-out; /* Añadida transición */
+  transition: 0.2s ease-in-out; /* Añadida transición */
   justify-content: center; /* Centra los elementos en el grid */
   align-items: center;
 }
 
 .download-btn:hover {
- scale: 1.1; /* Añadido efecto de escala al hacer hover */
+  scale: 1.05; /* Añadido efecto de escala al hacer hover */
 }
 /* Contenedor del ítem de contrato */
 .contract-item {
