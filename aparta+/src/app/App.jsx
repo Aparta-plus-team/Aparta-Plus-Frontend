@@ -38,6 +38,7 @@ import CrearApartamento from "~/crearApartamento";
 import AlojarInquilino from "~/alojarInquilino";
 import Matrix from '*/Matrix';
 import EditarApartamento from "~/editarApartamento";
+import PagoExitoso from "~/pagoExitoso";
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -327,6 +328,9 @@ function App() {
         
         {/* AlojarInquilino */}
         <Route path="/alojarinquilino" element={<AlojarInquilino />} />
+
+        {/* PagoExitoso */}
+        <Route path="/pagoexitoso" element={<PagoExitoso />} />
       </Routes>
     </BrowserRouter>
   );
