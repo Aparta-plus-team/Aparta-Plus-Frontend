@@ -9,6 +9,7 @@ import "+/verApartamentos.scss";
 const VerApartamentos = () => {
     return (
         <MainView sidebarType="thin">
+            <div className="apartament-page">
                 <h1 className="page-title">B4</h1>
 
                 <section className="apartment-details-section">
@@ -56,6 +57,7 @@ const VerApartamentos = () => {
                 <section className="statistics-section">
                     <Matrix tipo="estadisticas" nombreApartamento="Z05" nombreInquilino="Aquilenyi Suero De Los Santos" monto="35,000"></Matrix>
                 </section>
+            </div>
         </MainView>
     );
 }

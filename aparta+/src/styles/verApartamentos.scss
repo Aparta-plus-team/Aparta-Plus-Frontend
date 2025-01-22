@@ -1,3 +1,9 @@
+.apartament-page {
+    display: flex;
+    justify-self: center;
+    flex-direction: column;;
+}
+
 .page-title {
     font-size: 46px;
     font-weight: bold;
@@ -10,6 +16,7 @@
 
 .apartment-details-section {
     display: flex;
+    width: 1230px;
     flex-wrap: wrap;
     justify-content: space-between;
     margin:  0 185px;
