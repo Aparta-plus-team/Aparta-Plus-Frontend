@@ -123,7 +123,7 @@ function App() {
           element={<EditarFormularioInquilino />}
         />
         <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
-        <Route path="/crearapartamento" element={<CrearApartamento />} />
+        <Route path="/crearapartamento/:propiedadId" element={<CrearApartamento />} />
         <Route path="/editarapartamento" element={<EditarApartamento />} />
         <Route
           path="/editarinquilino/:id"
