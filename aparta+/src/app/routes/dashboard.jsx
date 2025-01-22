@@ -10,25 +10,29 @@ import DesgloseIngresos from "../../components/desgloseIngresos";
 const DASHBOARD_QUERY = gql`
   query verDashboard ($userId: UUID!)  {
     dashboardStatistics(userId: $userId) {
-      gananciaMensual
-      propiedadesAlquiladas
-      totalPropiedades
-      morosidades {
-        detalle
-        inquilino
-        propiedadNombre
-        servicio
-      }
-      transaccionesRecientes {
-        fecha
-        monto
-        propiedadNombre
-      }
-      desglosePorUbicacion {
-        ganancia
-        porcentaje
-        ubicacion
-      }
+    gananciaMensual
+    propiedadesAlquiladas
+    totalPropiedades
+    desglosePorUbicacion {
+      ganancia
+      porcentaje
+      ubicacion
+    }
+    gananciasMensuales {
+      ganancia
+      mes
+    }
+    morosidades {
+      detalle
+      inquilino
+      propiedadNombre
+      servicio
+    }
+    transaccionesRecientes {
+      fecha
+      monto
+      propiedadNombre
+    }
     }
   }
 `;

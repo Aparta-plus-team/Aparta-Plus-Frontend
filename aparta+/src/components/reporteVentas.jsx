@@ -3,7 +3,7 @@ import ReactECharts from "echarts-for-react";
 import PropTypes from "prop-types";
 
 export default function ReporteVentas({ data }) {
-  const [timeframe, setTimeframe] = useState("Anual");
+  const [timeframe] = useState("Anual");
   const [selectedPeriod, setSelectedPeriod] = useState("Enero");
   
   const periodOptions = {
@@ -35,7 +35,7 @@ export default function ReporteVentas({ data }) {
   };
 
   return (
-    <div className="p-4 rounded-3xl shadow-lg w-full min-w-96">
+    <div className="bg-white p-4 rounded-3xl shadow-lg w-full min-w-96">
       {/* Dropdowns */}
       <div className="flex justify-end mb-4">
 

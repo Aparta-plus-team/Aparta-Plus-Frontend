@@ -20,7 +20,7 @@ export default function FormularioPropiedad() {
 
   const manejarGuardar = () => {
     console.log("Nueva propiedad añadida:", datosFormulario);
-    navegar("/propiedades");
+    navegar("/property");
   };
 
   return (
@@ -186,7 +186,7 @@ export default function FormularioPropiedad() {
                   "Distrito Nacional (Santo Domingo)",
                 ]}
                 onChange={(e) => console.log(e)}
-                width= "400px"
+                width= "100%"
               />
             </div>
 

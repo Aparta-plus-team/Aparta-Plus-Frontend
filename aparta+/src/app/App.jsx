@@ -61,7 +61,7 @@ function App() {
     }
   `;
 
-  const { loading, error, data } = useQuery(GET_CONTRATOS);
+  const { loading, error } = useQuery(GET_CONTRATOS);
 
   if (loading)
     return (
@@ -81,12 +81,10 @@ function App() {
           ERROR \(.___.)/{" "}
         </p>
         <p className="text-xl font-sans text-red-600 m-7">
-          Query failed! (Enciende la API del backend)
+          No connection!
         </p>
       </div>
     );
-
-  console.log(data);
 
   return (
     <BrowserRouter>
@@ -156,59 +154,12 @@ function App() {
           element={
             <div className="dashboard-lists">
               <ListComponent
+                showMore={true}
                 type="transactions"
-                items={[
-                  {
-                    id: 1,
-                    propertyName: "Casa de Juan",
-                    date: "12 Sep 2024",
-                    amount: 30,
-                    image:
-                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
-                  },
-                  {
-                    id: 2,
-                    propertyName: "Zona De Rico",
-                    date: "10 Sep 2024",
-                    amount: 10,
-                    image:
-                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
-                  },
-                  {
-                    id: 3,
-                    propertyName: "Diddy House",
-                    date: "8 Sep 2024",
-                    amount: 20,
-                    image:
-                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
-                  },
-                ]}
               />
               <ListComponent
+                showMore={true}
                 type="issues"
-                items={[
-                  {
-                    id: 1,
-                    propertyName: "721 Meadowview",
-                    userName: "Jacob Jones",
-                    userImage:
-                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
-                  },
-                  {
-                    id: 2,
-                    propertyName: "721 Meadowview",
-                    userName: "Albert Flores",
-                    userImage:
-                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
-                  },
-                  {
-                    id: 3,
-                    propertyName: "721 Meadowview",
-                    userName: "Robert Fox",
-                    userImage:
-                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
-                  },
-                ]}
               />
             </div>
           }
@@ -275,6 +226,7 @@ function App() {
             <ComboBox
               options={["Uno", "Dos", "Tres"]}
               onChange={(e) => console.log(e)}
+              width="400px"
             />
           }
         />
@@ -285,6 +237,7 @@ function App() {
             <ComboBox
               options={["Uno", "Dos", "Tres"]}
               onChange={(e) => console.log(e)}
+              width="400px"
             />
           }
         />

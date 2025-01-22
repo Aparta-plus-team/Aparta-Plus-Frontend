@@ -52,7 +52,7 @@ export default function DesgloseIngresos({ data }) {
   };
 
   return (
-    <div className="p-4 rounded-3xl shadow-lg min-w-[40%] flex items-center justify-center">
+    <div className="bg-white p-4 rounded-3xl shadow-lg min-w-[40%] flex items-center justify-center">
       <ReactECharts
         option={option}
         notMerge={true}

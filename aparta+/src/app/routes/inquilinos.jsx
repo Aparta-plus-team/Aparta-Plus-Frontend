@@ -1,4 +1,3 @@
-
 import { useState } from "react"; // Importar useState
 import { useQuery, gql } from "@apollo/client";
 import Searchbar from "*/searchbar";
@@ -9,13 +8,49 @@ import MainView from "*/mainView";
 // Definir el query GraphQL para obtener los inquilinos
 const GET_INQUILINOS = gql`
   query verInquilino {
-    inquilinos (where: { estado: { eq: true } }) {
+    inquilinos(where: { estado: { eq: true } }) {
       items {
         inquilinoid
         inquilinonombre
         inquilinocorreo
         inquilinotelefono
         estado
+      }
+    }
+  }
+`;
+
+const inq = gql`
+  query fsdgsdfgdgf {
+    facturas(
+      where: {
+        inmueble: {
+          contrato: {
+            inquilino: {
+              inquilinoid: { eq: "ea157c3d-a121-4547-ae8c-00fc2fdac78d" }
+            }
+          }
+        }
+      }
+      order: { fechapago: DESC }
+      take: 1
+    ) {
+      items {
+        estado
+        descripcion
+        facturaid
+        fechapago
+        inmuebleid
+        monto
+        sessionId
+        url
+        inmueble {
+          contrato {
+            inquilino {
+              inquilinoid
+            }
+          }
+        }
       }
     }
   }
@@ -33,24 +68,28 @@ const InquilinosPage = () => {
   if (error) return <p>Error al cargar inquilinos: {error.message}</p>;
 
   // Mapear los datos correctamente para `TablaInquilinos`
-  const inquilinos = data?.inquilinos?.items.map((item) => ({
-    id: item.inquilinoid,
-    nombre: item.inquilinonombre,
-    correo: item.inquilinocorreo,
-    telefono: item.inquilinotelefono,
-    estado: item.estado,
-  })) || [];
+  const inquilinos =
+    data?.inquilinos?.items.map((item) => ({
+      id: item.inquilinoid,
+      nombre: item.inquilinonombre,
+      correo: item.inquilinocorreo,
+      telefono: item.inquilinotelefono,
+      estado: item.estado,
+    })) || [];
 
   // Función para manejar la búsqueda
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm); // Actualizar el término de búsqueda
 
     // Filtrar los inquilinos basados en el término de búsqueda
-    const filtered = inquilinos.filter((inquilino) =>
-      inquilino.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      inquilino.correo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      inquilino.telefono.includes(searchTerm) ||
-      (inquilino.estado ? "Alquilado" : "Libre").toLowerCase().includes(searchTerm.toLowerCase())
+    const filtered = inquilinos.filter(
+      (inquilino) =>
+        inquilino.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        inquilino.correo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        inquilino.telefono.includes(searchTerm) ||
+        (inquilino.estado ? "Alquilado" : "Libre")
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
     );
     setFilteredInquilinos(filtered); // Actualizar el estado con los inquilinos filtrados
   };
@@ -67,7 +106,10 @@ const InquilinosPage = () => {
               <h1>Administrar Inquilinos</h1>
               <div className="inquilinos-actions">
                 {/* Pasa la función onSearch */}
-                <Searchbar placeholder="Buscar inquilino" onSearch={handleSearch} />
+                <Searchbar
+                  placeholder="Buscar inquilino"
+                  onSearch={handleSearch}
+                />
                 <a href="/crearinquilino">
                   <button className="add-button">Añadir un inquilino +</button>
                 </a>

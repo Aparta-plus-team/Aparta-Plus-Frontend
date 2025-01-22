@@ -82,7 +82,7 @@ const ComboBox = ({ options, onChange, title, disabled, width }) => {
   return (
     <div className="flex flex-col items-left">
       <h1>{title}</h1>
-      <div className={`dropdown-container ${disabled ? 'opacity-50 cursor-not-allowed' : ''}w-[${width}]` }>
+      <div className={`dropdown-container ${disabled ? 'opacity-50 cursor-not-allowed' : ''}` } style={{ width: `${width}` }}>
         <div 
           className={`flex flex-row items-center ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`} 
           onClick={toggleDropdown}
