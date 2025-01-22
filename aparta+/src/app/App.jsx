@@ -38,6 +38,8 @@ import CrearApartamento from "~/crearApartamento";
 import AlojarInquilino from "~/alojarInquilino";
 import Matrix from '*/Matrix';
 import EditarApartamento from "~/editarApartamento";
+import PagoExitoso from "~/pagoExitoso";
+import PagoCancelado from "~/pagoCancelado"; // Ensure this path is correct
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -119,7 +121,7 @@ function App() {
           element={<EditarFormularioInquilino />}
         />
         <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
-        <Route path="/crearapartamento" element={<CrearApartamento />} />
+        <Route path="/crearapartamento/:propiedadId" element={<CrearApartamento />} />
         <Route path="/editarapartamento" element={<EditarApartamento />} />
         <Route
           path="/editarinquilino/:id"
@@ -280,6 +282,12 @@ function App() {
         
         {/* AlojarInquilino */}
         <Route path="/alojarinquilino" element={<AlojarInquilino />} />
+
+        {/* PagoExitoso */}
+        <Route path="/pagoexitoso" element={<PagoExitoso />} />
+
+        {/* PagoCancelado */}
+        <Route path="/pagocancelado" element={<PagoCancelado />} />
       </Routes>
     </BrowserRouter>
   );

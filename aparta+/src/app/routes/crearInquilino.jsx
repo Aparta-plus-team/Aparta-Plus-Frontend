@@ -76,7 +76,7 @@ export default function FormularioInquilino() {
             <h1 className="text-4xl font-bold">Añadir Inquilino</h1>
           </div>
 
-          <div className="form-container max-w-4xl">
+          <div className="form-container ">
             <div className="form-row flex gap-8 mb-8">
               <Input
                 content="Nombre"
@@ -90,7 +90,7 @@ export default function FormularioInquilino() {
                 content="Genero"
                 options={["Masculino", "Femenino"]}
                 onChange={(e) => console.log(e)}
-                width="300px"
+                width="400px"
               />
             </div>
 
