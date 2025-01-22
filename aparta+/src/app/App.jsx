@@ -39,6 +39,7 @@ import AlojarInquilino from "~/alojarInquilino";
 import Matrix from '*/Matrix';
 import EditarApartamento from "~/editarApartamento";
 import PagoExitoso from "~/pagoExitoso";
+import PagoCancelado from "~/pagoCancelado"; // Ensure this path is correct
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -331,6 +332,9 @@ function App() {
 
         {/* PagoExitoso */}
         <Route path="/pagoexitoso" element={<PagoExitoso />} />
+
+        {/* PagoCancelado */}
+        <Route path="/pagocancelado" element={<PagoCancelado />} />
       </Routes>
     </BrowserRouter>
   );
