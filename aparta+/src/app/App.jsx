@@ -29,6 +29,7 @@ import Morosity from "~/morosidad";
 import ReporteVentas from "*/reporteVentas";
 import FormularioInquilino from "~/crearInquilino";
 import EditarFormularioInquilino from "~/editarInquilino";
+import PagoInquilino from "~/pagoInquilino";
 import FormularioPropiedad from "~/crearPropiedad";
 import CodeSignUp from "./routes/codeSignUp";
 import ProtectedRoutes from "../utilis/ProtectedRoutes";
@@ -40,6 +41,7 @@ import Matrix from '*/Matrix';
 import EditarApartamento from "~/editarApartamento";
 import PagoExitoso from "~/pagoExitoso";
 import PagoCancelado from "~/pagoCancelado"; // Ensure this path is correct
+
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -116,6 +118,7 @@ function App() {
 
         <Route path="/inquilinos" element={<InquilinosPage />} />
         <Route path="/crearinquilino" element={<FormularioInquilino />} />
+        <Route path="/pagoInquilino" element={<PagoInquilino />} />
         <Route
           path="/editarinquilino/:id"
           element={<EditarFormularioInquilino />}
