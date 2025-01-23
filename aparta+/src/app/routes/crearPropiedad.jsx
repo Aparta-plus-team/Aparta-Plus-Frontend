@@ -51,7 +51,7 @@ export default function FormularioPropiedad() {
   const manejarCambio = (campo, valor) => {
     setDatosFormulario({ ...datosFormulario, [campo]: valor });
   };
-
+  
   const manejarGuardar = async () => {
     try {
       // Crear propiedad

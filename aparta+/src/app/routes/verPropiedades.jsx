@@ -205,6 +205,7 @@ const VerPropiedades = () => {
           {inmuebles.map((inmueble) => (
             <Matrix
               key={inmueble.inmuebleid}
+              inmuebleid={inmueble.inmuebleid}
               tipo="propiedad"
               nombreApartamento={inmueble.codigo}
               nombreInquilino={
