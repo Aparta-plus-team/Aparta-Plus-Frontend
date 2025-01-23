@@ -1,49 +1,43 @@
 import "+/tablaInquilinos.component.scss";
 import PropTypes from "prop-types";
 
-const TablaInquilinos = ({ inquilinos = [] }) => {
-  // Hacemos la prop opcional con valor por defecto
+const TablaInquilinos = ({ inquilinos, onPagoConfirmado }) => {
+  // Función para obtener la clase CSS basada en el estado
   const getStatusClass = (status) => {
-    switch (status.toLowerCase()) {
-      case "pagado":
-        return "status-paid";
-      case "atrasado":
-        return "status-late";
-      case "no pagado":
-      default:
-        return "status-unpaid";
+    return status ? "status-paid" : "status-late";
+  };
+
+  // Función para manejar el click en el botón de pago
+  const handlePagoClick = (inquilino) => {
+    const confirmar = window.confirm(`¿Estás seguro que deseas registrar el pago para ${inquilino.nombre}?`);
+    
+    if (confirmar) {
+      // Si existe la función onPagoConfirmado en las props, la llamamos con el inquilino
+      if (onPagoConfirmado) {
+        onPagoConfirmado(inquilino);
+      }
     }
   };
 
   return (
     <div className="inquilino-list">
-      {" "}
-      {/* Cambiado de inquilino-list a inquilino-list */}
       {inquilinos.map((inquilino, index) => (
         <div key={index} className="inquilino-row">
-          {" "}
-          {/* Cambiado de inquilino-row a inquilino-row */}
-          <div className="inquilino-info name">
-            {" "}
-            {/* Cambiado de inquilino-info a inquilino-info */}
-            {inquilino.nombre} {inquilino.apellido}
-          </div>
+          <div className="inquilino-info name">{inquilino.nombre}</div>
           <div className="inquilino-info email">{inquilino.correo}</div>
-          <div className="inquilino-info apartment">
-            {inquilino.apartamento}
-          </div>
+          <div className="inquilino-info phone">{inquilino.telefono}</div>
           <div
             className={`inquilino-info status ${getStatusClass(
-              inquilino.estado || "No pagado"
+              inquilino.estado
             )}`}
           >
             <span className="status-badge">
-              {inquilino.estado || "No pagado"}
+              {inquilino.estado ? "Pagado" : "Atrasado"}
             </span>
           </div>
           <div className="inquilino-info actions">
             <a href={`/editarinquilino/${inquilino.id}`}>
-              <button className="edit-button">
+              <button className="edit-button mx-2">
                 <svg
                   viewBox="0 0 24 24"
                   width="20"
@@ -56,6 +50,12 @@ const TablaInquilinos = ({ inquilinos = [] }) => {
                 </svg>
               </button>
             </a>
+            <button 
+              className="edit-button mx-2"
+              onClick={() => handlePagoClick(inquilino)}
+            >
+              <span className="material-symbols-outlined">attach_money</span>
+            </button>
           </div>
         </div>
       ))}
@@ -65,10 +65,7 @@ const TablaInquilinos = ({ inquilinos = [] }) => {
 
 TablaInquilinos.propTypes = {
   inquilinos: PropTypes.array,
-};
-
-TablaInquilinos.defaultProps = {
-  inquilinos: [],
+  onPagoConfirmado: PropTypes.func,
 };
 
 export default TablaInquilinos;

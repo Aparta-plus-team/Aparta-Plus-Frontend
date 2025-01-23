@@ -54,12 +54,15 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
-  margin: 10px;
+  margin: 0.8rem 10px;
   font-weight: bold;
+  transform: scale(1);
+  transition: transform 0.1s ease-in-out;
 }
 
 .back-btn:hover {
   background-color: #062d43; 
+  transform: scale(1.1);
 }
 
 
@@ -76,7 +79,6 @@
 
 .title {
   margin-bottom: 30px; 
-  font-size: 50px;
   font-weight: bold; 
   text-align: center;  
 }
@@ -210,4 +212,12 @@
 
 .edit-password-link:hover {
   color: #98B600;
+}
+
+.avatar-container {
+  transform: scale(1);
+  transition: transform 0.2s ease-in;
+}
+.avatar-container:hover {
+  transform: scale(1.05);
 }

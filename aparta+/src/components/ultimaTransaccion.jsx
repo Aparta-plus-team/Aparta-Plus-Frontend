@@ -1,8 +1,44 @@
 import PropTypes from "prop-types";
 import "+/ultimaTransaccion.component.scss";
 import { NavLink, useNavigate } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
 
-const ListComponent = ({ type, items }) => {
+// Definimos el query como una constante
+const DASHBOARD_QUERY = gql`
+  query verDashboard ($userId: String!) {
+    dashboardStatistics(userId: $userId) {
+      gananciaMensual
+      propiedadesAlquiladas
+      totalPropiedades
+      morosidades {
+        detalle
+        inquilino
+        propiedadNombre
+        servicio
+      }
+      transaccionesRecientes {
+        fecha
+        monto
+        propiedadNombre
+      }
+      desglosePorUbicacion {
+        ganancia
+        porcentaje
+        ubicacion
+      }
+    }
+  }
+`;
+
+const ListComponent = ({ type, showMore }) => {
+  const iuserId = localStorage.getItem("userId");
+
+  const { data } = useQuery(DASHBOARD_QUERY, {
+    variables: { userId: iuserId },
+  });
+
+  const transaccionesRecientes = data?.dashboardStatistics.transaccionesRecientes;
+  const morosidades = data?.dashboardStatistics.morosidades;
   let navigate = useNavigate();
 
   const renderHeader = () => {
@@ -11,7 +47,14 @@ const ListComponent = ({ type, items }) => {
 
   const renderItems = () => {
     if (type === "transactions") {
-      return items.map((item) => (
+      return transaccionesRecientes.map((transaccion, index) => ({
+        id: index + 1,
+        propertyName: transaccion.propiedadNombre,
+        date: new Date(transaccion.fecha).toLocaleDateString(),
+        amount: transaccion.monto,
+        image:
+          "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Mantener imagen por defecto o implementar lógica para imágenes
+      })).map((item) => (
         <NavLink to={`/vivienda/${item.id}`} key={item.id}>
           <div
             key={item.id}
@@ -32,7 +75,13 @@ const ListComponent = ({ type, items }) => {
         </NavLink>
       ));
     } else if (type === "issues") {
-      return items.map((item) => (
+      return morosidades.map((morosidad, index) => ({
+        id: index + 1,
+        propertyName: morosidad.propiedadNombre,
+        userName: morosidad.inquilino,
+        userImage:
+          "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Mantener imagen por defecto o implementar lógica para imágenes
+      })).map((item) => (
         <NavLink to={`/vivienda/${item.id}`} key={item.id}>
           <div
             key={item.id}
@@ -65,6 +114,7 @@ const ListComponent = ({ type, items }) => {
       <div className={`list-component ${type} h-full overflow-hidden`}>
         <div className="list-header">
           <h2>{renderHeader()}</h2>
+          {showMore && (
           <button
             className="view-all"
             onClick={() => {
@@ -77,9 +127,10 @@ const ListComponent = ({ type, items }) => {
           >
             Ver Todo
           </button>
+          )}
         </div>
         <div className="list-content overflow-auto hover:overflow-scroll">
-          {renderItems()}
+          {(transaccionesRecientes) && renderItems()}
         </div>
       </div>
     </div>
@@ -87,26 +138,8 @@ const ListComponent = ({ type, items }) => {
 };
 
 ListComponent.propTypes = {
+  showMore: PropTypes.bool.isRequired,
   type: PropTypes.oneOf(["transactions", "issues"]).isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.oneOfType([
-      PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-          .isRequired,
-        propertyName: PropTypes.string.isRequired,
-        date: PropTypes.string,
-        amount: PropTypes.number,
-        image: PropTypes.string,
-      }),
-      PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-          .isRequired,
-        propertyName: PropTypes.string.isRequired,
-        userName: PropTypes.string.isRequired,
-        userImage: PropTypes.string.isRequired,
-      }),
-    ])
-  ).isRequired,
 };
 
 export default ListComponent;

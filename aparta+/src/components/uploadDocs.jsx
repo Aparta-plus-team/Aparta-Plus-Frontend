@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import '+/uploadDocs.component.scss';
 
 function UploadDocuments() {
@@ -40,7 +40,7 @@ function UploadDocuments() {
   };
 
   return (
-    <div className="upload-container" onDrop={handleDrop} onDragOver={handleDragOver}>
+    <div className="upload-container-doc" onDrop={handleDrop} onDragOver={handleDragOver}>
       <div className="upload-box">
         <div className="upload-icon">
           <svg

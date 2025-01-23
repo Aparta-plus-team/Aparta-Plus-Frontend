@@ -11,7 +11,6 @@ import Header from "*/header";
 import Input from "*/input";
 import Searchbar from "*/searchbar";
 import Factura from "~/factura";
-import PropertyCard from "*/propertyCard";
 import UploadDocuments from "*/uploadDocs";
 import UploadImg from "*/uploadImg";
 import Property from "~/properties";
@@ -31,6 +30,18 @@ import ReporteVentas from "*/reporteVentas";
 import FormularioInquilino from "~/crearInquilino";
 import EditarFormularioInquilino from "~/editarInquilino";
 import PagoInquilino from "~/pagoInquilino";
+import FormularioPropiedad from "~/crearPropiedad";
+import CodeSignUp from "./routes/codeSignUp";
+import ProtectedRoutes from "../utilis/ProtectedRoutes";
+import VerApartamentos from "~/verApartamentos";
+import VerPropiedades from "~/verPropiedades";
+import CrearApartamento from "~/crearApartamento";
+import AlojarInquilino from "~/alojarInquilino";
+import Matrix from '*/Matrix';
+import EditarApartamento from "~/editarApartamento";
+import PagoExitoso from "~/pagoExitoso";
+import PagoCancelado from "~/pagoCancelado"; // Ensure this path is correct
+
 
 function App() {
   const GET_CONTRATOS = gql`
@@ -54,7 +65,7 @@ function App() {
     }
   `;
 
-  const { loading, error, data } = useQuery(GET_CONTRATOS);
+  const { loading, error } = useQuery(GET_CONTRATOS);
 
   if (loading)
     return (
@@ -70,28 +81,51 @@ function App() {
   if (error)
     return (
       <div className="flex flex-col justify-center items-center h-screen">
-        <p className="text-9xl font-sans font-bold text-red-600">ERROR \(.___.)/ </p>
-        <p className="text-xl font-sans text-red-600 m-7">Query failed! (Enciende la API del backend)</p>
+        <p className="text-9xl font-sans font-bold text-red-600">
+          ERROR \(.___.)/{" "}
+        </p>
+        <p className="text-xl font-sans text-red-600 m-7">
+          No connection!
+        </p>
       </div>
     );
-
-  console.log(data);
 
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="*"
+          element={
+            <div className="flex items-center justify-center h-svh">
+              <h1 className="text-center m-auto font-black text-9xl font-sans">
+                \(＞﹏＜)/ Page not found
+              </h1>
+            </div>
+          }
+        />
         {/* Autenticacion */}
         <Route index element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset" element={<Reset />} />
         <Route path="/code" element={<Code />} />
+        <Route path="/confirmSignUp/:email" element={<CodeSignUp />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/property" element={<Property />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+
         <Route path="/inquilinos" element={<InquilinosPage />} />
         <Route path="/crearinquilino" element={<FormularioInquilino />} />
         <Route path="/pagoInquilino" element={<PagoInquilino />} />
+        <Route
+          path="/editarinquilino/:id"
+          element={<EditarFormularioInquilino />}
+        />
+        <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
+        <Route path="/crearapartamento/:propiedadId" element={<CrearApartamento />} />
+        <Route path="/editarapartamento" element={<EditarApartamento />} />
         <Route
           path="/editarinquilino/:id"
           element={<EditarFormularioInquilino />}
@@ -125,59 +159,12 @@ function App() {
           element={
             <div className="dashboard-lists">
               <ListComponent
+                showMore={true}
                 type="transactions"
-                items={[
-                  {
-                    id: 1,
-                    propertyName: "Casa de Juan",
-                    date: "12 Sep 2024",
-                    amount: 30,
-                    image:
-                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
-                  },
-                  {
-                    id: 2,
-                    propertyName: "Zona De Rico",
-                    date: "10 Sep 2024",
-                    amount: 10,
-                    image:
-                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
-                  },
-                  {
-                    id: 3,
-                    propertyName: "Diddy House",
-                    date: "8 Sep 2024",
-                    amount: 20,
-                    image:
-                      "https://i.pinimg.com/originals/cd/0f/a9/cd0fa90cecdebe5b881e8a339a29955f.jpg", // Imagen de prueba
-                  },
-                ]}
               />
               <ListComponent
+                showMore={true}
                 type="issues"
-                items={[
-                  {
-                    id: 1,
-                    propertyName: "721 Meadowview",
-                    userName: "Jacob Jones",
-                    userImage:
-                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
-                  },
-                  {
-                    id: 2,
-                    propertyName: "721 Meadowview",
-                    userName: "Albert Flores",
-                    userImage:
-                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
-                  },
-                  {
-                    id: 3,
-                    propertyName: "721 Meadowview",
-                    userName: "Robert Fox",
-                    userImage:
-                      "https://www.elementr.media/wp-content/uploads/2015/07/man-square-1.png", // Imagen de prueba
-                  },
-                ]}
               />
             </div>
           }
@@ -244,6 +231,7 @@ function App() {
             <ComboBox
               options={["Uno", "Dos", "Tres"]}
               onChange={(e) => console.log(e)}
+              width="400px"
             />
           }
         />
@@ -254,6 +242,7 @@ function App() {
             <ComboBox
               options={["Uno", "Dos", "Tres"]}
               onChange={(e) => console.log(e)}
+              width="400px"
             />
           }
         />
@@ -270,8 +259,6 @@ function App() {
           }
         />
 
-        <Route path="/propertyCard" element={<PropertyCard />} />
-
         {/* Factura */}
         <Route path="/factura" element={<Factura />} />
 
@@ -286,6 +273,24 @@ function App() {
 
         {/* ContractContainer */}
         <Route path="/contractcontainer" element={<ContractContainer />} />
+          
+        {/* VerApartamentos */}
+        <Route path="/verapartamentos" element={<VerApartamentos />} />
+        
+        {/* Matrix */}
+        <Route path="/matrix" element={<Matrix />} />
+
+        {/* VerPropiedades */}
+        <Route path="/verpropiedades" element={<VerPropiedades />} />
+        
+        {/* AlojarInquilino */}
+        <Route path="/alojarinquilino" element={<AlojarInquilino />} />
+
+        {/* PagoExitoso */}
+        <Route path="/pagoexitoso" element={<PagoExitoso />} />
+
+        {/* PagoCancelado */}
+        <Route path="/pagocancelado" element={<PagoCancelado />} />
       </Routes>
     </BrowserRouter>
   );

@@ -4,6 +4,7 @@ import "+/useraccount.scss";
 import Input from "*/Input";
 import Button from "*/Button";
 import MainView from "*/mainView";
+import ComboBox from "*/ComboBox";
 
 function AccountPage() {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ function AccountPage() {
 
   return (
     <MainView sidebarType="thin">
-      <div className="h-full w-full overflow-y-scroll">
+      <div className="h-full w-full">
         <div className="main-content h-full">
           <h1 className="title">Mi cuenta</h1>
           <div className="profile-section">
@@ -86,19 +87,20 @@ function AccountPage() {
                 onChange={(value) => handleChange("firstName", value)}
               />
               <Input
-                content="Apellido"
-                value={formData.lastName}
+                content="Correo"
+                value={formData.email}
                 width="400px"
-                onChange={(value) => handleChange("lastName", value)}
+                onChange={(value) => handleChange("email", value)}
               />
             </div>
 
             <div className="form-row">
-              <Input
-                content="Género"
-                value={formData.gender}
+              <ComboBox 
+                title="Género"
+                content="Genero"
+                options={["Masculino", "Femenino"]}
+                onChange={(e) => console.log(e)}
                 width="400px"
-                onChange={(value) => handleChange("gender", value)}
               />
               <Input
                 content="Teléfono"
@@ -109,13 +111,6 @@ function AccountPage() {
             </div>
 
             <div className="form-row">
-              <Input
-                content="Correo"
-                value={formData.email}
-                width="400px"
-                onChange={(value) => handleChange("email", value)}
-              />
-
               {/* Contenedor del campo de contraseña con enlace */}
               <div className="password-container">
                 <Input

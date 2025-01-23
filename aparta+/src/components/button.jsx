@@ -18,7 +18,7 @@ export default function Button({ text, onClick, color, width }) {
 
   return (
     <button
-      className="rounded-xl h-10 text-white hover:opacity-90 transition-shadow"
+      className="rounded-md h-10 text-white hover:opacity-90 transition-shadow"
       onClick={onClick}
       style={{ width: width, backgroundColor: color }}
     >

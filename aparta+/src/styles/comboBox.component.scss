@@ -1,14 +1,14 @@
 .dropdown-container {
     position: relative;
-    width: 300px;
     margin: 0;
-    padding: 5px 15px;
+    padding: 2px 15px;
     font-size: 16px;
     background-color: transparent;
     border: 2px solid $color-grey;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     text-align: left;
+    height: 40px;
   
     .dropdown-header {
       width: 100%;
@@ -23,24 +23,32 @@
       padding: 0;
       list-style: none;
       background-color: white;
-      border: 2px solid $color-grey;
+      border: 1px solid $color-grey;
       border-radius: 20px;
       overflow: hidden;
+      height: 200px;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      z-index: 1000;
   
       .dropdown-item {
         padding: 10px 15px;
         font-size: 16px;
         cursor: pointer;
         text-align: left;
-  
+
+        
         &:hover {
-          background-color: #4caf50;
+          background-color: #daf3fb;
         }
+  
       }
+
+      
     }
   
     &:hover {
-      border-color: #4caf50;
+      border-color: $color-dark-grey;
     }
   }
   
