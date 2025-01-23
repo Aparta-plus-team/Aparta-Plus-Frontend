@@ -40,7 +40,8 @@ import AlojarInquilino from "~/alojarInquilino";
 import Matrix from '*/Matrix';
 import EditarApartamento from "~/editarApartamento";
 import PagoExitoso from "~/pagoExitoso";
-import PagoCancelado from "~/pagoCancelado"; // Ensure this path is correct
+import PagoCancelado from "~/pagoCancelado"; 
+import EditarPropiedad from "./routes/editarPropiedad";
 
 
 function App() {
@@ -126,6 +127,8 @@ function App() {
         <Route path="/crearpropiedad" element={<FormularioPropiedad />} />
         <Route path="/crearapartamento/:propiedadId" element={<CrearApartamento />} />
         <Route path="/editarapartamento" element={<EditarApartamento />} />
+        <Route path="/editarpropiedad" element={<EditarPropiedad />} />
+
         <Route
           path="/editarinquilino/:id"
           element={<EditarFormularioInquilino />}
