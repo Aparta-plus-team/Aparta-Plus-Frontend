@@ -5,9 +5,18 @@ import "+/static/fonts/poppins.scss";
 import App from "@/app/App.jsx";
 import * as echarts from "echarts";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import createUploadLink from 'apollo-upload-client/createUploadLink.mjs';
+
+const uploadLink = createUploadLink({
+  uri: "http://localhost:5095/graphql/",
+  headers: {
+    'Apollo-Require-Preflight': 'true',
+    'GraphQL-preflight': 1
+  },
+});
 
 const client = new ApolloClient({
-  uri: "http://localhost:5095/graphql/",
+  link: uploadLink,
   cache: new InMemoryCache(),
 });
 

@@ -8,7 +8,7 @@ import DesgloseIngresos from "../../components/desgloseIngresos";
 
 // Definimos el query como una constante
 const DASHBOARD_QUERY = gql`
-  query verDashboard ($userId: UUID!)  {
+  query verDashboard ($userId: UUID!) {
     dashboardStatistics(userId: $userId) {
     gananciaMensual
     propiedadesAlquiladas

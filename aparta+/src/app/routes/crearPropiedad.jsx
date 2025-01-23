@@ -1,26 +1,103 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useMutation, gql } from "@apollo/client";
 import MainView from "*/mainView";
 import Input from "*/input";
 import Button from "*/button";
 import UploadImage from "*/uploadImg";
 import ComboBox from "*/comboBox";
+
+// GraphQL Mutations
+const CREAR_APARTAMENTO = gql`
+  mutation CrearApartamento($input: CreatePropertyInput!) {
+    createProperty(input: $input) {
+      propiedadid
+    }
+  }
+`;
+
+const UPLOAD_IMAGES = gql`
+  mutation UploadImages($propertyId: String!, $file: Upload!) {
+    uploadImages(propertyId: $propertyId, file: $file) {
+      key
+      url
+    }
+  }
+`;
+
+const UPLOAD_PORTRAIT = gql`
+  mutation UploadPortrait($file: Upload!, $propertyId: String!) {
+    uploadPortrait(file: $file, propertyId: $propertyId) {
+      key
+      url
+    }
+  }
+`;
+
 export default function FormularioPropiedad() {
-  const navegar = useNavigate();
+  const navigate = useNavigate();
 
   const [datosFormulario, setDatosFormulario] = useState({
     nombre: "",
     ubicacion: "",
-    imagen: null,
+    portada: null,
+    imagenes: [],
   });
+
+  const [crearApartamento] = useMutation(CREAR_APARTAMENTO);
+  const [uploadImages] = useMutation(UPLOAD_IMAGES);
+  const [uploadPortrait] = useMutation(UPLOAD_PORTRAIT);
 
   const manejarCambio = (campo, valor) => {
     setDatosFormulario({ ...datosFormulario, [campo]: valor });
   };
 
-  const manejarGuardar = () => {
-    console.log("Nueva propiedad añadida:", datosFormulario);
-    navegar("/property");
+  const manejarGuardar = async () => {
+    try {
+      // Crear propiedad
+      const { data } = await crearApartamento({
+        variables: {
+          input: {
+            nombre: datosFormulario.nombre,
+            ubicacion: datosFormulario.ubicacion,
+            usuarioid: localStorage.getItem("userId"), // Cambia este valor según corresponda
+          },
+        },
+      });
+
+      const propiedadId = data.createProperty.propiedadid;
+
+      console.log(datosFormulario);
+
+      // Subir portada
+      if (datosFormulario.portada) {
+        const file = new Blob([datosFormulario.portada.file], { type: "text/plain" });
+        await uploadPortrait({
+          variables: {
+            file: file,
+            propertyId: propiedadId,
+          },
+        });
+      }
+
+      // Subir imágenes
+      if (datosFormulario.imagenes.length > 0) {
+        for (const imagen of datosFormulario.imagenes) {
+          const file = new Blob([imagen.file], { type: "text/plain" });
+          await uploadImages({
+            variables: {
+              propertyId: propiedadId,
+              file: file,
+            },
+          });
+        }
+      }
+
+      console.log("Propiedad creada exitosamente.");
+      navigate("/property");
+    } catch (error) {
+      console.error("Error al guardar la propiedad:", error);
+    }
   };
 
   return (
@@ -53,140 +130,10 @@ export default function FormularioPropiedad() {
                   "Estebanía",
                   "Guayabal",
                   "Las Charcas",
-                  "Las Yayas de Viajama",
-                  "Padre Las Casas",
-                  "Peralta",
-                  "Pueblo Viejo",
-                  "Sabana Yegua",
-                  "Tábara Arriba",
-                  "Baní",
-                  "Matanzas",
-                  "Nizao",
-                  "Villa Bisonó (Navarrete)",
-                  "Villa González",
-                  "Santiago de los Caballeros",
-                  "Esperanza",
-                  "Laguna Salada",
-                  "Mao",
-                  "Bonao",
-                  "Maimón",
-                  "Piedra Blanca",
-                  "Comendador",
-                  "El Llano",
-                  "Hondo Valle",
-                  "Juan Santiago",
-                  "Pedro Santana",
-                  "Enriquillo",
-                  "La Ciénaga",
-                  "Paraíso",
-                  "Polo",
-                  "Santa Cruz de Barahona",
-                  "Vicente Noble",
-                  "Cotuí",
-                  "Cevicos",
-                  "Fantino",
-                  "La Mata",
-                  "Dajabón",
-                  "El Pino",
-                  "Loma de Cabrera",
-                  "Partido",
-                  "Restauración",
-                  "San Francisco de Macorís",
-                  "Arenoso",
-                  "Castillo",
-                  "Eugenio María de Hostos",
-                  "Las Guáranas",
-                  "Pimentel",
-                  "Villa Riva",
-                  "Santo Domingo Este",
-                  "Santo Domingo Norte",
-                  "Santo Domingo Oeste",
-                  "Boca Chica",
-                  "Los Alcarrizos",
-                  "Pedro Brand",
-                  "San Antonio de Guerra",
-                  "El Seibo",
-                  "Miches",
-                  "Comendador",
-                  "El Llano",
-                  "Hondo Valle",
-                  "Juan Santiago",
-                  "Pedro Santana",
-                  "San Pedro de Macorís",
-                  "Consuelo",
-                  "Guayacanes",
-                  "Quisqueya",
-                  "Ramón Santana",
-                  "Hato Mayor del Rey",
-                  "El Valle",
-                  "Sabana de la Mar",
-                  "Hermanas Mirabal",
-                  "Salcedo",
-                  "Tenares",
-                  "Villa Tapia",
-                  "La Romana",
-                  "Guaymate",
-                  "Villa Hermosa",
-                  "La Vega",
-                  "Constanza",
-                  "Jarabacoa",
-                  "Jima Abajo",
-                  "Moca",
-                  "Cayetano Germosén",
-                  "Gaspar Hernández",
-                  "Jamao al Norte",
-                  "Monte Cristi",
-                  "Castañuelas",
-                  "Guayubín",
-                  "Las Matas de Santa Cruz",
-                  "Manzanillo",
-                  "Pepillo Salcedo",
-                  "Villa Vásquez",
-                  "Monte Plata",
-                  "Bayaguana",
-                  "Peralvillo",
-                  "Sabana Grande de Boyá",
-                  "Yamasá",
-                  "Samaná",
-                  "Las Terrenas",
-                  "Sánchez",
-                  "San Cristóbal",
-                  "Bajos de Haina",
-                  "Cambita Garabitos",
-                  "Los Cacaos",
-                  "Sabana Grande de Palenque",
-                  "San Gregorio de Nigua",
-                  "Villa Altagracia",
-                  "Yaguate",
-                  "San José de Ocoa",
-                  "Sabana Larga",
-                  "Rancho Arriba",
-                  "San Juan de la Maguana",
-                  "Bohechío",
-                  "El Cercado",
-                  "Juan de Herrera",
-                  "Las Matas de Farfán",
-                  "Vallejuelo",
-                  "Santiago Rodríguez",
-                  "Monción",
-                  "San Ignacio de Sabaneta",
-                  "Villa Los Almácigos",
-                  "Puerto Plata",
-                  "Altamira",
-                  "Guananico",
-                  "Imbert",
-                  "Los Hidalgos",
-                  "Luperón",
-                  "Sosúa",
-                  "Villa Isabela",
-                  "Valverde",
-                  "Esperanza",
-                  "Laguna Salada",
-                  "Mao",
-                  "Distrito Nacional (Santo Domingo)",
+                  // ...más opciones aquí
                 ]}
-                onChange={(e) => console.log(e)}
-                width= "100%"
+                onChange={(valor) => manejarCambio("ubicacion", valor)}
+                width="100%"
               />
             </div>
 
@@ -194,10 +141,29 @@ export default function FormularioPropiedad() {
               <h2 className="text-xl font-semibold text-[#2D2D2D] mb-4">
                 Subir Foto De Propiedad
               </h2>
-              <div className="border-2 border-dashed border-[#E5E7EB] rounded-lg bg-[#F8FCFF]">
+              <div className="border-2 border-dashed border-[#E5E7EB] rounded-lg bg-[#F8FCFF] flex flex-row gap-8">
                 <UploadImage
-                  onUpload={(imagen) => manejarCambio("imagen", imagen)}
-                  text="Arrastra tu imagen aquí"
+                  variant="portada"
+                  onUpload={(imagen) =>
+                    manejarCambio("portada", imagen[0] || null)
+                  }
+                  text="Portada de la propiedad"
+                  buttonText="Buscar"
+                  containerStyle={{
+                    width: "100%",
+                    height: "200px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                />
+                <UploadImage
+                  variant="gallery"
+                  onUpload={(imagenes) =>
+                    manejarCambio("imagenes", imagenes || [])
+                  }
+                  text="Imagenes de la propiedad"
                   buttonText="Buscar"
                   containerStyle={{
                     width: "100%",
@@ -218,7 +184,7 @@ export default function FormularioPropiedad() {
               <Button
                 text="Cancelar"
                 color="blue"
-                onClick={() => navegar("/property")}
+                onClick={() => navigate("/property")}
                 width="150px"
                 height="45px"
                 fontSize="16px"

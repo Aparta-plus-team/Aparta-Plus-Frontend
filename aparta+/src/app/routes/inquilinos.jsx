@@ -8,49 +8,13 @@ import MainView from "*/mainView";
 // Definir el query GraphQL para obtener los inquilinos
 const GET_INQUILINOS = gql`
   query verInquilino {
-    inquilinos(where: { estado: { eq: true } }) {
+    inquilinos(where: { estado: { eq: true } }, take: 50) {
       items {
         inquilinoid
         inquilinonombre
         inquilinocorreo
         inquilinotelefono
         estado
-      }
-    }
-  }
-`;
-
-const inq = gql`
-  query fsdgsdfgdgf {
-    facturas(
-      where: {
-        inmueble: {
-          contrato: {
-            inquilino: {
-              inquilinoid: { eq: "ea157c3d-a121-4547-ae8c-00fc2fdac78d" }
-            }
-          }
-        }
-      }
-      order: { fechapago: DESC }
-      take: 1
-    ) {
-      items {
-        estado
-        descripcion
-        facturaid
-        fechapago
-        inmuebleid
-        monto
-        sessionId
-        url
-        inmueble {
-          contrato {
-            inquilino {
-              inquilinoid
-            }
-          }
-        }
       }
     }
   }
@@ -67,6 +31,7 @@ const InquilinosPage = () => {
   if (loading) return <p>Cargando inquilinos...</p>;
   if (error) return <p>Error al cargar inquilinos: {error.message}</p>;
 
+  console.log(data);
   // Mapear los datos correctamente para `TablaInquilinos`
   const inquilinos =
     data?.inquilinos?.items.map((item) => ({

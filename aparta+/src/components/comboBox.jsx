@@ -61,8 +61,8 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "+/comboBox.component.scss";
 
-const ComboBox = ({ options, onChange, title, disabled, width }) => {
-  const [selectedOption, setSelectedOption] = useState("");
+const ComboBox = ({ selection, options, onChange, title, disabled, width }) => {
+  const [selectedOption, setSelectedOption] = useState(selection || "");
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -122,4 +122,5 @@ ComboBox.propTypes = {
   title: PropTypes.string,
   disabled: PropTypes.bool,
   width: PropTypes.string,
+  selection: PropTypes.string,
 };

@@ -35,11 +35,11 @@ function Header() {
           className="avatar-circle"
           onClick={toggleDropdown}
           style={{
-            backgroundColor: "red",  // Color gris para el avatar
+            backgroundColor: localStorage.getItem("avatarColor"),  // Color gris para el avatar
             color: "white",  // Asegurarse de que la letra sea blanca
           }}
         >
-          K {/* Letra fija */}
+          {localStorage.getItem("avatarLetter")}
         </div>
         {showDropdown && (
           <div className="dropdown-menu">

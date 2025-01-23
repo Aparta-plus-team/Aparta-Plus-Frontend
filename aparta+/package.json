@@ -12,8 +12,10 @@
   "dependencies": {
     "@apollo/client": "^3.12.5",
     "aparta-": "file:",
+    "apollo-upload-client": "^18.0.1",
     "echarts": "^5.6.0",
     "echarts-for-react": "^3.0.2",
+    "graphql-upload": "^17.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

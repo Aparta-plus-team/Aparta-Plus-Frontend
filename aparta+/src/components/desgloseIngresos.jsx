@@ -1,12 +1,37 @@
+import { gql, useQuery } from "@apollo/client";
 import ReactECharts from "echarts-for-react";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
-export default function DesgloseIngresos({ data }) {
+const LLENAR_REPORTE_VENTAS = gql`
+  query llenarReporteVentas($userId: UUID!) {
+    gananciaPropiedads(userId: $userId) {
+      ganancia
+      nombrePropiedad
+    }
+  }
+`;
+
+export default function DesgloseIngresos() {
+  const [reporteVentas, setReporteVentas] = useState([{}]);
+
+  useQuery(LLENAR_REPORTE_VENTAS, {
+    variables: { userId: localStorage.getItem("userId") },
+    onCompleted: (data) => {
+      setReporteVentas(
+        data.gananciaPropiedads.map((entry) => ({
+          value: entry.ganancia,
+          name: entry.nombrePropiedad,
+        }))
+      );
+    },
+  });
+
   // Specify the configuration items and data for the chart
   var option = {
     title: {
-      text: 'EChart pie chart',
-      subtext: 'Data',
+      text: "EChart pie chart",
+      subtext: "Data",
     },
     tooltip: {
       trigger: "item",
@@ -14,7 +39,7 @@ export default function DesgloseIngresos({ data }) {
     legend: {
       top: "center",
       right: "0%",
-      orient: 'vertical',
+      orient: "vertical",
     },
     series: [
       {
@@ -40,13 +65,7 @@ export default function DesgloseIngresos({ data }) {
         labelLine: {
           show: false,
         },
-        data: [
-          { value: 1048, name: "Punta cana" },
-          { value: 735, name: "Santiago" },
-          { value: 580, name: "La Vega" },
-          { value: 484, name: "San Pedro" },
-          { value: 300, name: "Santo Domingo" },
-        ],
+        data: reporteVentas,
       },
     ],
   };

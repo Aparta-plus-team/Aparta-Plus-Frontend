@@ -1,10 +1,37 @@
 import { useState } from "react";
 import ReactECharts from "echarts-for-react";
-import PropTypes from "prop-types";
+import { gql, useQuery } from "@apollo/client";
 
-export default function ReporteVentas({ data }) {
+const LLENAR_REPORTE_VENTAS = gql`
+query llenarReporteVentas($userId: UUID!, $year: Int!) {
+  reporteVentas(userId: $userId, year: $year) {
+    ganancia
+    mes
+  }
+}
+`;
+
+function mapVentasToMonths(data) {
+  const monthlyGains = Array(12).fill(0);
+
+  data.reporteVentas.forEach(entry => {
+    monthlyGains[entry.mes - 1] += entry.ganancia;
+  });
+
+  return monthlyGains;
+}
+
+export default function ReporteVentas() {
   const [timeframe] = useState("Anual");
-  const [selectedPeriod, setSelectedPeriod] = useState("Enero");
+  const [selectedPeriod, setSelectedPeriod] = useState("2025");
+  const [reporteVentas, setReporteVentas] = useState([]);
+  
+  useQuery(LLENAR_REPORTE_VENTAS, {
+    variables: { userId: localStorage.getItem("userId"), year: parseInt(selectedPeriod) },
+    onCompleted: (data) => {
+      setReporteVentas(mapVentasToMonths(data));
+    },
+  });
   
   const periodOptions = {
     Anual: ["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000"],
@@ -29,7 +56,7 @@ export default function ReporteVentas({ data }) {
       {
         name: "Ventas",
         type: "bar",
-        data: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200],
+        data: reporteVentas,
       },
     ],
   };
@@ -64,7 +91,3 @@ export default function ReporteVentas({ data }) {
     </div>
   );
 }
-
-ReporteVentas.propTypes = {
-  data: PropTypes.object,
-};

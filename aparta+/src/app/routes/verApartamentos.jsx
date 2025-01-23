@@ -3,7 +3,6 @@ import ApartamentCard from "*/apartmentCard";
 import Button from "*/button";
 import ContractApartment from "*/contractContainer";
 import Matrix from "*/matrix";
-import React from "react";
 import "+/verApartamentos.scss";
 
 const VerApartamentos = () => {

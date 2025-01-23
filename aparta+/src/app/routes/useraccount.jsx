@@ -1,36 +1,77 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useQuery, useMutation } from "@apollo/client";
+import gql from "graphql-tag";
 import "+/useraccount.scss";
 import Input from "*/Input";
 import Button from "*/Button";
 import MainView from "*/mainView";
-import ComboBox from "*/ComboBox";
+
+// GraphQL queries and mutations
+const GET_USER_INFO = gql`
+  query GetUserInfo($userId: UUID) {
+    usuarios(where: { usuarioid: { eq: $userId } }) {
+      items {
+        usuarioid
+        usuarionombre
+        usuariotelefono
+        usuariocorreo
+      }
+    }
+  }
+`;
+
+const UPDATE_USER_INFO = gql`
+  mutation UpdateUserInfo($userId: String!, $name: String!, $phoneNumber: String!) {
+    changeUserInfo(input: { name: $name, phoneNumber: $phoneNumber, userId: $userId }) {
+      id
+      username
+      email
+    }
+  }
+`;
 
 function AccountPage() {
   const navigate = useNavigate();
+  const userId = localStorage.getItem("userId"); // Replace with actual user ID
 
-  // Estado para los valores del formulario
+  // States
   const [formData, setFormData] = useState({
-    firstName: "Keven",
-    lastName: "Shein",
-    gender: "Masculino",
-    phone: "809-000-0000",
-    email: "kevenshein@gmail.com",
-    password: "********",
+    firstName: "",
+    phone: "",
+    email: "",
   });
+  const [backgroundColor, setBackgroundColor] = useState(localStorage.getItem("avatarColor"));
+  const [initialLetter, setInitialLetter] = useState("");
 
-  // Estado para el color de fondo aleatorio y la primera letra
-  const [backgroundColor, setBackgroundColor] = useState("");
-  const [initialLetter, setInitialLetter] = useState(formData.firstName[0]);
+  // Apollo hooks
+  const { data, loading, error } = useQuery(GET_USER_INFO, {
+    variables: { userId },
+  });
+  const [updateUserInfo] = useMutation(UPDATE_USER_INFO);
 
-  // Generar un color aleatorio solo cuando se guarda
+  // Fill form with fetched data
+  useEffect(() => {
+    if (data?.usuarios?.items[0]) {
+      const user = data.usuarios.items[0];
+      setFormData({
+        firstName: user.usuarionombre || "",
+        phone: user.usuariotelefono || "",
+        email: user.usuariocorreo || "",
+      });
+      setInitialLetter(user.usuarionombre?.[0] || "");
+    }
+  }, [data]);
+
+  // Generate random color
   const generateRandomColor = () => {
     const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+    localStorage.setItem("avatarColor", randomColor);
+    localStorage.setItem("avatarLetter", formData.firstName[0]);
     setBackgroundColor(randomColor);
-    setInitialLetter(formData.firstName[0]); // Primer letra del nombre
   };
 
-  // Manejador de cambios en los inputs
+  // Handle input changes
   const handleChange = (field, value) => {
     setFormData((prev) => ({
       ...prev,
@@ -38,24 +79,31 @@ function AccountPage() {
     }));
   };
 
-  // Manejador de guardado
-  const handleSave = () => {
-    console.log("Guardando cambios...", formData);
-    generateRandomColor(); // Cambiar color y letra cuando se guarda
-
-    // Guardar en localStorage
-    localStorage.setItem("avatarColor", backgroundColor); // Guardar color
-    localStorage.setItem("avatarLetter", initialLetter); // Guardar letra
-
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 2000);
+  // Handle save
+  const handleSave = async () => {
+    try {
+      console.log("Guardando cambios...", formData);
+      await updateUserInfo({
+        variables: {
+          userId,
+          name: formData.firstName,
+          phoneNumber: formData.phone,
+        },
+      });
+      generateRandomColor();
+      setTimeout(() => navigate("/dashboard"), 2000);
+    } catch (e) {
+      console.error("Error al actualizar el usuario:", e);
+    }
   };
 
-  // Manejador de cancelar
+  // Handle cancel
   const handleCancel = () => {
     navigate("/dashboard");
   };
+
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>Error al cargar los datos del usuario</p>;
 
   return (
     <MainView sidebarType="thin">
@@ -67,17 +115,15 @@ function AccountPage() {
               className="profile-picture"
               style={{ backgroundColor: backgroundColor }}
             >
-              {formData.firstName[0]} {/* Usamos la primera letra del nombre */}
+              {initialLetter.toUpperCase()}
             </div>
             <div className="profile-info">
-              <h2 className="profile-name">
-                {formData.firstName} {formData.lastName}
-              </h2>
+              <h2 className="profile-name">{formData.firstName}</h2>
               <p className="profile-email">{formData.email}</p>
             </div>
           </div>
 
-          {/* Formulario de edición con el componente Input */}
+          {/* Form */}
           <div className="form-container">
             <div className="form-row">
               <Input
@@ -87,22 +133,6 @@ function AccountPage() {
                 onChange={(value) => handleChange("firstName", value)}
               />
               <Input
-                content="Correo"
-                value={formData.email}
-                width="400px"
-                onChange={(value) => handleChange("email", value)}
-              />
-            </div>
-
-            <div className="form-row">
-              <ComboBox 
-                title="Género"
-                content="Genero"
-                options={["Masculino", "Femenino"]}
-                onChange={(e) => console.log(e)}
-                width="400px"
-              />
-              <Input
                 content="Teléfono"
                 value={formData.phone}
                 width="400px"
@@ -110,34 +140,30 @@ function AccountPage() {
               />
             </div>
 
-            <div className="form-row">
-              {/* Contenedor del campo de contraseña con enlace */}
+            <div className="form-row flex flex-row items-center justify-center">
               <div className="password-container">
                 <Input
-                  isPassword={true}
-                  content="Contraseña"
-                  value="********"
-                  width="365px"
+                  isPassword={false}
+                  content="Correo electrónico"
+                  value={formData.email}
+                  width="400px"
                   disabled
                 />
-                {/* Enlace en lugar del botón */}
-                <a href="/reset" className="edit-password-link">
-                  Editar
-                </a>
               </div>
             </div>
           </div>
 
+          {/* Buttons */}
           <div className="button-group flex gap-4 mt-4">
             <Button
               text="Cancelar"
-              onClick={handleCancel} // Llamar a la función cancelar
+              onClick={handleCancel}
               color="blue"
               width="150px"
             />
             <Button
               text="Guardar"
-              onClick={handleSave} // Llamar a la función guardar
+              onClick={handleSave}
               color="green"
               width="150px"
             />
