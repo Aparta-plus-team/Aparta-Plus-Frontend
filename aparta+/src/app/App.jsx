@@ -275,13 +275,13 @@ function App() {
         <Route path="/contractcontainer" element={<ContractContainer />} />
           
         {/* VerApartamentos */}
-        <Route path="/verapartamentos" element={<VerApartamentos />} />
+        <Route path="/verapartamentos/:id" element={<VerApartamentos />} />
         
         {/* Matrix */}
         <Route path="/matrix" element={<Matrix />} />
 
         {/* VerPropiedades */}
-        <Route path="/verpropiedades" element={<VerPropiedades />} />
+        <Route path="/verpropiedades/:id" element={<VerPropiedades />} />
         
         {/* AlojarInquilino */}
         <Route path="/alojarinquilino" element={<AlojarInquilino />} />
