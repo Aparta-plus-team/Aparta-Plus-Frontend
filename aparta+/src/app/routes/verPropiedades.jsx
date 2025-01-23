@@ -13,34 +13,38 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 // Query para obtener la propiedad específica
 const GET_PROPIEDAD = gql`
   query verPropiedad($id: UUID!) {
-    propiedads(where: { propiedadid: { eq: $id } }) {
-      items {
-        propiedadid
-        nombre
-        ubicacion
-        portadaurl
-        imagenespropiedades {
-          imagenurl
-        }
-        inmuebles {
-          inmuebleid
-          codigo
-          contrato {
-            precioalquiler
-            inquilino {
-              inquilinonombre
-              contratos {
-                estado
-              }
+  propiedads(where: { propiedadid: { eq: $id } }) {
+    items {
+      propiedadid
+      nombre
+      ubicacion
+      portadaurl
+      imagenespropiedades {
+        imagenurl
+      }
+      inmuebles {
+        inmuebleid
+        codigo
+        contrato {
+          precioalquiler
+          inquilino {
+            inquilinonombre
+            contratos {
+              estado
             }
+            inquilinoid
           }
-          facturas {
-            monto
+          inmuebles {
+            inmuebleid
           }
+        }
+        facturas {
+          monto
         }
       }
     }
   }
+}
 `;
 
 // Query para obtener todas las propiedades del usuario
@@ -206,7 +210,7 @@ const VerPropiedades = () => {
             <Matrix
               key={inmueble.inmuebleid}
               tipo="propiedad"
-              nombreApartamento={inmueble.codigo}
+              nombreApartamento={inmueble.inmuebleid}
               nombreInquilino={
                 inmueble.contrato?.inquilino?.inquilinonombre || "Sin inquilino"
               }

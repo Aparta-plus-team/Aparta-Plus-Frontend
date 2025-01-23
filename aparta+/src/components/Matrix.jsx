@@ -1,4 +1,4 @@
-// import React, { useState } from 'react';
+
 // import '+/Matrix.component.scss';
 
 // const Matrix = ({ tipo, nombreApartamento, nombreInquilino, monto }) => {
@@ -18,14 +18,14 @@
 //     <section className={`matrix-container ${isVisible ? 'expanded' : ''}`}>
 //       <header className="matrix-header">
 //         <h2 className='matrix-title'>{titulo}</h2>
-//         <div className="matrix-select">
-//           <select className='select-box' name="Años" onChange={handleSelectChange}>
-//             <option value="">Año</option>
-//             <option value="2025">2025</option>
-//             <option value="2024">2024</option>
-//             <option value="2023">2023</option>
-//             <option value="2022">2022</option>
-//           </select>
+//         <div className="matrix-select">    
+//           <select className='select-box' name="Años" onChange={handleSelectChange}> 
+//             <option value="">Año</option> 
+//             <option value="2025">2025</option> 
+//             <option value="2024">2024</option> 
+//             <option value="2023">2023</option> 
+//             <option value="2022">2022</option> 
+//           </select> 
 //         </div>
 //       </header>
 
@@ -62,18 +62,17 @@
 
 
 
-
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "+/Matrix.component.scss";
 
-const Matrix = ({
-  tipo,
-  nombreApartamento,
-  nombreInquilino,
-  monto,
-  inmuebleid,
-}) => {
+const Matrix = ({ tipo, nombreApartamento, nombreInquilino, monto }) => {
+  // Obtener el ID desde los parámetros de la URL
+  const { inmuebleid } = useParams();
+
+  // Log para verificar que el ID se recibe correctamente
+  console.log("ID del inmueble recibido:", inmuebleid);
+
   const titulo =
     tipo === "propiedad"
       ? nombreApartamento || "No especificado"
@@ -102,13 +101,12 @@ const Matrix = ({
           <h2 className="matrix-title">{titulo}</h2>
         </Link>
 
-        {/* Prevent default behavior when clicking on the selector */}
         <div className="matrix-select">
           <select
             className="select-box"
             name="Años"
             onChange={handleSelectChange}
-            onClick={handleSelectClick} // Detener la propagación del clic
+            onClick={handleSelectClick}
           >
             <option value="">Año</option>
             <option value="2025">2025</option>
