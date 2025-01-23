@@ -4,7 +4,7 @@ import "+/dashboard.scss";
 import ListComponent from "*/ultimaTransaccion";
 import MainView from "*/mainView";
 import ReporteVentas from "*/reporteVentas";
-import DesgloseIngresos from "../../components/desgloseIngresos";
+import DesgloseIngresos from "*/desgloseIngresos";
 
 // Definimos el query como una constante
 const DASHBOARD_QUERY = gql`

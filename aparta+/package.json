@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@apollo/client": "^3.12.5",
+    "@apollo/client": "^3.12.6",
     "aparta-": "file:",
     "apollo-upload-client": "^18.0.1",
     "echarts": "^5.6.0",
