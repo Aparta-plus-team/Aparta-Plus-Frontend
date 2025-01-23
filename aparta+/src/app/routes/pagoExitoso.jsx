@@ -1,21 +1,20 @@
-import React from "react";
 import "+/pagoExitoso.scss";
 
 const PagoExitoso = () => {
   return (
-    <div class="body">
-      <div class="confirmation-card">
-        <div class="success-icon"></div>
-        <h1 class="title">¡Pago Exitoso!</h1>
-        <p class="message">Tu pago ha sido procesado correctamente.</p>
+    <div className="body">
+      <div className="confirmation-card">
+        <div className="success-icon"></div>
+        <h1 className="title">¡Pago Exitoso!</h1>
+        <p className="message">Tu pago ha sido procesado correctamente.</p>
 
-        <div class="details">
+        <div className="details">
           <p>Monto pagado:</p>
-          <div class="amount">$149.99</div>
-          <p class="transaction-id">ID de Transacción: #123456789</p>
+          <div className="amount">$149.99</div>
+          <p className="transaction-id">ID de Transacción: #123456789</p>
         </div>
         <a href="/dashboard">
-          <button class="button">Volver al Inicio</button>
+          <button className="button">Volver al Inicio</button>
         </a>
       </div>
     </div>
