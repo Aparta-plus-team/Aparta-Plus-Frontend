@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
@@ -10,33 +8,39 @@ import MainView from "*/mainView";
 
 // Consulta GraphQL para obtener las propiedades
 const GET_PROPIEDADES = gql`
-  query verPropiedadCarta {
-  propiedads {
-    items {
-      nombre
-      ubicacion
-      propiedadid
-      inmuebles {
-        numbanos
-        numhabitaciones
-        inmuebleid
-        tieneparqueo
+  query verPropiedadCarta($usuarioid: UUID) {
+    propiedads(
+      take: 50
+      where: { usuarioid: { eq: $usuarioid }, estado: { eq: true } }
+    ) {
+      items {
+        nombre
+        ubicacion
+        propiedadid
+        inmuebles {
+          numbanos
+          numhabitaciones
+          inmuebleid
+          tieneparqueo
+        }
+        portadaurl
       }
     }
   }
-}
 `;
 
 const Property = () => {
-  const { loading, error, data } = useQuery(GET_PROPIEDADES);
+  const { loading, error, data } = useQuery(GET_PROPIEDADES, {
+    variables: { usuarioid: localStorage.getItem("userId") }, // Pasamos el ID del usuario
+  });
   const [search, setSearch] = useState(""); // Estado para la búsqueda
 
   // Verificamos si hay datos antes de aplicar el filtro
   const propiedades = data?.propiedads?.items || [];
 
   // Filtrar propiedades según la búsqueda
-  const filteredProperties = propiedades.filter((prop) =>
-    prop.nombre?.toLowerCase().includes(search.toLowerCase()) // Filtra por nombre de la propiedad
+  const filteredProperties = propiedades.filter(
+    (prop) => prop.nombre?.toLowerCase().includes(search.toLowerCase()) // Filtra por nombre de la propiedad
   );
 
   // Función para actualizar el estado de la búsqueda
@@ -73,7 +77,16 @@ const Property = () => {
           // Renderizar las propiedades filtradas
           <div className="property__properties">
             {filteredProperties.map((propiedad) => (
-              <PropertyCard nombre={propiedad.nombre} key={propiedad.propiedadid} {...propiedad} />
+              <PropertyCard
+                key={propiedad.propiedadid}
+                nombre={propiedad.nombre}
+                portadaurl={propiedad.portadaurl}
+                ubicacion={propiedad.ubicacion}
+                propiedadid={propiedad.propiedadid}
+                inmuebles={propiedad.inmuebles}
+                tipo="propiedad" // Indicamos que es una propiedad
+                id={propiedad.propiedadid} // Pasamos el ID único
+              />
             ))}
           </div>
         ) : (
