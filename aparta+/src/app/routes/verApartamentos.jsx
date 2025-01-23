@@ -1,5 +1,5 @@
 // import MainView from "*/mainView";
-// import ApartamentCard from "*/apartmentCard"; 
+// import ApartamentCard from "*/apartmentCard";
 // import Button from "*/button";
 // import ContractApartment from "*/contractContainer";
 // import Matrix from "*/matrix";
@@ -37,12 +37,12 @@
 //                         <p><strong>Monto:</strong> 30,000</p>
 //                         <div className="apartment-details">
 //                             <div className="room-details">
-//                                 <p><strong>Habitaciones:</strong> 3</p> 
-//                                 <p><strong>Amueblado:</strong> No</p> 
+//                                 <p><strong>Habitaciones:</strong> 3</p>
+//                                 <p><strong>Amueblado:</strong> No</p>
 //                             </div>
 //                             <div className="additional-info">
-//                                 <p><strong>Parqueo:</strong> Si</p> 
-//                                 <p><strong>Baños:</strong> 4</p> 
+//                                 <p><strong>Parqueo:</strong> Si</p>
+//                                 <p><strong>Baños:</strong> 4</p>
 //                             </div>
 //                         </div>
 //                     </body>
@@ -63,10 +63,8 @@
 
 // export default VerApartamentos;
 
-
-
-import { gql, useQuery, useMutation } from '@apollo/client';
-import { useParams, Link } from 'react-router-dom';
+import { gql, useQuery, useMutation } from "@apollo/client";
+import { useParams, Link } from "react-router-dom";
 import MainView from "*/mainView";
 import ApartamentCard from "*/apartmentCard";
 import Button from "*/button";
@@ -146,7 +144,9 @@ const UPDATE_INMUEBLE = gql`
 
 const VerApartamentos = () => {
   const { id } = useParams();
-  const { loading, error, data } = useQuery(GET_APARTMENTS, { variables: { id } });
+  const { loading, error, data } = useQuery(GET_APARTMENTS, {
+    variables: { id },
+  });
   const [deleteInmueble] = useMutation(DELETE_INMUEBLE);
   const [updateInmueble] = useMutation(UPDATE_INMUEBLE);
 
@@ -156,17 +156,20 @@ const VerApartamentos = () => {
   const apartments = data?.inmuebles?.items || [];
   const apartment = apartments[0];
   const relatedApartments = apartment?.propiedad?.inmuebles || [];
-  const precioAlquiler = apartment?.propiedad?.inmuebles?.[0]?.contrato?.precioalquiler || 'N/A';
-  const inquilinoNombre = apartment?.propiedad?.inmuebles?.[0]?.contrato?.inquilino?.inquilinonombre || 'N/A';
+  const precioAlquiler =
+    apartment?.propiedad?.inmuebles?.[0]?.contrato?.precioalquiler || "N/A";
+  const inquilinoNombre =
+    apartment?.propiedad?.inmuebles?.[0]?.contrato?.inquilino
+      ?.inquilinonombre || "N/A";
 
   // Funciones para las acciones de los botones
   const handleDelete = async () => {
     try {
       await deleteInmueble({ variables: { id: apartment.inmuebleid } });
-      alert('Inmueble eliminado con éxito');
+      alert("Inmueble eliminado con éxito");
     } catch (err) {
-      console.error('Error al eliminar el inmueble:', err);
-      alert('No se pudo eliminar el inmueble.');
+      console.error("Error al eliminar el inmueble:", err);
+      alert("No se pudo eliminar el inmueble.");
     }
   };
 
@@ -181,52 +184,95 @@ const VerApartamentos = () => {
           numBanos: apartment.numbanos || 0,
           numHabitaciones: apartment.numhabitaciones || 0,
           propiedadId: apartment.propiedad.propiedadid,
-          contratoId: apartment.contratoid || "SIN_CONTRATO"
-        }
+          contratoId: apartment.contratoid || "SIN_CONTRATO",
+        },
       });
-      alert('Inmueble actualizado con éxito');
+      alert("Inmueble actualizado con éxito");
     } catch (err) {
-      console.error('Error al actualizar el inmueble:', err);
-      alert('No se pudo actualizar el inmueble.');
+      console.error("Error al actualizar el inmueble:", err);
+      alert("No se pudo actualizar el inmueble.");
     }
   };
 
   return (
     <MainView sidebarType="thin">
       <div className="apartament-page">
-        <h1 className="page-title">{apartment?.codigo || 'Sin Código'}</h1>
+        <h1 className="page-title">{apartment?.codigo || "Sin Código"}</h1>
 
         <section className="apartment-details-section">
           <div className="apartment-overview">
             <div className="apartment-header">
-              <h2 className="apartment-name">{apartment?.codigo || 'Sin Código'}</h2>
+              <h2 className="apartment-name">
+                {apartment?.codigo || "Sin Código"}
+              </h2>
             </div>
             <div className="action-buttons">
-              <Button text="Eliminar" color="blue" width="150px" onClick={handleDelete} />
-              <Button text="Editar" color="green" width="150px" onClick={handleUpdate} />
+              <Button
+                text="Eliminar"
+                color="blue"
+                width="150px"
+                onClick={handleDelete}
+              />
+              <Button
+                text="Editar"
+                color="green"
+                width="150px"
+                onClick={handleUpdate}
+              />
               <Button text="Desalojar Inquilino" color="red" width="190px" />
             </div>
           </div>
           <div className="apartment-cards">
-            <ApartamentCard />
-            <ApartamentCard />
-            <ApartamentCard />
+            <ApartamentCard
+              idApartamento="efd07ccc-3f1e-4865-b840-ab7cbb5a3cc8"
+              codigo="A03"
+              inquilino="Wardell Stephen C."
+              monto="25,000"
+            />
+            <ApartamentCard
+              idApartamento="efd07ccc-3f1e-4865-b840-ab7cbb5a3cc8"
+              codigo="A03"
+              inquilino="Wardell Stephen C."
+              monto="25,000"
+            />
+            <ApartamentCard
+              idApartamento="efd07ccc-3f1e-4865-b840-ab7cbb5a3cc8"
+              codigo="A03"
+              inquilino="Wardell Stephen C."
+              monto="25,000"
+            />
           </div>
         </section>
 
         <section className="apartment-info-section">
-          <header className="info-header"><h2>Información</h2></header>
+          <header className="info-header">
+            <h2>Información</h2>
+          </header>
           <body className="info-details">
-            <p><strong>Inquilino:</strong> {inquilinoNombre}</p>
-            <p><strong>Monto:</strong> {precioAlquiler}</p>
+            <p>
+              <strong>Inquilino:</strong> {inquilinoNombre}
+            </p>
+            <p>
+              <strong>Monto:</strong> {precioAlquiler}
+            </p>
             <div className="apartment-details">
               <div className="room-details">
-                <p><strong>Habitaciones:</strong> {apartment?.numhabitaciones || 'N/A'}</p>
-                <p><strong>Amueblado:</strong> No</p>
+                <p>
+                  <strong>Habitaciones:</strong>{" "}
+                  {apartment?.numhabitaciones || "N/A"}
+                </p>
+                <p>
+                  <strong>Amueblado:</strong> No
+                </p>
               </div>
               <div className="additional-info">
-                <p><strong>Parqueo:</strong> {apartment?.tieneparqueo ? "Sí" : "No"}</p>
-                <p><strong>Baños:</strong> {apartment?.numbanos || 'N/A'}</p>
+                <p>
+                  <strong>Parqueo:</strong>{" "}
+                  {apartment?.tieneparqueo ? "Sí" : "No"}
+                </p>
+                <p>
+                  <strong>Baños:</strong> {apartment?.numbanos || "N/A"}
+                </p>
               </div>
             </div>
           </body>
@@ -240,12 +286,11 @@ const VerApartamentos = () => {
         <section className="statistics-section">
           <Matrix
             tipo="estadisticas"
-            nombreApartamento={apartment?.codigo || 'N/A'}
+            nombreApartamento={apartment?.codigo || "N/A"}
             nombreInquilino={inquilinoNombre}
             monto={precioAlquiler}
           />
         </section>
-
       </div>
     </MainView>
   );
