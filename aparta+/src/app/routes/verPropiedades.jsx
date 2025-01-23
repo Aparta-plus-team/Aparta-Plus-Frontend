@@ -1,6 +1,3 @@
-
-
-
 import MainView from "*/mainView";
 import PropertyCard from "*/propertyCard";
 import Button from "*/button";
@@ -69,7 +66,14 @@ const GET_PROPIEDADES_POR_USUARIO = gql`
 // Mutación para eliminar una propiedad
 const DELETE_PROPERTY = gql`
   mutation deletePropiedad($id: String!) {
-    deleteProperty(id: $id) 
+    deleteProperty(id: $id)
+  }
+`;
+
+// Mutación para descargar reporte
+const DESCARGAR_REPORTE = gql`
+  mutation descargarReportePagos($propiedadId: String!, $year: Int!) {
+    descargarReportePagos(propiedadId: $propiedadId, year: $year)
   }
 `;
 
@@ -113,6 +117,9 @@ const VerPropiedades = () => {
     },
   });
 
+  // Hook para ejecutar la mutación de descargar reporte
+  const [descargarReportePagos] = useMutation(DESCARGAR_REPORTE);
+
   if (loading || loadingPropiedades) return <p>Cargando...</p>;
   if (error || errorPropiedades) return <p>Error al cargar los datos</p>;
 
@@ -127,6 +134,22 @@ const VerPropiedades = () => {
   // Función para manejar el clic en eliminar
   const handleDelete = (id) => {
     deleteProperty({ variables: { id } });
+  };
+
+  // Función para manejar la descarga del reporte
+  const handleDescargarReporte = async () => {
+    try {
+      const { data } = await descargarReportePagos({
+        variables: {
+          propiedadId: id, // se usa el mismo ID de la URL
+          year: 2025,      // año fijo (o ajusta si lo necesitas dinámico)
+        },
+      });
+      console.log("Reporte descargado:", data);
+      // Aquí podrías manejar la respuesta, por ejemplo abrir un enlace si la mutación retorna la URL de descarga.
+    } catch (error) {
+      console.error("Error al descargar reporte", error);
+    }
   };
 
   return (
@@ -202,6 +225,15 @@ const VerPropiedades = () => {
         </section>
         <section className="apartments-section">
           <h2 className="apartments-title">Apartamentos</h2>
+
+          {/* Botón para descargar reporte */}
+          <Button
+            text={"Descargar Reporte"}
+            color="green"
+            width="200px"
+            onClick={handleDescargarReporte}
+          />
+
           {inmuebles.map((inmueble) => (
             <Matrix
               key={inmueble.inmuebleid}
